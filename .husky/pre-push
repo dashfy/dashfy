@@ -1,0 +1,9 @@
+# Run tests before push
+echo "Running tests before push..."
+pnpm test
+
+# Check for circular dependencies
+echo "Checking for circular dependencies..."
+pnpm check:circular
+
+echo "✓ Pre-push checks passed"
