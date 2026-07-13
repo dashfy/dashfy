@@ -32,12 +32,13 @@ body:
       description: Which part of Dashfy is affected?
       multiple: true
       options:
+        - '@dashfy/cli (scaffolding, extensions, commands)'
         - '@dashfy/server (runtime, config, APIs)'
-        - '@dashfy/ui (components, widgets, client)'
         - '@dashfy/themes (tokens, theming, styling)'
         - '@dashfy/types (shared contracts)'
+        - '@dashfy/ui (components, widgets, client)'
+        - '@dashfy/utils (formatting, strings, platform)'
         - 'examples (demo apps)'
-        - 'docs (documentation)'
         - 'Tooling/CI'
         - 'Other / Not sure'
     validations:
