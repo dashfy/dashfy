@@ -1,0 +1,25 @@
+---
+description: Dashfy project conventions — use the CLI for extension setup, valid widget grid layout, and doctor verification
+globs: '**/{dashfy.json,dashfy.config.yml,dashfy.config.yaml,dashfy.server.ts}'
+alwaysApply: false
+---
+
+# Dashfy project conventions
+
+A project is a Dashfy app when it has a `dashfy.json` and/or a `dashfy.config.yml`. Follow these conventions when working in one. The bundled skill at `skills/dashfy/SKILL.md` has the full CLI, registry, and MCP reference.
+
+## Extension setup
+
+- Add and remove extensions with `dashfy add` / `dashfy remove` — never hand-edit `App.tsx`, the server bootstrap, `.env`, or `dashfy.config.yml` to set up an extension. The CLI registers widgets, registers the server API, seeds env vars, and appends starter blocks.
+- All setup is idempotent; re-adding or removing is safe.
+- `remove` only strips empty `KEY=` placeholders from `.env`; never commit real secrets.
+
+## Dashboard layout
+
+- Every widget block needs `extension`, `widget`, `x`, `y`, `columns`, and `rows`, plus any widget-specific props.
+- Stay inside the grid: `x + columns <= dashboard.columns` and `y + rows <= dashboard.rows`; no overlapping widgets.
+- Only reference widgets an installed extension actually registers.
+
+## Workflow
+
+- `dashfy info` for project context, `dashfy docs <extension>` before setup, `dashfy doctor` after changes (it exits non-zero on failures — good as a CI gate).

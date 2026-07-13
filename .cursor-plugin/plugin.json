@@ -1,0 +1,24 @@
+{
+  "name": "dashfy",
+  "displayName": "Dashfy",
+  "version": "0.1.0",
+  "description": "Dashboards for developers. Scaffold apps, search and install extensions, set up widgets + data sources, and lay out dashboards as code.",
+  "author": {
+    "name": "Breno Polanski"
+  },
+  "homepage": "https://dashfy.dev",
+  "repository": "https://github.com/dashfy/dashfy",
+  "license": "AGPL-3.0",
+  "logo": "skills/dashfy/assets/dashfy.png",
+  "keywords": ["dashfy", "dashboard", "widgets", "extensions", "registry", "mcp", "react", "yaml"],
+  "category": "developer-tools",
+  "tags": ["dashboard", "widgets", "extensions", "registry", "mcp"],
+  "skills": "./skills/",
+  "rules": "./.cursor/rules/",
+  "mcpServers": {
+    "dashfy": {
+      "command": "npx",
+      "args": ["dashfy@latest", "mcp"]
+    }
+  }
+}
