@@ -35,8 +35,8 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-# .cursor/
-# !.cursor/rules/
+.cursor/
+!.cursor/rules/
 .agents/
 .idea/
 *.swp
