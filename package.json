@@ -1,0 +1,70 @@
+{
+  "name": "dashfy",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dashfy - Dashboards for developers",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dashfy/dashfy.git"
+  },
+  "license": "AGPL-3.0-or-later",
+  "author": {
+    "name": "Breno Polanski",
+    "email": "breno@dashfy.dev",
+    "url": "https://github.com/brenopolanski"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "add:ui": "cd packages/ui && pnpm dlx shadcn@latest add",
+    "build": "turbo run build",
+    "changeset": "changeset",
+    "changeset:publish": "changeset publish",
+    "changeset:version": "changeset version",
+    "check:all": "pnpm check:fix && pnpm check:circular",
+    "check:circular": "turbo run check:circular",
+    "check:fix": "pnpm format && pnpm lint:fix && pnpm typecheck",
+    "clean": "turbo run clean && rm -rf .turbo node_modules",
+    "clean:all": "/bin/bash scripts/clean.sh",
+    "env:info": "node scripts/env-info.js",
+    "format": "pnpm prettier --write",
+    "format:check": "pnpm prettier --check",
+    "lint": "eslint . && turbo run lint",
+    "lint-staged": "lint-staged",
+    "lint:fix": "eslint . --fix && turbo run lint",
+    "prepare": "husky",
+    "prettier": "prettier \"**/*.{js,mjs,ts,tsx,css,json,md}\"",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.2",
+    "@changesets/cli": "^2.29.8",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.1",
+    "@eslint/js": "^9.17.0",
+    "@turbo/gen": "^2.3.3",
+    "envinfo": "^7.21.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-storybook": "10.2.8",
+    "eslint-plugin-unused-imports": "^4.3.0",
+    "globals": "^15.13.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
+    "madge": "^8.0.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "turbo": "^2.9.6",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1"
+  }
+}
