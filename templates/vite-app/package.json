@@ -1,0 +1,42 @@
+{
+  "name": "vite-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:server": "dotenv -e .env -- tsx watch dashfy.server.ts",
+    "dev:all": "concurrently \"pnpm dev:server\" \"pnpm dev\"",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{ts,tsx,css,md,json,yml}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@dashfy/ext-github": "^0.1.0",
+    "@dashfy/ext-market-live": "^0.1.0",
+    "@dashfy/ext-nba": "^0.1.0",
+    "@dashfy/ext-system": "^0.1.0",
+    "@dashfy/server": "^0.1.0",
+    "@dashfy/ui": "^0.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.8.6",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "concurrently": "^9.0.1",
+    "dotenv-cli": "^11.0.0",
+    "eslint": "^9.17.0",
+    "globals": "^15.13.0",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1",
+    "vite": "^5.4.8"
+  }
+}

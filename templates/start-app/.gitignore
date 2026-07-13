@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+
+# tanstack start / vite
+.tanstack
+.output
+.vinxi
+.wrangler
+dist
+dist-ssr
+
+# typescript
+*.tsbuildinfo
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env*
+!.env.example
+*.local
+
+# editor / OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea

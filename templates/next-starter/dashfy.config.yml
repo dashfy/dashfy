@@ -1,0 +1,14 @@
+port: 5001
+apis:
+  pollInterval: 300000
+dashboards:
+  - title: Dashfy Dashboard
+    columns: 1
+    rows: 1
+    widgets:
+      - extension: dashfy
+        widget: Inspector
+        x: 0
+        y: 0
+        columns: 1
+        rows: 1

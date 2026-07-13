@@ -1,0 +1,212 @@
+port: 5001
+apis:
+  pollInterval: 300000
+dashboards:
+  - title: GitHub Dashboard
+    columns: 4
+    rows: 3
+    widgets:
+      - extension: github
+        widget: UserBadge
+        x: 0
+        y: 0
+        columns: 1
+        rows: 1
+        user: rauchg
+      - extension: github
+        widget: OrgBadge
+        x: 1
+        y: 0
+        columns: 1
+        rows: 1
+        organization: vercel
+      - extension: github
+        widget: RepoBadge
+        x: 2
+        y: 0
+        columns: 1
+        rows: 1
+        repository: vercel/next.js
+      - extension: github
+        widget: Status
+        x: 3
+        y: 0
+        columns: 1
+        rows: 1
+      - extension: github
+        widget: CommitActivityLine
+        x: 0
+        y: 1
+        columns: 2
+        rows: 1
+        repository: vercel/next.js
+      - extension: github
+        widget: PullRequests
+        x: 2
+        y: 1
+        columns: 2
+        rows: 1
+        repository: vercel/next.js
+        state: open
+      - extension: github
+        widget: ContributorsStats
+        x: 0
+        y: 2
+        columns: 2
+        rows: 1
+        repository: vercel/next.js
+      - extension: github
+        widget: Gitmap
+        x: 2
+        y: 2
+        columns: 2
+        rows: 1
+        user: rauchg
+  - title: NBA Dashboard
+    columns: 4
+    rows: 3
+    widgets:
+      - extension: nba
+        widget: Scoreboard
+        x: 0
+        y: 0
+        columns: 1
+        rows: 3
+      - extension: nba
+        widget: Standings
+        x: 1
+        y: 0
+        columns: 1
+        rows: 2
+        conference: East
+      - extension: nba
+        widget: Standings
+        x: 2
+        y: 0
+        columns: 1
+        rows: 2
+        conference: West
+      - extension: nba
+        widget: GameCard
+        x: 3
+        y: 0
+        columns: 1
+        rows: 2
+        gameIndex: 0
+      - extension: nba
+        widget: Standings
+        x: 1
+        y: 2
+        columns: 3
+        rows: 1
+        conference: both
+  - title: System Monitor
+    columns: 4
+    rows: 3
+    widgets:
+      - extension: system
+        widget: CpuUsageGauge
+        x: 0
+        y: 0
+        columns: 1
+        rows: 1
+      - extension: system
+        widget: MemoryUsageGauge
+        x: 1
+        y: 0
+        columns: 1
+        rows: 1
+      - extension: system
+        widget: DiskUsageGauge
+        x: 2
+        y: 0
+        columns: 1
+        rows: 1
+      - extension: system
+        widget: NetworkStatsCompact
+        x: 3
+        y: 0
+        columns: 1
+        rows: 1
+      - extension: system
+        widget: CpuUsageLine
+        x: 0
+        y: 1
+        columns: 2
+        rows: 1
+      - extension: system
+        widget: MemoryUsageLine
+        x: 2
+        y: 1
+        columns: 2
+        rows: 1
+      - extension: system
+        widget: SystemInfo
+        x: 0
+        y: 2
+        columns: 2
+        rows: 1
+      - extension: system
+        widget: Processes
+        x: 2
+        y: 2
+        columns: 2
+        rows: 1
+  - title: Market Prices
+    columns: 4
+    rows: 3
+    widgets:
+      - extension: market-live
+        widget: PriceLive
+        x: 0
+        y: 0
+        columns: 1
+        rows: 1
+        feedId: crypto.SOL_USD
+        showChart: false
+      - extension: market-live
+        widget: PriceLive
+        x: 1
+        y: 0
+        columns: 1
+        rows: 1
+        feedId: crypto.XRP_USD
+        showChart: false
+      - extension: market-live
+        widget: PriceLive
+        x: 2
+        y: 0
+        columns: 1
+        rows: 1
+        feedId: crypto.LTC_USD
+        showChart: false
+      - extension: market-live
+        widget: PriceLive
+        x: 3
+        y: 0
+        columns: 1
+        rows: 1
+        feedId: crypto.DOGE_USD
+        showChart: false
+      - extension: market-live
+        widget: PriceLive
+        x: 0
+        y: 1
+        columns: 2
+        rows: 1
+        feedId: crypto.BTC_USD
+        showWindows: false
+      - extension: market-live
+        widget: PriceLive
+        x: 0
+        y: 2
+        columns: 2
+        rows: 1
+        feedId: crypto.ETH_USD
+        showWindows: false
+      - extension: market-live
+        widget: TableLive
+        x: 2
+        y: 1
+        columns: 2
+        rows: 2
