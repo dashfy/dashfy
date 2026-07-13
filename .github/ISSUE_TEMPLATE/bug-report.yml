@@ -1,0 +1,132 @@
+name: '🐛 Bug Report'
+description: 'Report a bug in Dashfy'
+title: '[Bug]: '
+labels:
+  - bug
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug.
+
+        - If this is a **security issue**, please **do not** open a public issue. Use GitHub Security Advisories or email `security@dashfy.dev` (see `SECURITY.md`).
+        - For questions/clarifications, you can also reach us on [Discord](https://dashfy.dev/discord).
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues to avoid duplicates.
+          required: true
+        - label: I can reproduce this on the latest version (or on `main`).
+          required: false
+        - label: I can provide a minimal reproduction (config/snippet/repo).
+          required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area(s) impacted
+      description: Which part of Dashfy is affected?
+      multiple: true
+      options:
+        - '@dashfy/server (runtime, config, APIs)'
+        - '@dashfy/ui (components, widgets, client)'
+        - '@dashfy/themes (tokens, theming, styling)'
+        - '@dashfy/types (shared contracts)'
+        - 'examples (demo apps)'
+        - 'docs (documentation)'
+        - 'Tooling/CI'
+        - 'Other / Not sure'
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: A clear and concise description of the bug.
+      placeholder: 'Example: The dashboard renders blank after changing the config and reloading.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide step-by-step instructions so we can reproduce the issue.
+      placeholder: |
+        1. Start the server with ...
+        2. Open ...
+        3. Click ...
+        4. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should happen when following the steps above?
+      placeholder: 'Example: The widget should render the latest data and show a loading state while fetching.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / error output
+      description: Paste relevant logs/stack traces. Please redact secrets.
+      render: bash
+      placeholder: |
+        # Server logs / stack trace
+        ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include versions and platform details. You can use the `pnpm env:info` command to get this information.
+      render: markdown
+      placeholder: |
+        - OS: macOS 14.x / Windows 11 / Ubuntu 24.04
+        - Node: 20.x
+        - pnpm: 9.x
+        - Dashfy version/commit: (e.g. `@dashfy/server@x.y.z` or SHA)
+        - Browser (if relevant): Chrome 122 / Firefox 123
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant configuration (if applicable)
+      description: Paste only what’s needed to reproduce. Please redact secrets.
+      render: yaml
+      placeholder: |
+        # dashfy config excerpt
+        ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Screenshots, recordings, or anything else that helps.
+      placeholder: 'Example: screenshots, screen recording, or notes about frequency/regressions.'
+    validations:
+      required: false
+
+  - type: input
+    id: references
+    attributes:
+      label: Related links or references
+      description: Links to docs, issues, PRs, or a reproduction repo.
+      placeholder: 'e.g. prior issue, PR, docs page, or reproduction repository link'
+    validations:
+      required: false

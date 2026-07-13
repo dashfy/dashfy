@@ -1,0 +1,72 @@
+name: '🚀 Feature Request'
+description: 'Suggest an idea or improvement for Dashfy'
+title: '[Feature]: '
+labels:
+  - enhancement
+  - feature
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to propose an improvement to Dashfy.
+
+        - If this is a **security issue**, please **do not** open a public issue. Use GitHub Security Advisories or email `security@dashfy.dev` (see `SECURITY.md`).
+        - For questions/clarifications, you can also reach us on [Discord](https://dashfy.dev/discord).
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues to avoid duplicates.
+          required: true
+        - label: I checked the docs/README (and the roadmap, if relevant).
+          required: false
+        - label: I'm willing to help implement this (open a PR).
+          required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area(s) impacted
+      description: Which part of Dashfy would this affect?
+      multiple: true
+      options:
+        - '@dashfy/server (runtime, config, APIs)'
+        - '@dashfy/ui (components, widgets, client)'
+        - '@dashfy/themes (tokens, theming, styling)'
+        - '@dashfy/types (shared contracts)'
+        - 'examples (demo apps)'
+        - 'docs (documentation)'
+        - 'Tooling/CI'
+        - 'Other / Not sure'
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature
+    attributes:
+      label: Clear and concise description of the feature you are proposing
+      description: A clear and concise description of what the feature is.
+      placeholder: 'Example: I would like to see...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Add any other context, screenshots, or mockups here.
+      placeholder: 'Example: screenshots, mockups, use cases, or relevant configuration examples.'
+    validations:
+      required: false
+
+  - type: input
+    id: references
+    attributes:
+      label: Related links or references
+      description: Links to relevant docs, issues, PRs, discussions, or examples.
+      placeholder: 'e.g. docs page, prior issue, or a snippet/gist'
+    validations:
+      required: false
