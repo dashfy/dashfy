@@ -1,0 +1,12 @@
+{
+  "name": "@dashfy/registry",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static hosting for the Dashfy extension registry (registry.dashfy.dev)",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm --filter dashfy registry:build",
+    "validate": "pnpm --filter dashfy registry:validate",
+    "clean": "rm -rf .turbo public/r"
+  }
+}

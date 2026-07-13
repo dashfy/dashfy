@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashfy Registry</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          sans-serif;
+      }
+      body {
+        margin: 0;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: #0b0b0f;
+        color: #e6e6e6;
+      }
+      main {
+        max-width: 42rem;
+        padding: 2rem;
+      }
+      h1 {
+        margin: 0 0 0.5rem;
+        font-size: 2rem;
+      }
+      code {
+        background: #1b1b22;
+        padding: 0.15rem 0.4rem;
+        border-radius: 0.35rem;
+      }
+      a {
+        color: #7aa2ff;
+      }
+      ul {
+        line-height: 1.8;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Dashfy Registry</h1>
+      <p>
+        The Dashfy extension registry. Extensions are resolved from here by the
+        <a href="https://github.com/dashfy/dashfy">Dashfy CLI</a>.
+      </p>
+      <ul>
+        <li>
+          <a href="/r/index.json"><code>/r/index.json</code></a> &mdash; catalog of available
+          extensions
+        </li>
+        <li>
+          <code>/r/&lt;name&gt;.json</code> &mdash; a single extension item (e.g.
+          <a href="/r/github.json"><code>/r/github.json</code></a
+          >)
+        </li>
+        <li>
+          <a href="/schema/registry-item.json"><code>/schema/registry-item.json</code></a> &mdash;
+          item JSON Schema
+        </li>
+        <li>
+          <a href="/schema/registry.json"><code>/schema/registry.json</code></a> &mdash; index JSON
+          Schema
+        </li>
+      </ul>
+      <p>
+        Install an extension:
+        <code>npx dashfy add @dashfy/github</code>
+      </p>
+    </main>
+  </body>
+</html>

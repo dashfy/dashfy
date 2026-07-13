@@ -1,0 +1,11 @@
+{
+  "$schema": "https://dashfy.dev/schema/registries.json",
+  "registries": {
+    "@dashfy": {
+      "url": "https://registry.dashfy.dev/r/{name}.json",
+      "name": "Dashfy",
+      "description": "Official Dashfy extensions (widgets + data sources).",
+      "homepage": "https://dashfy.dev"
+    }
+  }
+}

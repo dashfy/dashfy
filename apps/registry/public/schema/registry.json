@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dashfy.dev/schema/registry.json",
+  "title": "Dashfy Registry Index",
+  "description": "The catalog of extensions served at /r/index.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "items"],
+  "properties": {
+    "name": { "type": "string" },
+    "homepage": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "type", "title"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "const": "registry:extension" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "categories": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
