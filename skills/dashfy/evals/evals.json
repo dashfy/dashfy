@@ -1,0 +1,59 @@
+{
+  "skill_name": "dashfy",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have an existing Dashfy project. Add the GitHub extension and place a RepoBadge for vercel/next.js and a Status widget on a new 4x3 dashboard.",
+      "expected_output": "Runs `dashfy add @dashfy/github`, then adds widget blocks with full grid coordinates to dashfy.config.yml and reminds the user to set GITHUB_TOKEN.",
+      "files": [],
+      "expectations": [
+        "Uses `dashfy add @dashfy/github` (or bare `github`) instead of manually editing App.tsx / the server / .env",
+        "Adds widget blocks with extension, widget, x, y, columns, and rows keys (not just props)",
+        "Keeps widgets inside the 4x3 grid (x + columns <= 4, y + rows <= 3) with no overlap",
+        "Only references real GitHub widget exports (e.g. RepoBadge, Status) and passes repository as a prop",
+        "Notes that GITHUB_TOKEN must be set in .env (seeded as an empty placeholder by add)",
+        "Suggests verifying with `dashfy doctor`"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Author a new Dashfy extension registry item for a Weather extension that has CurrentConditions and Forecast widgets, polls an API using a WEATHER_API_KEY, and seeds a CurrentConditions starter for Lisbon.",
+      "expected_output": "Adds a `dashfy` field to the extension's package.json with id, title, widgets, a poll client, envVars, and starter, then builds and validates the registry.",
+      "files": [],
+      "expectations": [
+        "Authors the metadata as the `dashfy` field in the extension's package.json (not hand-written item JSON)",
+        "Sets id, title, and widgets[] matching real exports (CurrentConditions, Forecast)",
+        "Defines client with import, factory, mode: 'poll', and options reading process.env.WEATHER_API_KEY",
+        "Declares envVars: ['WEATHER_API_KEY'] so add seeds it",
+        "Adds a starter block { widget: 'CurrentConditions', city: 'Lisbon' } without manual grid coordinates",
+        "Runs `dashfy registry build` then `dashfy registry validate`"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Lay out a system-monitor dashboard: CPU, memory, and disk gauges across the top row, and a CPU usage line chart spanning the full width below. The system extension is already installed.",
+      "expected_output": "A dashfy.config.yml dashboard with a correct non-overlapping grid using real system widget names.",
+      "files": [],
+      "expectations": [
+        "Edits dashfy.config.yml (does not re-run add for an already-installed extension, or treats re-add as a no-op)",
+        "Places the three gauges in the top row at x: 0, 1, 2 with columns: 1, rows: 1 (no overlap)",
+        "Makes the line chart span the full width (e.g. x: 0, y: 1, columns: 4) within the grid bounds",
+        "Uses real system widget exports (e.g. CpuUsageGauge, MemoryUsageGauge, DiskUsageGauge, CpuUsageLine)",
+        "Every widget block includes extension, widget, x, y, columns, rows"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I want to install an extension from a community registry I haven't configured yet: @acme/incidents. Set it up and add it.",
+      "expected_output": "Configures the @acme registry (via discovery index or explicit URL) then adds the extension; does not guess the registry URL.",
+      "files": [],
+      "expectations": [
+        "Classifies @acme/incidents as a namespace address that must be configured",
+        "Configures the registry via `dashfy registry add @acme` (discovery index) or an explicit @acme=URL pair, or relies on add's auto-config prompt",
+        "Does not invent or hardcode a registry URL without basis",
+        "Runs `dashfy add @acme/incidents` after the namespace is configured",
+        "Mentions verifying with `dashfy doctor` and setting any required env vars"
+      ]
+    }
+  ]
+}

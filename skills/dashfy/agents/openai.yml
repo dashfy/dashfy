@@ -1,0 +1,5 @@
+interface:
+  display_name: 'Dashfy'
+  short_description: 'Manages Dashfy dashboards and extensions — scaffolding, adding/removing extensions, setting up widgets + data sources, and laying out dashboards.'
+  icon_small: './assets/dashfy-small.png'
+  icon_large: './assets/dashfy.png'
