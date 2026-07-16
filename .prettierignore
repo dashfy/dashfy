@@ -1,0 +1,23 @@
+# Ignore artifacts
+node_modules
+dist
+build
+es
+coverage
+.next
+.turbo
+
+# Ignore package files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# Ignore all shadcn/ui files
+**/src/components/ui/**
+
+# Ignore standalone templates (they have their own prettier config)
+templates
+
+# Ignore generated registry artifacts (emitted by `registry:build`)
+apps/registry/public/r

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://v2-9-6.turborepo.dev/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "env": ["NODE_ENV"],
+      "outputs": [".next/**", "build/**", "dist/**", "es/**"]
+    },
+    "check:circular": {
+      "cache": false,
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "format": {
+      "cache": false,
+      "outputs": []
+    },
+    "format:check": {
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    },
+    "test": {
+      "outputs": []
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    }
+  },
+  "globalEnv": ["NODE_ENV"],
+  "globalDependencies": [
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "tsconfig.json",
+    "commitlint.config.mjs",
+    "eslint.config.mjs",
+    "lint-staged.config.mjs",
+    "prettier.config.mjs"
+  ]
+}

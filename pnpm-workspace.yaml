@@ -1,0 +1,9 @@
+packages:
+  - apps/*
+  - packages/*
+  - tools/*
+
+onlyBuiltDependencies:
+  - '@swc/core'
+  - core-js-pure
+  - esbuild
