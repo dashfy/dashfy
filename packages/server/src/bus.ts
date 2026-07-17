@@ -88,15 +88,16 @@ export class Bus extends EventEmitter {
   /**
    * Get all registered API identifiers.
    *
-   * Returns an array of all API IDs that have been registered with the bus.
-   * Useful for debugging, introspection, or displaying available APIs.
+   * Returns an array of all API IDs that have been registered with the bus,
+   * sorted alphabetically. Useful for debugging, introspection, or displaying
+   * available APIs.
    *
-   * @returns Array of registered API IDs (unordered)
+   * @returns Array of registered API IDs in alphabetical order
    *
    * @example
    * ```ts
    * const apis = bus.listApis()
-   * console.log(apis) // ['github', 'weather', 'news']
+   * console.log(apis) // ['github', 'news', 'weather']
    *
    * // Check if a specific API is registered
    * if (bus.listApis().includes('github')) {
@@ -105,7 +106,7 @@ export class Bus extends EventEmitter {
    * ```
    */
   public listApis(): string[] {
-    return Array.from(this.apis.keys())
+    return Array.from(this.apis.keys()).sort((a, b) => a.localeCompare(b))
   }
 
   /**

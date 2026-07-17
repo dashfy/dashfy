@@ -136,16 +136,13 @@ describe('Bus', () => {
       expect(bus.listApis()).toEqual([])
     })
 
-    it('should return array of registered API IDs', () => {
+    it('should return registered API IDs in alphabetical order', () => {
       const mockApi: APIRegistration = () => ({})
 
-      bus.registerApi('api1', mockApi)
-      bus.registerApi('api2', mockApi)
+      bus.registerApi('zebra', mockApi)
+      bus.registerApi('alpha', mockApi)
 
-      const apis = bus.listApis()
-      expect(apis).toHaveLength(2)
-      expect(apis).toContain('api1')
-      expect(apis).toContain('api2')
+      expect(bus.listApis()).toEqual(['alpha', 'zebra'])
     })
   })
 
