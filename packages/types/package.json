@@ -1,0 +1,60 @@
+{
+  "name": "@dashfy/types",
+  "version": "0.1.0",
+  "description": "Shared TypeScript type definitions for the Dashfy ecosystem",
+  "keywords": [
+    "dashfy",
+    "types",
+    "typescript"
+  ],
+  "homepage": "https://github.com/dashfy/dashfy#readme",
+  "bugs": {
+    "url": "https://github.com/dashfy/dashfy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dashfy/dashfy.git",
+    "directory": "packages/themes"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Breno Polanski",
+    "email": "breno.polanski@gmail.com",
+    "url": "https://github.com/brenopolanski"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf .turbo dist node_modules",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@dashfy/tsconfig": "workspace:*",
+    "@types/react": "^19.2.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  }
+}

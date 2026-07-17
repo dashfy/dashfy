@@ -7,7 +7,14 @@
   "rebaseWhen": "never",
   "packageRules": [
     {
-      "matchPackageNames": ["@dashfy/cli", "@dashfy/server", "@dashfy/themes", "@dashfy/types", "@dashfy/ui", "@dashfy/utils"],
+      "matchPackageNames": [
+        "@dashfy/cli",
+        "@dashfy/server",
+        "@dashfy/themes",
+        "@dashfy/types",
+        "@dashfy/ui",
+        "@dashfy/utils"
+      ],
       "groupName": "dashfy monorepo packages",
       "automerge": true
     },
