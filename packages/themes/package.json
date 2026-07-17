@@ -1,0 +1,70 @@
+{
+  "name": "@dashfy/themes",
+  "version": "0.1.0",
+  "description": "Customizable theme system with pre-built themes for Dashfy",
+  "keywords": [
+    "dashfy",
+    "themes",
+    "styling",
+    "dashboard",
+    "tailwindcss"
+  ],
+  "homepage": "https://github.com/dashfy/dashfy#readme",
+  "bugs": {
+    "url": "https://github.com/dashfy/dashfy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dashfy/dashfy.git",
+    "directory": "packages/themes"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Breno Polanski",
+    "email": "breno.polanski@gmail.com",
+    "url": "https://github.com/brenopolanski"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "check:circular": "madge --circular --extensions ts,tsx src/",
+    "clean": "rm -rf .turbo dist node_modules",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@dashfy/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@dashfy/tsconfig": "workspace:*",
+    "@types/node": "^22.8.6",
+    "jsdom": "^25.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.9"
+  }
+}

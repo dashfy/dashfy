@@ -1,0 +1,15 @@
+{
+  "extends": "@dashfy/tsconfig/node.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "incremental": false
+  },
+  "include": ["src/**/*", "scripts/**/*", "*.config.ts"],
+  "exclude": ["node_modules", "dist", "templates"]
+}

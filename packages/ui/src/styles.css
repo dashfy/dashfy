@@ -1,0 +1,47 @@
+@import 'overlayscrollbars/styles/overlayscrollbars.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS variables are now managed by the theme system */
+/* Default theme values are applied dynamically via JavaScript */
+/* Feel free to add new CSS variables here */
+/* @layer base {
+  :root {
+  }
+} */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* OverlayScrollbars custom styling */
+@layer components {
+  .os-scrollbar-handle {
+    @apply bg-primary/60 transition-colors hover:bg-primary/80;
+  }
+
+  .os-scrollbar-track {
+    @apply bg-muted/40;
+  }
+
+  /* Better visibility in dark mode */
+  .dark .os-scrollbar-handle {
+    @apply bg-primary/60 hover:bg-primary/80;
+  }
+
+  .dark .os-scrollbar-track {
+    @apply bg-muted/40;
+  }
+}

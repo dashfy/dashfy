@@ -1,0 +1,14 @@
+{
+  "extends": "@dashfy/tsconfig/react.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "incremental": false
+  },
+  "include": ["src/**/*", "*.config.ts", "vitest.setup.ts"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,15 @@
+{
+  "extends": "@dashfy/tsconfig/base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "lib": ["ES2022", "DOM"],
+    "incremental": false
+  },
+  "include": ["src/**/*", "*.config.ts", "vitest.setup.ts"],
+  "exclude": ["node_modules", "dist"]
+}
