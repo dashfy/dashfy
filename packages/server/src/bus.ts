@@ -228,12 +228,15 @@ export class Bus extends EventEmitter {
    * to receive updates. For poll mode APIs, this starts periodic polling. For push mode APIs,
    * this sets up the push producer. If cached data exists, it's immediately sent to the client.
    *
-   * The subscription ID must follow the format: `api.method` (e.g., 'github.repos', 'weather.current')
+   * Routing is resolved from `subscription.api` (the registered API) and `subscription.endpoint`
+   * (the method on that API). The `subscription.id` is used as the key for deduping subscriptions,
+   * caching, and client messages; by convention it is `${api}.${endpoint}` (e.g. 'github.repos'),
+   * but this format is not enforced.
    *
    * @param clientId - The unique identifier of the connected client
-   * @param subscription - Subscription details including ID and optional parameters
-   * @throws {Error} If the subscription ID format is invalid (must be 'api.method')
-   * @throws {Error} If the API ID is empty or undefined
+   * @param subscription - Subscription details including `id`, `api`, `endpoint`, and optional `params`
+   * @throws {Error} If the API ID (`subscription.api`) is empty or undefined
+   * @throws {Error} If the endpoint (`subscription.endpoint`) is empty or undefined
    * @throws {Error} If the API is not registered
    * @throws {Error} If the API method does not exist or is not a function
    *
@@ -242,12 +245,16 @@ export class Bus extends EventEmitter {
    * // Subscribe to a GitHub API method
    * bus.subscribe('client-123', {
    *   id: 'github.repos',
+   *   api: 'github',
+   *   endpoint: 'repos',
    *   params: { user: 'octocat' }
    * })
    *
    * // Subscribe without parameters
    * bus.subscribe('client-456', {
-   *   id: 'weather.current'
+   *   id: 'weather.current',
+   *   api: 'weather',
+   *   endpoint: 'current'
    * })
    * ```
    */
@@ -400,7 +407,7 @@ export class Bus extends EventEmitter {
    * This is safe to call multiple times or for non-existent subscriptions.
    *
    * @param clientId - The unique identifier of the client to unsubscribe
-   * @param subscriptionId - The subscription ID to unsubscribe from (format: 'api.method')
+   * @param subscriptionId - The subscription ID to unsubscribe from (matches `subscription.id`, conventionally 'api.method')
    *
    * @example
    * ```ts
@@ -444,7 +451,7 @@ export class Bus extends EventEmitter {
    * real-time statistics about API subscriptions.
    *
    * @returns Array of subscription info objects, each containing:
-   *   - `id`: Subscription identifier (format: 'api.method')
+   *   - `id`: Subscription identifier (conventionally 'api.method')
    *   - `clientCount`: Number of clients subscribed to this API method
    *   - `hasCachedData`: Whether cached data is available for immediate delivery
    *   - `hasTimer`: Whether a polling timer is active (poll mode only)
@@ -501,7 +508,7 @@ export class Bus extends EventEmitter {
    * to all clients subscribed to this API method. If the API call fails, an error message is sent
    * instead and logged.
    *
-   * @param subscriptionId - The subscription identifier (format: 'api.method')
+   * @param subscriptionId - The subscription identifier (conventionally 'api.method')
    * @param method - The API method function to execute
    * @param params - Optional parameters to pass to the API method
    *
@@ -556,7 +563,7 @@ export class Bus extends EventEmitter {
    * and emits the data via Socket.IO. It safely handles cases where clients may have
    * disconnected but haven't been cleaned up yet.
    *
-   * @param subscriptionId - The subscription identifier (format: 'api.method')
+   * @param subscriptionId - The subscription identifier (conventionally 'api.method')
    * @param data - The data payload to send (API response or error message)
    * @param type - The message type: 'api.data' for successful responses, 'api.error' for errors
    *
@@ -591,7 +598,7 @@ export class Bus extends EventEmitter {
    * Clears any poll-mode timer and invokes the push-mode disposer (if either is set),
    * then removes the subscription entry. Safe to call when the subscription is missing.
    *
-   * @param subscriptionId - The subscription identifier (format: 'api.method')
+   * @param subscriptionId - The subscription identifier (conventionally 'api.method')
    *
    * @internal
    */
