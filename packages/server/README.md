@@ -180,8 +180,8 @@ Built on [Socket.IO](https://github.com/socketio/socket.io) for bidirectional [W
 
 **Subscription lifecycle**:
 
-1. Client subscribes to `api.method` (e.g., `github.stars`)
-2. Server creates subscription if it doesn't exist
+1. Client subscribes with `api`, `endpoint`, and an `id` (conventionally `api.method`, e.g. `github.stars`); routing uses `api` + `endpoint`, while `id` is the dedup/cache key
+2. Server creates subscription if it doesn't exist (reusing it for later subscribers)
 3. Immediate data fetch + periodic polling (poll mode) or callback setup (push mode)
 4. Data is cached and broadcast to all subscribed clients
 5. When last client unsubscribes, subscription is cleaned up

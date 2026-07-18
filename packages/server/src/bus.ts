@@ -9,7 +9,7 @@ import type { Socket } from 'socket.io'
 import { DEFAULT_POLL_INTERVAL } from './constants'
 import { createPushIntervalFactory } from './pushInterval'
 import { request } from './request'
-import type { API, BusOptions, ClientInfo, SubscriptionData } from './types'
+import type { API, BusOptions, ClientInfo, SubscriptionData, SubscriptionInfo } from './types'
 
 /**
  * Central message bus for managing real-time API communication between server and clients.
@@ -30,6 +30,10 @@ export class Bus extends EventEmitter {
    * @param options - Bus options
    * @param options.logger - Logger instance
    * @param options.pollInterval - Poll interval in milliseconds (default: 15_000)
+   *
+   * @remarks
+   * Changing `pollInterval` after construction only affects subscriptions created afterwards;
+   * timers for already-active poll subscriptions keep their original interval until recreated.
    */
   constructor(options: BusOptions) {
     super()
@@ -257,6 +261,11 @@ export class Bus extends EventEmitter {
    *   endpoint: 'current'
    * })
    * ```
+   *
+   * @remarks
+   * If the client is not registered, the call returns silently (logging a warning) instead of
+   * throwing. If a subscription with the same `id` already exists, the incoming `params` are
+   * ignored: the subscription keeps the `params` supplied by its first subscriber.
    */
   public subscribe(clientId: string, subscription: Subscription): void {
     const clientInfo = this.clients.get(clientId)
@@ -483,15 +492,13 @@ export class Bus extends EventEmitter {
    *     subscriptions: bus.getSubscriptionsInfo()
    *   })
    * })
-   *
-   * // Find subscriptions with no clients (memory leak detection)
-   * const orphaned = bus.getSubscriptionsInfo().filter(s => s.clientCount === 0)
-   * if (orphaned.length > 0) {
-   *   console.warn('Found orphaned subscriptions:', orphaned)
-   * }
    * ```
+   *
+   * @remarks
+   * Subscriptions are torn down automatically when their last client leaves, so a
+   * `clientCount` of `0` should not appear during normal operation.
    */
-  public getSubscriptionsInfo() {
+  public getSubscriptionsInfo(): SubscriptionInfo[] {
     return Array.from(this.subscriptions.entries()).map(([id, sub]) => ({
       id,
       clientCount: sub.clients.size,

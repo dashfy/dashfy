@@ -33,3 +33,10 @@ export interface SubscriptionData extends Subscription {
     data: unknown
   }
 }
+
+export interface SubscriptionInfo {
+  id: string
+  clientCount: number
+  hasCachedData: boolean
+  hasTimer: boolean
+}
