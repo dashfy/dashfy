@@ -244,6 +244,11 @@ export class Bus extends EventEmitter {
    * @throws {Error} If the API is not registered
    * @throws {Error} If the API method does not exist or is not a function
    *
+   * @remarks
+   * If the client is not registered, the call returns silently (logging a warning) instead of
+   * throwing. If a subscription with the same `id` already exists, the incoming `params` are
+   * ignored: the subscription keeps the `params` supplied by its first subscriber.
+   *
    * @example
    * ```ts
    * // Subscribe to a GitHub API method
@@ -261,11 +266,6 @@ export class Bus extends EventEmitter {
    *   endpoint: 'current'
    * })
    * ```
-   *
-   * @remarks
-   * If the client is not registered, the call returns silently (logging a warning) instead of
-   * throwing. If a subscription with the same `id` already exists, the incoming `params` are
-   * ignored: the subscription keeps the `params` supplied by its first subscriber.
    */
   public subscribe(clientId: string, subscription: Subscription): void {
     const clientInfo = this.clients.get(clientId)
@@ -465,6 +465,10 @@ export class Bus extends EventEmitter {
    *   - `hasCachedData`: Whether cached data is available for immediate delivery
    *   - `hasTimer`: Whether a polling timer is active (poll mode only)
    *
+   * @remarks
+   * Subscriptions are torn down automatically when their last client leaves, so a
+   * `clientCount` of `0` should not appear during normal operation.
+   *
    * @example
    * ```ts
    * // Get all subscription stats
@@ -493,10 +497,6 @@ export class Bus extends EventEmitter {
    *   })
    * })
    * ```
-   *
-   * @remarks
-   * Subscriptions are torn down automatically when their last client leaves, so a
-   * `clientCount` of `0` should not appear during normal operation.
    */
   public getSubscriptionsInfo(): SubscriptionInfo[] {
     return Array.from(this.subscriptions.entries()).map(([id, sub]) => ({

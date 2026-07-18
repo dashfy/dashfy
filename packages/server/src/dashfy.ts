@@ -577,8 +577,6 @@ export class Dashfy {
    * - Health checks and system monitoring
    * - Displaying server statistics to users
    *
-   * @internal
-   *
    * @example
    * ```ts
    * // Widgets can subscribe to the dashfy API
@@ -598,6 +596,8 @@ export class Dashfy {
    *   nodeVersion: 'v20.10.0'
    * }
    * ```
+   *
+   * @internal
    */
   private registerCoreApi(): void {
     this.registerApi('dashfy', () => ({
