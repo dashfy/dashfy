@@ -6,7 +6,7 @@ import { getErrorMessage } from '@dashfy/utils'
 import { parse as parseYaml } from 'yaml'
 import { z } from 'zod'
 
-import { DEFAULT_PORT } from './constants'
+import { DEFAULT_HOST, DEFAULT_PORT } from './constants'
 
 const WidgetConfigSchema = z
   .object({
@@ -21,6 +21,7 @@ const WidgetConfigSchema = z
   .passthrough() // Allow additional widget-specific properties
 
 const DashboardConfigSchema = z.object({
+  name: z.string().optional(),
   title: z.string().optional(),
   columns: z.number().positive(),
   rows: z.number().positive(),
@@ -29,8 +30,9 @@ const DashboardConfigSchema = z.object({
 
 const DashfyConfigSchema = z.object({
   port: z.number().positive().default(DEFAULT_PORT),
-  host: z.string().default('0.0.0.0'),
+  host: z.string().default(DEFAULT_HOST),
   baseDir: z.string().optional(),
+  theme: z.string().optional(),
   rotationDuration: z.number().positive().optional(),
   dashboards: z.array(DashboardConfigSchema).min(1),
   apis: z
@@ -40,6 +42,18 @@ const DashfyConfigSchema = z.object({
     .passthrough()
     .optional(),
 })
+
+/**
+ * Error thrown for configuration problems that already carry a user-facing message
+ * (unsupported format, parse failure, validation failure). `loadConfig` re-throws these
+ * as-is instead of wrapping them again.
+ */
+export class ConfigError extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = 'ConfigError'
+  }
+}
 
 /**
  * Supported configuration file formats.
@@ -66,7 +80,7 @@ function detectConfigFormat(filePath: string): ConfigFormat {
     case '.yaml':
       return ConfigFormat.YAML
     default:
-      throw new Error(
+      throw new ConfigError(
         `Unsupported configuration file format: ${extension}. Supported formats: .json, .yml, .yaml`,
       )
   }
@@ -93,7 +107,9 @@ function parseConfigContent(content: string, format: ConfigFormat): unknown {
         throw new Error(`Unsupported format: ${format as string}`)
     }
   } catch (error) {
-    throw new Error(`Failed to parse ${format.toUpperCase()} content: ${getErrorMessage(error)}`)
+    throw new ConfigError(
+      `Failed to parse ${format.toUpperCase()} content: ${getErrorMessage(error)}`,
+    )
   }
 }
 
@@ -110,7 +126,7 @@ function parseConfigContent(content: string, format: ConfigFormat): unknown {
  *
  * @example
  * ```ts
- * * // Load JSON config
+ * // Load JSON config
  * const config = await loadConfig('./config.json')
  *
  * // Load YAML config
@@ -139,11 +155,11 @@ export async function loadConfig(path: string): Promise<DashfyConfig> {
       const issues = error.issues
         .map((issue) => `  - ${issue.path.join('.')}: ${issue.message}`)
         .join('\n')
-      throw new Error(`Configuration validation failed:\n${issues}`)
+      throw new ConfigError(`Configuration validation failed:\n${issues}`)
     }
 
-    // Re-throw if already formatted error
-    if (error instanceof Error && error.message.includes('configuration')) {
+    // Re-throw errors that already carry a user-facing message
+    if (error instanceof ConfigError) {
       throw error
     }
 

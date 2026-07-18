@@ -877,7 +877,7 @@ dashboards:
 `
       await writeFile(configPath, yamlContent, 'utf-8')
 
-      await expect(loadConfig(configPath)).rejects.toThrow('Failed to load configuration')
+      await expect(loadConfig(configPath)).rejects.toThrow('Failed to parse YAML content')
     })
   })
 
