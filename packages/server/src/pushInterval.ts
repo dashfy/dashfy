@@ -1,4 +1,4 @@
-import type { Logger } from '@dashfy/types'
+import type { CreatePushInterval, Logger } from '@dashfy/types'
 import { getErrorMessage } from '@dashfy/utils'
 
 import { DEFAULT_PUSH_INTERVAL } from './constants'
@@ -27,16 +27,7 @@ import { DEFAULT_PUSH_INTERVAL } from './constants'
  * stopPushInterval()
  * ```
  */
-export function createPushIntervalFactory(
-  logger: Logger,
-  prefix: string,
-): (options?: {
-  interval?: number
-}) => (
-  key: string,
-  callback: (data: unknown) => void,
-  fetchFn: () => Promise<unknown>,
-) => () => void {
+export function createPushIntervalFactory(logger: Logger, prefix: string): CreatePushInterval {
   return (options = {}) => {
     const { interval = DEFAULT_PUSH_INTERVAL } = options
     const intervals = new Map<string, NodeJS.Timeout>()
