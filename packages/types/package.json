@@ -14,7 +14,7 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:dashfy/dashfy.git",
-    "directory": "packages/themes"
+    "directory": "packages/types"
   },
   "license": "AGPL-3.0-or-later",
   "author": {
