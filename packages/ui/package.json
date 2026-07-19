@@ -40,7 +40,7 @@
   "files": [
     "dist",
     "README.md",
-    "LICENSE.md",
+    "LICENSE",
     "CHANGELOG.md"
   ],
   "sideEffects": [

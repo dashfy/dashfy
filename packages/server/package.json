@@ -38,7 +38,7 @@
   "files": [
     "dist",
     "README.md",
-    "LICENSE.md",
+    "LICENSE",
     "CHANGELOG.md"
   ],
   "publishConfig": {
