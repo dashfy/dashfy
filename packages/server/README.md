@@ -328,6 +328,12 @@ Start HTTP and WebSocket servers.
 2. `config.port`
 3. Default: `5001`
 
+**Host resolution** (in order):
+
+1. `process.env.HOST`
+2. `config.host`
+3. Default: `0.0.0.0`
+
 ```ts
 await dashfy.start()
 // Server running at http://0.0.0.0:5001
@@ -382,11 +388,26 @@ interface DashfyConfig {
 ```ts
 type APIClient = Record<string, (...args: any[]) => Promise<unknown>>
 
+type CreatePushInterval = (options?: {
+  interval?: number
+}) => (
+  key: string,
+  callback: (data: unknown) => void,
+  fetchFn: () => Promise<unknown>,
+) => () => void
+
 type APIRegistration = (dashfy: {
   logger: Logger
   request?: (options: RequestOptions) => Promise<unknown>
+  createPushInterval?: CreatePushInterval
 }) => APIClient
 ```
+
+The factory receives three helpers:
+
+- `logger` - Child [Pino](https://github.com/pinojs/pino) logger scoped to the API id
+- `request` - HTTP client for fetching data (see [HTTP Request Utility](#http-request-utility))
+- `createPushInterval` - Helper for building push-mode producers that poll a `fetchFn` on an interval (see [Push Mode](#-push-mode))
 
 #### » Poll Mode (Default)
 
@@ -448,6 +469,27 @@ dashfy.registerApi(
 - Producer receives callback to push data
 - Data is broadcast to all subscribed clients
 - Cleanup function called when last client unsubscribes
+
+**Using `createPushInterval`**: Instead of managing timers by hand, use the injected `createPushInterval` helper to poll a `fetchFn` on an interval and push each result. It returns a disposer used for cleanup:
+
+```ts
+dashfy.registerApi(
+  'metrics',
+  ({ request, createPushInterval }) => {
+    // Push every 2 seconds (default interval)
+    const startPushInterval = createPushInterval!({ interval: 2000 })
+
+    return {
+      async prices(callback: (data: unknown) => void, params: { symbol: string }) {
+        return startPushInterval(`prices:${params.symbol}`, callback, () =>
+          request!({ url: `https://api.example.com/price/${params.symbol}` }),
+        )
+      },
+    }
+  },
+  'push',
+)
+```
 
 ## HTTP Request Utility
 
