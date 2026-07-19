@@ -47,8 +47,8 @@ bun add @dashfy/server
 Create a Dashfy server and load a dashboard configuration:
 
 ```ts
-import { createJsonClient } from '@dashfy/ext-json'
-import { createGitHubClient } from '@dashfy/ext-github'
+import { createJsonClient } from '@dashfy/ext-json/client'
+import { createGitHubClient } from '@dashfy/ext-github/client'
 import { Dashfy } from '@dashfy/server'
 
 // Create server instance
@@ -477,12 +477,12 @@ dashfy.registerApi(
   'metrics',
   ({ request, createPushInterval }) => {
     // Push every 2 seconds (default interval)
-    const startPushInterval = createPushInterval!({ interval: 2000 })
+    const startPushInterval = createPushInterval({ interval: 2000 })
 
     return {
       async prices(callback: (data: unknown) => void, params: { symbol: string }) {
         return startPushInterval(`prices:${params.symbol}`, callback, () =>
-          request!({ url: `https://api.example.com/price/${params.symbol}` }),
+          request({ url: `https://api.example.com/price/${params.symbol}` }),
         )
       },
     }
@@ -540,9 +540,9 @@ await dashfy.start()
 #### » Multiple APIs
 
 ```ts
-import { createJsonClient } from '@dashfy/ext-json'
-import { createGitHubClient } from '@dashfy/ext-github'
-import { createNbaClient } from '@dashfy/ext-nba'
+import { createJsonClient } from '@dashfy/ext-json/client'
+import { createGitHubClient } from '@dashfy/ext-github/client'
+import { createNbaClient } from '@dashfy/ext-nba/client'
 import { Dashfy } from '@dashfy/server'
 
 const dashfy = new Dashfy()
