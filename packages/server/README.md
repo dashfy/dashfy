@@ -107,10 +107,10 @@ dashfy.configure({
 
 ```ts
 // Enable hot-reload (default)
-await dashfy.configureFromFile('./config.yaml', true)
+await dashfy.configureFromFile('./dashfy.config.yml', true)
 
 // Disable hot-reload (production)
-await dashfy.configureFromFile('./config.yaml', false)
+await dashfy.configureFromFile('./dashfy.config.yml', false)
 ```
 
 #### » API Registration
@@ -533,7 +533,7 @@ import pino from 'pino'
 const logger = pino({ level: 'debug' })
 const dashfy = new Dashfy({ logger })
 
-await dashfy.configureFromFile('./config.yaml')
+await dashfy.configureFromFile('./dashfy.config.yml')
 await dashfy.start()
 ```
 
@@ -577,7 +577,7 @@ dashfy.registerApi('myapi', ({ request }) => ({
 
 ```ts
 const dashfy = new Dashfy()
-await dashfy.configureFromFile('./config.yaml')
+await dashfy.configureFromFile('./dashfy.config.yml')
 await dashfy.start()
 
 // Handle shutdown signals
