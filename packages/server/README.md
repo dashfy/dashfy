@@ -154,7 +154,7 @@ dashfy.registerApi(
           usage: process.cpuUsage(),
           timestamp: Date.now(),
         })
-      }, 1000)
+      }, 1_000)
 
       return () => clearInterval(interval)
     },
@@ -376,7 +376,7 @@ interface DashfyConfig {
     }>
   }>
   apis?: {
-    pollInterval?: number // Global poll interval in ms (default: 15000)
+    pollInterval?: number // Global poll interval in ms (default: 15_000)
   }
 }
 ```
@@ -450,7 +450,7 @@ dashfy.registerApi(
           usage: process.cpuUsage(),
           timestamp: Date.now(),
         })
-      }, 1000)
+      }, 1_000)
 
       // Return cleanup function
       return () => {
@@ -477,7 +477,7 @@ dashfy.registerApi(
   'metrics',
   ({ request, createPushInterval }) => {
     // Push every 2 seconds (default interval)
-    const startPushInterval = createPushInterval({ interval: 2000 })
+    const startPushInterval = createPushInterval({ interval: 2_000 })
 
     return {
       async prices(callback: (data: unknown) => void, params: { symbol: string }) {
@@ -501,7 +501,7 @@ interface RequestOptions {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
   headers?: Record<string, string>
   body?: unknown
-  timeout?: number // Default: 10000ms
+  timeout?: number // Default: 10_000ms
 }
 ```
 
@@ -567,7 +567,7 @@ dashfy.registerApi('myapi', ({ request }) => ({
         Authorization: `Bearer ${process.env.API_TOKEN}`,
         'Content-Type': 'application/json',
       },
-      timeout: 5000,
+      timeout: 5_000,
     })
   },
 }))
