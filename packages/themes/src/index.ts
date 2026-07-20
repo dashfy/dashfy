@@ -8,10 +8,10 @@ export * from './lib/googleFont'
 export * from './themes'
 export * from './types'
 
-// Default theme to use when no theme is saved or selected
+/** Default theme to use when no theme is saved or selected. */
 export const DEFAULT_THEME: PresetThemeId = 'default'
 
-// `<link id="…">` for Google Fonts injected by `applyTheme`
+/** `<link id="…">` for Google Fonts injected by `applyTheme`. */
 const THEME_FONT_LINK_ID = 'dashfy-theme-fonts'
 
 /**
@@ -110,6 +110,10 @@ export function applyTheme(theme: Theme, mode?: ThemeMode): void {
  *
  * @param theme - The theme object to remove
  *
+ * @remarks
+ * Typically you would just apply a new theme instead of removing one.
+ * This function is useful for cleanup or testing scenarios.
+ *
  * @example
  * ```ts
  * import { removeTheme, darkTheme } from '@dashfy/themes'
@@ -117,10 +121,6 @@ export function applyTheme(theme: Theme, mode?: ThemeMode): void {
  * // Remove theme styling
  * removeTheme(darkTheme)
  * ```
- *
- * @remarks
- * Typically you would just apply a new theme instead of removing one.
- * This function is useful for cleanup or testing scenarios.
  */
 export function removeTheme(theme: Theme): void {
   if (typeof document === 'undefined') {
