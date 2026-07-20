@@ -3,7 +3,9 @@ packages:
   - packages/*
   - tools/*
 
-onlyBuiltDependencies:
-  - '@swc/core'
-  - core-js-pure
-  - esbuild
+allowBuilds:
+  '@swc/core': true
+  bufferutil: true
+  core-js-pure: true
+  esbuild: true
+  utf-8-validate: true
