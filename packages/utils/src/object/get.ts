@@ -29,20 +29,6 @@
  * get(user, 'address.country')
  * // => undefined
  * ```
- *
- * @example
- * ```ts
- * get(user, 'profile.avatar.url')
- * // => undefined (profile doesn't exist)
- * ```
- *
- * @example
- * ```ts
- * // Perfect for widget data access
- * const widgetData = { metrics: { cpu: { usage: 75 } } }
- * get(widgetData, 'metrics.cpu.usage')
- * // => 75
- * ```
  */
 export function get(obj: Record<string, unknown>, path: string): unknown {
   const keys = path.split('.')
