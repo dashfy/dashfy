@@ -28,13 +28,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dashfy/dashfy.git",
+    "url": "git@github.com:dashfy/dashfy.git",
     "directory": "packages/utils"
   },
   "license": "AGPL-3.0-or-later",
   "author": {
     "name": "Breno Polanski",
-    "email": "breno.polanski@gmail.com",
+    "email": "breno@dashfy.dev",
     "url": "https://github.com/brenopolanski"
   },
   "type": "module",
