@@ -7,7 +7,7 @@
  * @example
  * ```ts
  * valueToDisplayString(null)           // 'null'
- * valueToDisplayString(undefined)     // 'undefined'
+ * valueToDisplayString(undefined)       // 'undefined'
  * valueToDisplayString(true)           // 'true'
  * valueToDisplayString('hello')        // 'hello'
  * valueToDisplayString(42)             // '42'
