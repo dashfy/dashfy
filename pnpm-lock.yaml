@@ -149,9 +149,6 @@ importers:
 
   packages/server:
     dependencies:
-      '@dashfy/types':
-        specifier: workspace:*
-        version: link:../types
       '@dashfy/utils':
         specifier: workspace:*
         version: link:../utils
@@ -189,6 +186,9 @@ importers:
       '@dashfy/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
+      '@dashfy/types':
+        specifier: workspace:*
+        version: link:../types
       '@types/node':
         specifier: ^20.17.10
         version: 20.19.24
@@ -250,9 +250,6 @@ importers:
       '@dashfy/themes':
         specifier: workspace:*
         version: link:../themes
-      '@dashfy/types':
-        specifier: workspace:*
-        version: link:../types
       '@dashfy/utils':
         specifier: workspace:*
         version: link:../utils
@@ -416,6 +413,9 @@ importers:
       '@dashfy/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
+      '@dashfy/types':
+        specifier: workspace:*
+        version: link:../types
       '@storybook/addon-docs':
         specifier: ^10.2.8
         version: 10.2.8(@types/react@19.2.17)(esbuild@0.25.11)(rollup@4.52.5)(storybook@10.2.8(@testing-library/dom@10.4.1)(bufferutil@4.1.0)(prettier@3.6.2)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(utf-8-validate@6.0.6))(vite@6.4.1(@types/node@25.0.0)(jiti@1.21.7)(tsx@4.20.6)(yaml@2.8.1))

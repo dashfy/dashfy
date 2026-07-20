@@ -58,7 +58,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@dashfy/types": "workspace:*",
     "@dashfy/utils": "workspace:*",
     "@fastify/cors": "^10.0.1",
     "@fastify/static": "^8.0.2",
@@ -73,6 +72,7 @@
   },
   "devDependencies": {
     "@dashfy/tsconfig": "workspace:*",
+    "@dashfy/types": "workspace:*",
     "@types/node": "^20.17.10",
     "@vitest/coverage-v8": "^2.1.9",
     "tsup": "^8.3.5",
