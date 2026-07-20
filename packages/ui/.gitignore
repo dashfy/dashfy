@@ -1,19 +1,2 @@
-# Build output
-dist/
-.turbo/
-
-# Storybook
+# storybook
 storybook-static/
-
-# Dependencies
-node_modules/
-
-# Test coverage
-coverage/
-
-# Cache
-.eslintcache
-*.tsbuildinfo
-
-# OS
-.DS_Store
