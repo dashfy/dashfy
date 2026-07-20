@@ -13,6 +13,7 @@ import type { OrdinalFormatOptions } from './types'
  * formatOrdinal(1) // '1st'
  * formatOrdinal(2) // '2nd'
  * formatOrdinal(3) // '3rd'
+ * ```
  */
 export function formatOrdinal(value: number, options?: OrdinalFormatOptions): string {
   const result = handleZeroNull(value, options, (valueToFormat) => {
