@@ -750,6 +750,9 @@ pnpm dev
 # Run tests
 pnpm test
 
+# Run tests with coverage
+pnpm test:coverage
+
 # Type check
 pnpm typecheck
 ```
