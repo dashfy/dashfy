@@ -1,5 +1,5 @@
-import type { APIRegistration, PollMode } from '@dashfy/types'
-import { WebSocketEvent } from '@dashfy/types'
+import type { APIRegistration, PollMode } from '@getdashfy/types'
+import { WebSocketEvent } from '@getdashfy/types'
 import type { Socket } from 'socket.io'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 

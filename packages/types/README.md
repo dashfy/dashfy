@@ -1,10 +1,10 @@
-# `@dashfy/types`
+# `@getdashfy/types`
 
 > Shared TypeScript type definitions for the Dashfy ecosystem.
 
 ## Introduction
 
-`@dashfy/types` is the single source of truth for the TypeScript contracts shared across Dashfy.
+`@getdashfy/types` is the single source of truth for the TypeScript contracts shared across Dashfy.
 
 ## Install
 
@@ -13,25 +13,25 @@ Install as a dev dependency with your favorite package manager:
 #### `npm`
 
 ```bash
-npm install -D @dashfy/types
+npm install -D @getdashfy/types
 ```
 
 #### `pnpm`
 
 ```bash
-pnpm add -D @dashfy/types
+pnpm add -D @getdashfy/types
 ```
 
 #### `yarn`
 
 ```bash
-yarn add -D @dashfy/types
+yarn add -D @getdashfy/types
 ```
 
 #### `bun`
 
 ```bash
-bun add -d @dashfy/types
+bun add -d @getdashfy/types
 ```
 
 ## Community

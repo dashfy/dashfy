@@ -2,7 +2,7 @@ import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import net from 'node:net'
 import path from 'node:path'
 
-import type { DashfyConfig } from '@dashfy/types'
+import type { DashfyConfig } from '@getdashfy/types'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { Dashfy } from './dashfy'

@@ -1,4 +1,4 @@
-import { NotificationType } from '@dashfy/types'
+import { NotificationType } from '@getdashfy/types'
 import type { StateCreator } from 'zustand'
 
 import type { DashfyStore, NotificationsSlice } from '@/store/types'

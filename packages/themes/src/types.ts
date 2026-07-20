@@ -1,4 +1,4 @@
-export type { ThemeMode } from '@dashfy/types'
+export type { ThemeMode } from '@getdashfy/types'
 
 export interface ThemeColors {
   background: string

@@ -1,4 +1,4 @@
-import { WebSocketStatus } from '@dashfy/types'
+import { WebSocketStatus } from '@getdashfy/types'
 import type { StateCreator } from 'zustand'
 
 import type { DashfyStore, WsSlice } from '@/store/types'

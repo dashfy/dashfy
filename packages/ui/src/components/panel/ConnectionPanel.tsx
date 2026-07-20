@@ -1,4 +1,4 @@
-import { WebSocketStatus } from '@dashfy/types'
+import { WebSocketStatus } from '@getdashfy/types'
 
 import { RefreshCwIcon } from '@/components/common/Icons'
 import { Scrollable } from '@/components/common/Scrollable'

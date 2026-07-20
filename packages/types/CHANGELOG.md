@@ -1,4 +1,4 @@
-# @dashfy/types
+# @getdashfy/types
 
 ## 0.1.0
 

@@ -126,7 +126,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^5.2.1",
     "@dashfy/tsconfig": "workspace:*",
-    "@dashfy/types": "workspace:*",
+    "@getdashfy/types": "workspace:*",
     "@storybook/addon-docs": "^10.5.2",
     "@storybook/addon-links": "^10.5.2",
     "@storybook/react-vite": "^10.5.2",

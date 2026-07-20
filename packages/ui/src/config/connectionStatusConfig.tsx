@@ -1,4 +1,4 @@
-import { WebSocketStatus } from '@dashfy/types'
+import { WebSocketStatus } from '@getdashfy/types'
 
 import {
   CheckCircle2Icon,

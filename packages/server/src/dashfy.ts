@@ -1,10 +1,10 @@
 import path from 'node:path'
 
-import type { APIRegistration, DashfyConfig, PollMode, Subscription } from '@dashfy/types'
-import { WebSocketEvent } from '@dashfy/types'
 import { getErrorMessage } from '@dashfy/utils'
 import cors from '@fastify/cors'
 import fastifyStatic from '@fastify/static'
+import type { APIRegistration, DashfyConfig, PollMode, Subscription } from '@getdashfy/types'
+import { WebSocketEvent } from '@getdashfy/types'
 import { watch } from 'chokidar'
 import type { FastifyInstance } from 'fastify'
 import Fastify from 'fastify'

@@ -1,4 +1,4 @@
-import { WebSocketEvent } from '@dashfy/types'
+import { WebSocketEvent } from '@getdashfy/types'
 
 // Default server configuration
 export const DEFAULT_PORT = 5001

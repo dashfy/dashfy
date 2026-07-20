@@ -1,4 +1,4 @@
-import type { RequestOptions } from '@dashfy/types'
+import type { RequestOptions } from '@getdashfy/types'
 import { request as undiciRequest } from 'undici'
 
 import { DEFAULT_REQUEST_TIMEOUT } from './constants'

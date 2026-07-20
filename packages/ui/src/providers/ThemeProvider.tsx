@@ -1,5 +1,5 @@
 import { applyTheme, defaultTheme as builtInDefaultTheme } from '@dashfy/themes'
-import type { ThemeId } from '@dashfy/types'
+import type { ThemeId } from '@getdashfy/types'
 import * as React from 'react'
 
 import { useMode } from '@/hooks/useMode'

@@ -1,6 +1,6 @@
 import type { Theme } from '@dashfy/themes'
 import { DEFAULT_THEME, getTheme, listThemes } from '@dashfy/themes'
-import type { ThemeId } from '@dashfy/types'
+import type { ThemeId } from '@getdashfy/types'
 
 /**
  * Global registry for managing theme configurations.

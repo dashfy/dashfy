@@ -60,7 +60,7 @@ The `@/` alias points to `../src/` directory, matching the tsconfig setup.
 The following workspace packages are pre-bundled for performance:
 
 - `@dashfy/themes`
-- `@dashfy/types`
+- `@getdashfy/types`
 
 ## 🛠️ Development
 

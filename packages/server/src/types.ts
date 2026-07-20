@@ -1,4 +1,4 @@
-import type { PollMode, Subscription } from '@dashfy/types'
+import type { PollMode, Subscription } from '@getdashfy/types'
 import type { FastifyInstance } from 'fastify'
 import type { Logger } from 'pino'
 import type { Socket } from 'socket.io'

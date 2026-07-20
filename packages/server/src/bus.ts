@@ -1,8 +1,8 @@
 import { EventEmitter } from 'node:events'
 
-import type { APIRegistration, PollMode, Subscription } from '@dashfy/types'
-import { WebSocketEvent } from '@dashfy/types'
 import { getErrorMessage } from '@dashfy/utils'
+import type { APIRegistration, PollMode, Subscription } from '@getdashfy/types'
+import { WebSocketEvent } from '@getdashfy/types'
 import type { Logger } from 'pino'
 import type { Socket } from 'socket.io'
 

@@ -57,7 +57,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@dashfy/types": "workspace:*"
+    "@getdashfy/types": "workspace:*"
   },
   "devDependencies": {
     "@dashfy/tsconfig": "workspace:*",

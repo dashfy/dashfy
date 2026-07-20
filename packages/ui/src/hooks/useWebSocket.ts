@@ -1,5 +1,5 @@
-import type { DashfyConfig } from '@dashfy/types'
-import { WebSocketStatus } from '@dashfy/types'
+import type { DashfyConfig } from '@getdashfy/types'
+import { WebSocketStatus } from '@getdashfy/types'
 import * as React from 'react'
 import type { Socket } from 'socket.io-client'
 import { io } from 'socket.io-client'

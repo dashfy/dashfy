@@ -151,7 +151,7 @@ Dashfy dashboards are defined using declarative configuration. You can use `Type
   <br>
 
 ```ts
-import type { DashfyConfig } from '@dashfy/types'
+import type { DashfyConfig } from '@getdashfy/types'
 
 const dashfyConfig: DashfyConfig = {
   dashboards: [
@@ -316,7 +316,7 @@ const dashfy = new Dashfy()
 await dashfy.configureFromFile('./dashfy.config.yml')
 
 // or from a TypeScript object:
-// import type { DashfyConfig } from '@dashfy/types'
+// import type { DashfyConfig } from '@getdashfy/types'
 // const dashfyConfig: DashfyConfig = {...}
 // dashfy.configure(dashfyConfig)
 

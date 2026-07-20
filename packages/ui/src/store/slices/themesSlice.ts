@@ -1,5 +1,5 @@
-import type { ThemeId } from '@dashfy/types'
 import { isClient, isServer } from '@dashfy/utils'
+import type { ThemeId } from '@getdashfy/types'
 import type { StateCreator } from 'zustand'
 
 import { THEME_STORAGE_KEY } from '@/constants/storageConstants'

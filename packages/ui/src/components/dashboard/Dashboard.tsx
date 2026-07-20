@@ -1,4 +1,4 @@
-import type { Dashboard as DashboardType } from '@dashfy/types'
+import type { Dashboard as DashboardType } from '@getdashfy/types'
 import * as React from 'react'
 
 export interface DashboardProps {

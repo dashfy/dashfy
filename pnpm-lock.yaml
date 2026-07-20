@@ -186,7 +186,7 @@ importers:
       '@dashfy/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
-      '@dashfy/types':
+      '@getdashfy/types':
         specifier: workspace:*
         version: link:../types
       '@types/node':
@@ -207,7 +207,7 @@ importers:
 
   packages/themes:
     dependencies:
-      '@dashfy/types':
+      '@getdashfy/types':
         specifier: workspace:*
         version: link:../types
     devDependencies:
@@ -413,7 +413,7 @@ importers:
       '@dashfy/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
-      '@dashfy/types':
+      '@getdashfy/types':
         specifier: workspace:*
         version: link:../types
       '@storybook/addon-docs':

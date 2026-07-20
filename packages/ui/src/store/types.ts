@@ -6,7 +6,7 @@ import type {
   Subscription,
   ThemeId,
   WebSocketStatus,
-} from '@dashfy/types'
+} from '@getdashfy/types'
 import type { Socket } from 'socket.io-client'
 
 export interface DashfyStore

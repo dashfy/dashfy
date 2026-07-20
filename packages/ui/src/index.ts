@@ -43,7 +43,7 @@ export * from './store'
 // UI primitives (shadcn/ui - https://v3.shadcn.com)
 export * from './components/ui'
 
-// Re-export types from @dashfy/types for convenience
+// Re-export types from @getdashfy/types for convenience
 export type {
   ApiConfig,
   Dashboard,
@@ -56,4 +56,4 @@ export type {
   WidgetComponent,
   WidgetConfig,
   WidgetProps,
-} from '@dashfy/types'
+} from '@getdashfy/types'

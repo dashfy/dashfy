@@ -1,4 +1,4 @@
-import type { DashfyConfig } from '@dashfy/types'
+import type { DashfyConfig } from '@getdashfy/types'
 import * as React from 'react'
 
 import { BellIcon, TerminalIcon, WifiIcon } from '@/components/common/Icons'

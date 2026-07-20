@@ -58,7 +58,7 @@ const dashfy = new Dashfy()
 await dashfy.configureFromFile('./dashfy.config.yml')
 
 // or from a TypeScript object:
-// import type { DashfyConfig } from '@dashfy/types'
+// import type { DashfyConfig } from '@getdashfy/types'
 // const dashfyConfig: DashfyConfig = {...}
 // dashfy.configure(dashfyConfig)
 
@@ -726,7 +726,7 @@ The server provides robust error handling:
 Fully typed with TypeScript:
 
 ```ts
-import type { DashfyConfig, APIRegistration, PollMode } from '@dashfy/types'
+import type { DashfyConfig, APIRegistration, PollMode } from '@getdashfy/types'
 
 const myApi: APIRegistration = ({ request }) => ({
   async fetchData(params: { id: string }) {

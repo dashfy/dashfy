@@ -1,4 +1,4 @@
-import type { ThemeId } from '@dashfy/types'
+import type { ThemeId } from '@getdashfy/types'
 
 import { ThemeRegistry } from '@/registry/ThemeRegistry'
 import { useDashfyStore } from '@/store'

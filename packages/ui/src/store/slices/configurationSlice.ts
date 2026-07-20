@@ -1,5 +1,5 @@
-import type { DashfyConfig } from '@dashfy/types'
 import { getErrorMessage } from '@dashfy/utils'
+import type { DashfyConfig } from '@getdashfy/types'
 import type { StateCreator } from 'zustand'
 
 import type { ConfigurationSlice, DashfyStore } from '@/store/types'

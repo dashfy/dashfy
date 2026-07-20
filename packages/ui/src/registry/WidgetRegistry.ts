@@ -1,4 +1,4 @@
-import type { WidgetComponent, WidgetMetadata } from '@dashfy/types'
+import type { WidgetComponent, WidgetMetadata } from '@getdashfy/types'
 
 export type Extension = Record<string, WidgetComponent>
 

@@ -11,7 +11,7 @@
         "@dashfy/cli",
         "@dashfy/server",
         "@dashfy/themes",
-        "@dashfy/types",
+        "@getdashfy/types",
         "@dashfy/ui",
         "@dashfy/utils"
       ],

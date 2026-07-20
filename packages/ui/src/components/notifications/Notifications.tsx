@@ -1,4 +1,4 @@
-import { NotificationType } from '@dashfy/types'
+import { NotificationType } from '@getdashfy/types'
 import * as React from 'react'
 import { toast } from 'sonner'
 

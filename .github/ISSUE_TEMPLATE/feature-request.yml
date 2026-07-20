@@ -36,7 +36,7 @@ body:
         - '@dashfy/cli (scaffolding, extensions, commands)'
         - '@dashfy/server (runtime, config, APIs)'
         - '@dashfy/themes (tokens, theming, styling)'
-        - '@dashfy/types (shared contracts)'
+        - '@getdashfy/types (shared contracts)'
         - '@dashfy/ui (components, widgets, client)'
         - '@dashfy/utils (formatting, strings, platform)'
         - 'examples (demo apps)'
