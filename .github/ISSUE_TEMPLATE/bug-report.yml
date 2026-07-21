@@ -32,12 +32,12 @@ body:
       description: Which part of Dashfy is affected?
       multiple: true
       options:
-        - '@dashfy/cli (scaffolding, extensions, commands)'
-        - '@dashfy/server (runtime, config, APIs)'
-        - '@dashfy/themes (tokens, theming, styling)'
+        - '@getdashfy/cli (scaffolding, extensions, commands)'
+        - '@getdashfy/server (runtime, config, APIs)'
+        - '@getdashfy/themes (tokens, theming, styling)'
         - '@getdashfy/types (shared contracts)'
-        - '@dashfy/ui (components, widgets, client)'
-        - '@dashfy/utils (formatting, strings, platform)'
+        - '@getdashfy/ui (components, widgets, client)'
+        - '@getdashfy/utils (formatting, strings, platform)'
         - 'examples (demo apps)'
         - 'Tooling/CI'
         - 'Other / Not sure'
@@ -97,7 +97,7 @@ body:
         - OS: macOS 14.x / Windows 11 / Ubuntu 24.04
         - Node: 20.x
         - pnpm: 9.x
-        - Dashfy version/commit: (e.g. `@dashfy/server@x.y.z` or SHA)
+        - Dashfy version/commit: (e.g. `@getdashfy/server@x.y.z` or SHA)
         - Browser (if relevant): Chrome 122 / Firefox 123
     validations:
       required: true

@@ -6,7 +6,7 @@ export interface UpdateAppOptions {
   appFile: string
   /** Extension id used as the WidgetRegistry namespace (e.g. "github"). */
   extensionKey: string
-  /** Package to import widgets from (e.g. "@dashfy/ext-github"). */
+  /** Package to import widgets from (e.g. "@getdashfy/ext-github"). */
   widgetPackage: string
   /** Widget component names to register. */
   widgets: string[]
@@ -33,7 +33,7 @@ export async function updateApp(options: UpdateAppOptions): Promise<UpdateResult
     return 'skipped'
   }
 
-  ensureNamedImports(sourceFile, '@dashfy/ui', ['WidgetRegistry'])
+  ensureNamedImports(sourceFile, '@getdashfy/ui', ['WidgetRegistry'])
   ensureNamedImports(sourceFile, widgetPackage, widgets)
 
   const registration = `WidgetRegistry.addExtension('${extensionKey}', {\n${widgets
@@ -54,7 +54,7 @@ export interface RemoveFromAppOptions {
   appFile: string
   /** Extension id used as the WidgetRegistry namespace (e.g. "github"). */
   extensionKey: string
-  /** Package the widgets were imported from (e.g. "@dashfy/ext-github"). */
+  /** Package the widgets were imported from (e.g. "@getdashfy/ext-github"). */
   widgetPackage: string
   /** Widget component names that were registered. */
   widgets: string[]
@@ -81,7 +81,7 @@ export async function removeFromApp(options: RemoveFromAppOptions): Promise<Remo
   removeNamedImports(sourceFile, widgetPackage, widgets)
 
   if (!usesIdentifierMember(sourceFile, 'WidgetRegistry')) {
-    removeNamedImports(sourceFile, '@dashfy/ui', ['WidgetRegistry'])
+    removeNamedImports(sourceFile, '@getdashfy/ui', ['WidgetRegistry'])
   }
 
   sourceFile.formatText()

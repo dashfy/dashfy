@@ -32,7 +32,12 @@ describe('ensureNamespacesConfigured', () => {
   it('returns the config unchanged for built-in namespaces', async () => {
     const cwd = await tmp()
     const config = await resolveConfig(cwd)
-    const result = await ensureNamespacesConfigured(['github', '@dashfy/github'], config, cwd, true)
+    const result = await ensureNamespacesConfigured(
+      ['github', '@getdashfy/github'],
+      config,
+      cwd,
+      true,
+    )
     expect(result).toBe(config)
     expect(await fs.pathExists(path.join(cwd, 'dashfy.json'))).toBe(false)
   })

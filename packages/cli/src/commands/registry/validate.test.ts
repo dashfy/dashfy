@@ -19,7 +19,7 @@ function makeItem(overrides: Partial<RegistryItem> = {}): RegistryItem {
     type: 'registry:extension',
     title: 'GitHub',
     description: 'GitHub widgets',
-    dependencies: ['@dashfy/ext-github@^0.1.0'],
+    dependencies: ['@getdashfy/ext-github@^0.1.0'],
     categories: ['developer'],
     meta: { extensionKey: 'github', widgets: ['GitHubStars'] },
     ...overrides,

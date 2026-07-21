@@ -223,7 +223,7 @@ function buildGeneralChecks(): DoctorCheck[] {
 /**
  * Maps an installed extension package name to its registry address. The registry
  * item name is the package name without the `ext-` prefix (see registry build),
- * e.g. `@dashfy/ext-github` -> `@dashfy/github`, `ext-github` -> `@dashfy/github`.
+ * e.g. `@getdashfy/ext-github` -> `@getdashfy/github`, `ext-github` -> `@getdashfy/github`.
  */
 export function packageToAddress(packageName: string): string {
   const scoped = /^(@[^/]+)\/(.+)$/.exec(packageName)

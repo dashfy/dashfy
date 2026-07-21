@@ -1,5 +1,5 @@
 {
-  "extends": "@dashfy/tsconfig/react.json",
+  "extends": "@getdashfy/tsconfig/react.json",
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": ".",

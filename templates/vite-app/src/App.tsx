@@ -8,9 +8,9 @@ import {
   RepoBadge,
   Status,
   UserBadge,
-} from '@dashfy/ext-github'
-import { PriceLive, TableLive } from '@dashfy/ext-market-live'
-import { GameCard, Scoreboard, Standings } from '@dashfy/ext-nba'
+} from '@getdashfy/ext-github'
+import { PriceLive, TableLive } from '@getdashfy/ext-market-live'
+import { GameCard, Scoreboard, Standings } from '@getdashfy/ext-nba'
 import {
   CpuUsage,
   CpuUsageGauge,
@@ -25,8 +25,8 @@ import {
   NetworkStatsLine,
   Processes,
   SystemInfo,
-} from '@dashfy/ext-system'
-import { Dashfy, WidgetRegistry } from '@dashfy/ui'
+} from '@getdashfy/ext-system'
+import { Dashfy, WidgetRegistry } from '@getdashfy/ui'
 
 // Register GitHub extension
 WidgetRegistry.addExtension('github', {

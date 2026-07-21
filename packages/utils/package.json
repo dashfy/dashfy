@@ -1,5 +1,5 @@
 {
-  "name": "@dashfy/utils",
+  "name": "@getdashfy/utils",
   "version": "0.1.0",
   "description": "Formatting and utility functions for Dashfy - numbers, currencies, bytes, dates, times, strings, platform detection, and more",
   "keywords": [
@@ -75,7 +75,7 @@
     "pretty-bytes": "^7.1.0"
   },
   "devDependencies": {
-    "@dashfy/tsconfig": "workspace:*",
+    "@getdashfy/tsconfig": "workspace:*",
     "@types/node": "^25.0.0",
     "@vitest/coverage-v8": "^2.1.9",
     "tsup": "^8.3.5",

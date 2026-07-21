@@ -27,7 +27,7 @@ export interface TeardownResult {
 
 /**
  * Strips the version suffix from a dependency spec.
- * `@dashfy/ext-github@^0.1.0` -> `@dashfy/ext-github`
+ * `@getdashfy/ext-github@^0.1.0` -> `@getdashfy/ext-github`
  */
 export function stripVersion(dependency: string): string {
   return dependency.replace(/@[^@/]+$/, '')

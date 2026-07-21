@@ -1,4 +1,4 @@
-import { modKey } from '@dashfy/utils'
+import { modKey } from '@getdashfy/utils'
 
 import { PanelBottomIcon } from '@/components/common/Icons'
 import { Button } from '@/components/ui/button'

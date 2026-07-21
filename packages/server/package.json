@@ -1,5 +1,5 @@
 {
-  "name": "@dashfy/server",
+  "name": "@getdashfy/server",
   "version": "0.1.0",
   "description": "Dashfy server with real-time data streaming and multi-dashboard support",
   "keywords": [
@@ -58,7 +58,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@dashfy/utils": "workspace:*",
+    "@getdashfy/utils": "workspace:*",
     "@fastify/cors": "^10.0.1",
     "@fastify/static": "^8.0.2",
     "chokidar": "^4.0.3",
@@ -71,7 +71,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@dashfy/tsconfig": "workspace:*",
+    "@getdashfy/tsconfig": "workspace:*",
     "@getdashfy/types": "workspace:*",
     "@types/node": "^20.17.10",
     "@vitest/coverage-v8": "^2.1.9",

@@ -122,7 +122,7 @@ importers:
         specifier: ^3.25.2
         version: 3.25.2(zod@3.25.76)
     devDependencies:
-      '@dashfy/tsconfig':
+      '@getdashfy/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
       '@types/fs-extra':
@@ -149,15 +149,15 @@ importers:
 
   packages/server:
     dependencies:
-      '@dashfy/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@fastify/cors':
         specifier: ^10.0.1
         version: 10.1.0
       '@fastify/static':
         specifier: ^8.0.2
         version: 8.3.0
+      '@getdashfy/utils':
+        specifier: workspace:*
+        version: link:../utils
       chokidar:
         specifier: ^4.0.3
         version: 4.0.3
@@ -183,7 +183,7 @@ importers:
         specifier: ^3.24.1
         version: 3.25.76
     devDependencies:
-      '@dashfy/tsconfig':
+      '@getdashfy/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
       '@getdashfy/types':
@@ -211,7 +211,7 @@ importers:
         specifier: workspace:*
         version: link:../types
     devDependencies:
-      '@dashfy/tsconfig':
+      '@getdashfy/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
       '@types/node':
@@ -232,7 +232,7 @@ importers:
 
   packages/types:
     devDependencies:
-      '@dashfy/tsconfig':
+      '@getdashfy/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
       '@types/react':
@@ -247,10 +247,10 @@ importers:
 
   packages/ui:
     dependencies:
-      '@dashfy/themes':
+      '@getdashfy/themes':
         specifier: workspace:*
         version: link:../themes
-      '@dashfy/utils':
+      '@getdashfy/utils':
         specifier: workspace:*
         version: link:../utils
       '@hookform/resolvers':
@@ -410,7 +410,7 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^5.2.1
         version: 5.2.1(storybook@10.5.2(@types/react@19.2.17)(bufferutil@4.1.0)(prettier@3.6.2)(react@19.2.7)(utf-8-validate@6.0.6))
-      '@dashfy/tsconfig':
+      '@getdashfy/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
       '@getdashfy/types':
@@ -489,7 +489,7 @@ importers:
         specifier: ^7.1.0
         version: 7.1.0
     devDependencies:
-      '@dashfy/tsconfig':
+      '@getdashfy/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
       '@types/node':

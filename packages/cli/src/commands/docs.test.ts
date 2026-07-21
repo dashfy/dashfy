@@ -42,10 +42,10 @@ describe('docs', () => {
     await docs.parseAsync(['github', '-c', cwd], { from: 'user' })
 
     const output = logs.join('\n')
-    expect(output).toContain('@dashfy/github — GitHub')
+    expect(output).toContain('@getdashfy/github — GitHub')
     expect(output).toContain('Setup')
     expect(output).toContain('GITHUB_TOKEN')
-    expect(output).toContain('pnpm dlx dashfy@latest add @dashfy/github')
+    expect(output).toContain('pnpm dlx dashfy@latest add @getdashfy/github')
   })
 
   it('emits structured JSON with --json', async () => {
@@ -63,8 +63,8 @@ describe('docs', () => {
     const payload = JSON.parse(logs.join('\n')) as {
       items: { address: string; setup?: string; envVars?: string[]; addCommand: string }[]
     }
-    expect(payload.items[0]?.address).toBe('@dashfy/github')
+    expect(payload.items[0]?.address).toBe('@getdashfy/github')
     expect(payload.items[0]?.envVars).toContain('GITHUB_TOKEN')
-    expect(payload.items[0]?.addCommand).toBe('pnpm dlx dashfy@latest add @dashfy/github')
+    expect(payload.items[0]?.addCommand).toBe('pnpm dlx dashfy@latest add @getdashfy/github')
   })
 })

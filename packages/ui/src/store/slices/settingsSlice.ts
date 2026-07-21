@@ -1,4 +1,4 @@
-import { isClient, isServer } from '@dashfy/utils'
+import { isClient, isServer } from '@getdashfy/utils'
 import type { StateCreator } from 'zustand'
 
 import { WAKE_LOCK_STORAGE_KEY } from '@/constants/storageConstants'

@@ -108,7 +108,7 @@ pnpm build
 
 5. Scaffold a local app from a template:
 
-The standalone templates are fetched by the CLI. For local development, point `DASHFY_TEMPLATE_DIR` at the repo's `templates/` folder so nothing is downloaded. Use `--no-install` until the `@dashfy/*` packages are published to npm:
+The standalone templates are fetched by the CLI. For local development, point `DASHFY_TEMPLATE_DIR` at the repo's `templates/` folder so nothing is downloaded. Use `--no-install` until the `@getdashfy/*` packages are published to npm:
 
 ```bash
 DASHFY_TEMPLATE_DIR="$PWD/templates" node packages/cli/dist/index.js init demo -t vite-app --no-install
@@ -138,9 +138,9 @@ pnpm clean:all        # Clean build artifacts, remove node_modules, and more
 Use pnpm filters to scope work:
 
 ```bash
-pnpm --filter @dashfy/server test
-pnpm --filter @dashfy/server dev
-pnpm --filter @dashfy/ui typecheck
+pnpm --filter @getdashfy/server test
+pnpm --filter @getdashfy/server dev
+pnpm --filter @getdashfy/ui typecheck
 ```
 
 #### » Running the demo app
@@ -152,7 +152,7 @@ DASHFY_TEMPLATE_DIR="$PWD/templates" node packages/cli/dist/index.js init demo -
 cd demo && pnpm dev:all
 ```
 
-> _Because the templates depend on the published `@dashfy/*` packages, a full install requires those packages to be on npm (or a local registry such as Verdaccio/yalc). Use `--no-install` for setup-only checks in the meantime._
+> _Because the templates depend on the published `@getdashfy/*` packages, a full install requires those packages to be on npm (or a local registry such as Verdaccio/yalc). Use `--no-install` for setup-only checks in the meantime._
 
 #### » Working on the extension registry
 
@@ -161,8 +161,8 @@ truth is the `dashfy` field in each `packages/ext-*/package.json`. Build the hos
 artifacts (per-extension `<name>.json` + `index.json`) into `apps/registry/public/r`:
 
 ```bash
-pnpm --filter @dashfy/registry build      # == dashfy registry:build
-pnpm --filter @dashfy/registry validate   # == dashfy registry validate
+pnpm --filter @getdashfy/registry build      # == dashfy registry:build
+pnpm --filter @getdashfy/registry validate   # == dashfy registry validate
 ```
 
 `validate` checks the built artifacts (and the `registries.json` discovery index)
@@ -175,7 +175,7 @@ point `DASHFY_REGISTRY_URL` at that directory (the registry analog of
 
 ```bash
 DASHFY_REGISTRY_URL="$PWD/apps/registry/public/r" \
-  node packages/cli/dist/index.js add @dashfy/github --cwd demo --no-install
+  node packages/cli/dist/index.js add @getdashfy/github --cwd demo --no-install
 ```
 
 The registry is deployed to `registry.dashfy.dev` on release via the

@@ -13,7 +13,7 @@ export const extensionClientModeSchema = z.enum(['poll', 'push'])
  * Dashfy server bootstrap file.
  */
 export const extensionClientSchema = z.object({
-  /** Module specifier to import the factory from (e.g. `@dashfy/ext-system/client`). */
+  /** Module specifier to import the factory from (e.g. `@getdashfy/ext-system/client`). */
   import: z.string(),
   /** Named factory export (e.g. `createGitHubClient`). */
   factory: z.string(),
@@ -62,7 +62,7 @@ export const registryItemSchema = z.object({
   type: z.literal('registry:extension'),
   title: z.string(),
   description: z.string().optional(),
-  /** npm dependencies installed when the extension is added, e.g. `@dashfy/ext-github@^0.1.0`. */
+  /** npm dependencies installed when the extension is added, e.g. `@getdashfy/ext-github@^0.1.0`. */
   dependencies: z.array(z.string()).min(1),
   /** Other registry items (extensions) this one depends on, by address. */
   registryDependencies: z.array(z.string()).optional(),
@@ -112,7 +112,7 @@ export const registryConfigItemSchema = z.union([
 /** Map of `@namespace` to its registry endpoint. */
 export const registryConfigSchema = z.record(
   z.string().refine((key) => key.startsWith('@'), {
-    message: 'Registry names must start with @ (e.g., @dashfy, @acme)',
+    message: 'Registry names must start with @ (e.g., @getdashfy, @acme)',
   }),
   registryConfigItemSchema,
 )
@@ -139,7 +139,7 @@ export const registriesIndexSchema = z.object({
   $schema: z.string().optional(),
   registries: z.record(
     z.string().refine((key) => key.startsWith('@'), {
-      message: 'Registry names must start with @ (e.g., @dashfy, @acme)',
+      message: 'Registry names must start with @ (e.g., @getdashfy, @acme)',
     }),
     registryEntrySchema,
   ),

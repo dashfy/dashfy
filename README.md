@@ -34,7 +34,7 @@ Dashfy is designed to make dashboards:
 - extensible
 - and maintainable
 
-Dashfy is published as a set of npm packages (for example `@dashfy/server`, `@dashfy/ui`, `@dashfy/themes`, and `@dashfy/ext-*`).
+Dashfy is published as a set of npm packages (for example `@getdashfy/server`, `@getdashfy/ui`, `@getdashfy/themes`, and `@getdashfy/ext-*`).
 
 This repository is the monorepo for Dashfy packages and includes runnable, standalone project templates under `templates/` (`vite-app`/`astro-app`/`next-app`/`react-router-app`/`start-app` are full demos, `vite-starter`/`astro-starter`/`next-starter`/`react-router-starter`/`start-starter` are minimal starting points). The [`dashfy` CLI](./packages/cli) scaffolds new apps from these templates and resolves extensions from the registry hosted by `apps/registry` (`registry.dashfy.dev`).
 
@@ -305,9 +305,9 @@ widgets:
 Create a Dashfy server and load a dashboard configuration:
 
 ```ts
-import { createJsonClient } from '@dashfy/ext-json'
-import { createGitHubClient } from '@dashfy/ext-github'
-import { Dashfy } from '@dashfy/server'
+import { createJsonClient } from '@getdashfy/ext-json'
+import { createGitHubClient } from '@getdashfy/ext-github'
+import { Dashfy } from '@getdashfy/server'
 
 // Create server instance
 const dashfy = new Dashfy()
@@ -339,7 +339,7 @@ await dashfy.start()
 Register extension widgets in your React app:
 
 ```tsx
-import { CustomJson, JsonKeys, JsonStatus } from '@dashfy/ext-json'
+import { CustomJson, JsonKeys, JsonStatus } from '@getdashfy/ext-json'
 import {
   Branches,
   CommitActivityLine,
@@ -350,8 +350,8 @@ import {
   RepoBadge,
   Status,
   UserBadge,
-} from '@dashfy/ext-github'
-import { Dashfy, WidgetRegistry } from '@dashfy/ui'
+} from '@getdashfy/ext-github'
+import { Dashfy, WidgetRegistry } from '@getdashfy/ui'
 
 // Register GitHub extension widgets
 WidgetRegistry.addExtension('github', {
@@ -549,7 +549,7 @@ pnpm build
 
 5. Scaffold a local app from a template:
 
-The standalone templates live in `templates/` and are not part of the workspace. Use the CLI with `DASHFY_TEMPLATE_DIR` to scaffold from the local checkout (no network/git required). Because the templates depend on the published `@dashfy/*` packages, use `--no-install` until those packages are published to npm:
+The standalone templates live in `templates/` and are not part of the workspace. Use the CLI with `DASHFY_TEMPLATE_DIR` to scaffold from the local checkout (no network/git required). Because the templates depend on the published `@getdashfy/*` packages, use `--no-install` until those packages are published to npm:
 
 ```bash
 DASHFY_TEMPLATE_DIR="$PWD/templates" node packages/cli/dist/index.js init demo -t vite-app --no-install
@@ -572,12 +572,12 @@ npx dashfy@latest init -t start-app # full pre-configured TanStack Start demo
 
 ### Adding extensions from the registry
 
-Extensions are resolved at runtime from a hosted registry (the `@dashfy` namespace,
+Extensions are resolved at runtime from a hosted registry (the `@getdashfy` namespace,
 served from `registry.dashfy.dev`), the dashboards analog of shadcn-ui's component
 registry. Add one to an existing project:
 
 ```bash
-npx dashfy@latest add @dashfy/github
+npx dashfy@latest add @getdashfy/github
 ```
 
 Custom and third-party registries are declared in a project's `dashfy.json`, and
@@ -585,9 +585,9 @@ extensions can also be installed directly from a URL or GitHub repo. For offline
 local development, point `DASHFY_REGISTRY_URL` at a built registry directory:
 
 ```bash
-pnpm --filter @dashfy/registry build   # emits apps/registry/public/r/*.json
+pnpm --filter @getdashfy/registry build   # emits apps/registry/public/r/*.json
 DASHFY_REGISTRY_URL="$PWD/apps/registry/public/r" \
-  node packages/cli/dist/index.js add @dashfy/github --cwd demo --no-install
+  node packages/cli/dist/index.js add @getdashfy/github --cwd demo --no-install
 ```
 
 See the [`dashfy` CLI README](./packages/cli) for the full registry model.

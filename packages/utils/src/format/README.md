@@ -24,31 +24,31 @@ Install with your favorite package manager:
 #### `npm`
 
 ```bash
-npm install @dashfy/utils
+npm install @getdashfy/utils
 ```
 
 #### `pnpm`
 
 ```bash
-pnpm add @dashfy/utils
+pnpm add @getdashfy/utils
 ```
 
 #### `yarn`
 
 ```bash
-yarn add @dashfy/utils
+yarn add @getdashfy/utils
 ```
 
 #### `bun`
 
 ```bash
-bun add @dashfy/utils
+bun add @getdashfy/utils
 ```
 
 ## Quick Start
 
 ```ts
-import { format } from '@dashfy/utils'
+import { format } from '@getdashfy/utils'
 
 // Format numbers with thousands separators
 format(1000, '0,0')
@@ -207,7 +207,7 @@ format(['A', 'B', 'C'], 'list')
 Set a locale that applies to all `format` calls:
 
 ```ts
-import { format, setDefaultLocale, getDefaultLocale } from '@dashfy/utils'
+import { format, setDefaultLocale, getDefaultLocale } from '@getdashfy/utils'
 
 setDefaultLocale('pt-BR')
 format(1234.56, '$0,0.00')
@@ -280,7 +280,7 @@ import {
   formatOrdinal,
   formatExponential,
   formatList,
-} from '@dashfy/utils'
+} from '@getdashfy/utils'
 
 // Use specialized formatters with more control
 formatCurrency(1234.56, { currency: 'EUR', locale: 'de-DE' })
@@ -298,7 +298,7 @@ formatTime(3661, { style: 'long' })
 Fully typed with TypeScript:
 
 ```ts
-import type { BaseFormatOptions } from '@dashfy/utils'
+import type { BaseFormatOptions } from '@getdashfy/utils'
 
 const options: BaseFormatOptions = {
   locale: 'en-US',

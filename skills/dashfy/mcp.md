@@ -33,7 +33,7 @@ The server uses stdout for the protocol, so it never logs to stdout (tool output
 
 ### `get_project_registries`
 
-Returns the registries configured for the project, including the built-in `@dashfy`.
+Returns the registries configured for the project, including the built-in `@getdashfy`.
 
 **Input:** none
 
@@ -53,7 +53,7 @@ Fuzzy-search extensions across registries (ranked across name, title, descriptio
 
 Full details for one or more extensions (dependencies, env vars, widgets, client setup, starter config).
 
-**Input:** `items` (string[]) — e.g. `["@dashfy/github", "owner/repo/widget"]`
+**Input:** `items` (string[]) — e.g. `["@getdashfy/github", "owner/repo/widget"]`
 
 ### `get_docs_for_items`
 
@@ -65,7 +65,7 @@ Setup-oriented docs: the author's setup notes, required env vars, how the extens
 
 Returns the add command (prefixed with the project's package runner) for the given extensions.
 
-**Input:** `items` (string[]) — e.g. `["@dashfy/github"]`
+**Input:** `items` (string[]) — e.g. `["@getdashfy/github"]`
 
 ### `get_audit_checklist`
 
@@ -77,7 +77,7 @@ Project-aware post-install checklist: env vars to set, server setup, and starter
 
 ## Configuring Registries
 
-Namespaced and authenticated registries are set in `dashfy.json`. The `@dashfy` registry is always built-in. Public GitHub repositories can be used directly as `owner/repo` sources when they have a root registry catalog; they need no `dashfy.json` configuration.
+Namespaced and authenticated registries are set in `dashfy.json`. The `@getdashfy` registry is always built-in. Public GitHub repositories can be used directly as `owner/repo` sources when they have a root registry catalog; they need no `dashfy.json` configuration.
 
 ```jsonc
 {

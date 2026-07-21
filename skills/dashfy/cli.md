@@ -20,7 +20,7 @@ Project configuration is read from `dashfy.json`. Dashboards are defined in `das
 
 ## Global flags
 
-These apply to every command and may be placed before the command (e.g. `dashfy --json add @dashfy/github`):
+These apply to every command and may be placed before the command (e.g. `dashfy --json add @getdashfy/github`):
 
 | Flag            | Description                                                      |
 | --------------- | ---------------------------------------------------------------- |
@@ -67,7 +67,7 @@ Scaffolds a runnable Dashfy app (a framework client + Node server + config). Tem
 npx dashfy@latest add [extensions...] [options]
 ```
 
-Resolves the address(es), installs the `@dashfy/ext-*` package(s), and sets them up automatically: registers widgets in the app file (`App.tsx`, or the file set in `dashfy.json` `paths.app`), registers the server API, seeds `.env`, appends starter blocks to `dashfy.config.yml`. With no arguments it fetches the catalog and prompts. `registryDependencies` are resolved and applied first.
+Resolves the address(es), installs the `@getdashfy/ext-*` package(s), and sets them up automatically: registers widgets in the app file (`App.tsx`, or the file set in `dashfy.json` `paths.app`), registers the server API, seeds `.env`, appends starter blocks to `dashfy.config.yml`. With no arguments it fetches the catalog and prompts. `registryDependencies` are resolved and applied first.
 
 | Flag           | Short | Description                                          | Default    |
 | -------------- | ----- | ---------------------------------------------------- | ---------- |
@@ -76,7 +76,7 @@ Resolves the address(es), installs the `@dashfy/ext-*` package(s), and sets them
 | `--dry-run`    |       | Preview what would be added without writing anything | `false`    |
 | `--yes`        | `-y`  | Accept defaults / skip prompts                       | `false`    |
 
-Accepts: name (`github`), namespaced name (`@dashfy/github`), URL (`https://…/foo.json`), local file (`./foo.json`), or GitHub address (`owner/repo/name[#ref]`). When you reference a namespace not in `dashfy.json`, `add` looks it up in the discovery index and offers to configure it (auto-added with `-y`).
+Accepts: name (`github`), namespaced name (`@getdashfy/github`), URL (`https://…/foo.json`), local file (`./foo.json`), or GitHub address (`owner/repo/name[#ref]`). When you reference a namespace not in `dashfy.json`, `add` looks it up in the discovery index and offers to configure it (auto-added with `-y`).
 
 ### `remove` — Remove an extension
 
@@ -101,7 +101,7 @@ Removal is registry-first; if the registry is unreachable it derives the setup f
 npx dashfy@latest search [registries...] [options]
 ```
 
-Fuzzy-searches extension catalogs and prints matches with a ready-to-run add command. `list` is an alias. With no arguments it searches every configured registry (including built-in `@dashfy`).
+Fuzzy-searches extension catalogs and prints matches with a ready-to-run add command. `list` is an alias. With no arguments it searches every configured registry (including built-in `@getdashfy`).
 
 | Flag                | Short | Description                                                 | Default |
 | ------------------- | ----- | ----------------------------------------------------------- | ------- |
@@ -118,7 +118,7 @@ Fuzzy-searches extension catalogs and prints matches with a ready-to-run add com
 npx dashfy@latest view <items...> [options]
 ```
 
-Resolves the address(es) and prints the full registry item JSON (deps, env vars, widgets, starter config). Useful for piping: `npx dashfy@latest view @dashfy/github | jq '.dependencies'`.
+Resolves the address(es) and prints the full registry item JSON (deps, env vars, widgets, starter config). Useful for piping: `npx dashfy@latest view @getdashfy/github | jq '.dependencies'`.
 
 | Flag          | Short | Description       | Default |
 | ------------- | ----- | ----------------- | ------- |
@@ -202,7 +202,7 @@ Checks that `index.json` and every `<name>.json` match the schemas, filenames ma
 npx dashfy@latest registry add [registries...] [options]
 ```
 
-Adds custom registries to `dashfy.json` (merged over built-in `@dashfy`). Accepts a bare `@namespace` (resolved from the discovery index) or an explicit `@namespace=https://host/r/{name}.json` (must contain `{name}`). With no arguments it lists known registries for interactive selection.
+Adds custom registries to `dashfy.json` (merged over built-in `@getdashfy`). Accepts a bare `@namespace` (resolved from the discovery index) or an explicit `@namespace=https://host/r/{name}.json` (must contain `{name}`). With no arguments it lists known registries for interactive selection.
 
 | Flag          | Short | Description               | Default |
 | ------------- | ----- | ------------------------- | ------- |
@@ -216,7 +216,7 @@ Adds custom registries to `dashfy.json` (merged over built-in `@dashfy`). Accept
 npx dashfy@latest registry remove [registries...] [options]
 ```
 
-Removes custom registries from `dashfy.json` — the inverse of `registry add`. The built-in `@dashfy` namespace is implicit and cannot be removed. With no arguments it lists configured registries for interactive multiselect.
+Removes custom registries from `dashfy.json` — the inverse of `registry add`. The built-in `@getdashfy` namespace is implicit and cannot be removed. With no arguments it lists configured registries for interactive multiselect.
 
 | Flag          | Short | Description               | Default |
 | ------------- | ----- | ------------------------- | ------- |
@@ -288,11 +288,11 @@ By default `init` fetches the template via a sparse `git` checkout. Set `DASHFY_
 
 Commands Dashfy suggests for copy-pasting (the add command in `search`, the Install line in `docs`, and MCP output) are prefixed with the runner for the detected package manager:
 
-| Package manager | Suggested command                           |
-| --------------- | ------------------------------------------- |
-| pnpm            | `pnpm dlx dashfy@latest add @dashfy/github` |
-| bun             | `bunx dashfy@latest add @dashfy/github`     |
-| npm / yarn      | `npx dashfy@latest add @dashfy/github`      |
+| Package manager | Suggested command                              |
+| --------------- | ---------------------------------------------- |
+| pnpm            | `pnpm dlx dashfy@latest add @getdashfy/github` |
+| bun             | `bunx dashfy@latest add @getdashfy/github`     |
+| npm / yarn      | `npx dashfy@latest add @getdashfy/github`      |
 
 Detection follows `npm_config_user_agent` first, then a lockfile in the working directory, falling back to npm.
 
@@ -313,6 +313,6 @@ This makes `${ENV_VAR}` placeholders in a custom registry's `url` / `params` / `
 
 Other tunables:
 
-- `DASHFY_REGISTRY_URL` — base URL/dir for `@dashfy` items (offline/dev).
+- `DASHFY_REGISTRY_URL` — base URL/dir for `@getdashfy` items (offline/dev).
 - `DASHFY_REGISTRIES_URL` — location of the discovery index (`registries.json`).
 - `DASHFY_TEMPLATE_DIR` / `DASHFY_GITHUB_URL` — template source for `init`.

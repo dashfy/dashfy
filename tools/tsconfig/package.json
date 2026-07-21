@@ -1,5 +1,5 @@
 {
-  "name": "@dashfy/tsconfig",
+  "name": "@getdashfy/tsconfig",
   "version": "0.0.0",
   "private": true,
   "description": "Shared TypeScript configurations for Dashfy",

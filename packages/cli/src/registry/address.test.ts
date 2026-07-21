@@ -4,7 +4,7 @@ import { resolveItemAddress } from '@/registry/address'
 import { BUILTIN_REGISTRY_NAMESPACE } from '@/registry/constants'
 
 describe('resolveItemAddress', () => {
-  it('resolves bare names to the default @dashfy namespace', () => {
+  it('resolves bare names to the default @getdashfy namespace', () => {
     expect(resolveItemAddress('github')).toEqual({
       scheme: 'namespace',
       namespace: BUILTIN_REGISTRY_NAMESPACE,

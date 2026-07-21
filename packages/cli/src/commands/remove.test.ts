@@ -76,7 +76,7 @@ describe('remove', () => {
     expect(server).not.toContain("dashfy.registerApi('github'")
     expect(uninstallDeps).toHaveBeenCalledTimes(1)
     const call = vi.mocked(uninstallDeps).mock.calls[0]?.[0]
-    expect(call?.packages).toContain('@dashfy/ext-github')
+    expect(call?.packages).toContain('@getdashfy/ext-github')
   })
 
   it('keeps deps with --keep-deps', async () => {

@@ -1,10 +1,10 @@
 import path from 'node:path'
 
-import { getErrorMessage } from '@dashfy/utils'
 import cors from '@fastify/cors'
 import fastifyStatic from '@fastify/static'
 import type { APIRegistration, DashfyConfig, PollMode, Subscription } from '@getdashfy/types'
 import { WebSocketEvent } from '@getdashfy/types'
+import { getErrorMessage } from '@getdashfy/utils'
 import { watch } from 'chokidar'
 import type { FastifyInstance } from 'fastify'
 import Fastify from 'fastify'
@@ -25,7 +25,7 @@ import type { DashfyOptions } from './types'
  *
  * @example
  * ```ts
- * import { Dashfy } from '@dashfy/server'
+ * import { Dashfy } from '@getdashfy/server'
  *
  * const dashfy = new Dashfy()
  *
@@ -80,7 +80,7 @@ export class Dashfy {
    * ```ts
    * // Integrate Dashfy with existing Fastify app
    * import Fastify from 'fastify'
-   * import { Dashfy } from '@dashfy/server'
+   * import { Dashfy } from '@getdashfy/server'
    *
    * const app = Fastify()
    *

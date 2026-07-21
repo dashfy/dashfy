@@ -22,7 +22,7 @@ const THEME_FONT_LINK_ID = 'dashfy-theme-fonts'
  *
  * @example
  * ```ts
- * import { getTheme } from '@dashfy/themes'
+ * import { getTheme } from '@getdashfy/themes'
  *
  * const minimalTheme = getTheme('minimal')
  * console.log(minimalTheme.displayName) // "Minimal"
@@ -46,7 +46,7 @@ export function getTheme(id: PresetThemeId): Theme {
  *
  * @example
  * ```ts
- * import { applyTheme, defaultTheme } from '@dashfy/themes'
+ * import { applyTheme, defaultTheme } from '@getdashfy/themes'
  *
  * // Apply default theme in light mode
  * applyTheme(defaultTheme, 'light')
@@ -116,7 +116,7 @@ export function applyTheme(theme: Theme, mode?: ThemeMode): void {
  *
  * @example
  * ```ts
- * import { removeTheme, darkTheme } from '@dashfy/themes'
+ * import { removeTheme, darkTheme } from '@getdashfy/themes'
  *
  * // Remove theme styling
  * removeTheme(darkTheme)
@@ -157,7 +157,7 @@ export function removeTheme(theme: Theme): void {
  *
  * @example
  * ```ts
- * import { getCurrentTheme, applyTheme, darkTheme } from '@dashfy/themes'
+ * import { getCurrentTheme, applyTheme, darkTheme } from '@getdashfy/themes'
  *
  * applyTheme(darkTheme)
  * const current = getCurrentTheme()
@@ -180,7 +180,7 @@ export function getCurrentTheme(): PresetThemeId | null {
  *
  * @example
  * ```ts
- * import { listThemes } from '@dashfy/themes'
+ * import { listThemes } from '@getdashfy/themes'
  *
  * const themeIds = listThemes()
  * console.log(themeIds) // ["default", "minimal", "nord"]
@@ -226,7 +226,7 @@ export interface CreateThemeOptions {
  *
  * @example Basic custom theme
  * ```ts
- * import { createTheme, applyTheme } from '@dashfy/themes'
+ * import { createTheme, applyTheme } from '@getdashfy/themes'
  *
  * const myTheme = createTheme({
  *   id: 'ocean',
@@ -243,7 +243,7 @@ export interface CreateThemeOptions {
  *
  * @example Theme with different light and dark colors
  * ```ts
- * import { createTheme, applyTheme } from '@dashfy/themes'
+ * import { createTheme, applyTheme } from '@getdashfy/themes'
  *
  * const customTheme = createTheme({
  *   id: 'custom',
@@ -258,7 +258,7 @@ export interface CreateThemeOptions {
  *
  * @example Extending a different base theme
  * ```ts
- * import { createTheme, minimalTheme, applyTheme } from '@dashfy/themes'
+ * import { createTheme, minimalTheme, applyTheme } from '@getdashfy/themes'
  *
  * const customMinimal = createTheme({
  *   id: 'custom-minimal',

@@ -48,7 +48,7 @@ async function writeExtension(
   const dir = path.join(packagesDir, folder)
   await fs.ensureDir(dir)
   await fs.writeJson(path.join(dir, 'package.json'), {
-    name: `@dashfy/${folder}`,
+    name: `@getdashfy/${folder}`,
     version: options.version ?? '1.2.3',
     description: options.packageDescription,
     dashfy: {
@@ -88,7 +88,7 @@ describe('buildRegistryFromPackages', () => {
       name: 'alpha',
       type: 'registry:extension',
       title: 'Alpha',
-      dependencies: ['@dashfy/ext-alpha@^1.2.3'],
+      dependencies: ['@getdashfy/ext-alpha@^1.2.3'],
       docs: 'Set up alpha',
       envVars: ['ALPHA_TOKEN'],
       categories: ['demo'],
@@ -181,7 +181,7 @@ describe('buildRegistryFromPackages', () => {
     const skippedDir = path.join(packagesDir, 'ext-skipped')
     await fs.ensureDir(skippedDir)
     await fs.writeJson(path.join(skippedDir, 'package.json'), {
-      name: '@dashfy/ext-skipped',
+      name: '@getdashfy/ext-skipped',
       version: '0.1.0',
     })
     await writeExtension(packagesDir, 'ext-kept', {
@@ -196,7 +196,7 @@ describe('buildRegistryFromPackages', () => {
 
     expect(count).toBe(1)
     expect(warn).toHaveBeenCalledWith(
-      expect.stringContaining('Skipping @dashfy/ext-skipped: no "dashfy" metadata field.'),
+      expect.stringContaining('Skipping @getdashfy/ext-skipped: no "dashfy" metadata field.'),
     )
   })
 
@@ -208,7 +208,7 @@ describe('buildRegistryFromPackages', () => {
     const otherDir = path.join(packagesDir, 'ui')
     await fs.ensureDir(otherDir)
     await fs.writeJson(path.join(otherDir, 'package.json'), {
-      name: '@dashfy/ui',
+      name: '@getdashfy/ui',
       version: '0.1.0',
       dashfy: { id: 'ui', title: 'UI', widgets: ['UiWidget'] },
     })
@@ -229,7 +229,7 @@ describe('buildRegistryFromPackages', () => {
     const invalidDir = path.join(packagesDir, 'ext-invalid')
     await fs.ensureDir(invalidDir)
     await fs.writeJson(path.join(invalidDir, 'package.json'), {
-      name: '@dashfy/ext-invalid',
+      name: '@getdashfy/ext-invalid',
       version: '0.1.0',
       dashfy: {
         id: 'invalid',

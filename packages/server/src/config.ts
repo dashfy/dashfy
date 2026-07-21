@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises'
 import { extname } from 'node:path'
 
-import { getErrorMessage } from '@dashfy/utils'
 import type { DashfyConfig } from '@getdashfy/types'
+import { getErrorMessage } from '@getdashfy/utils'
 import { parse as parseYaml } from 'yaml'
 import { z } from 'zod'
 

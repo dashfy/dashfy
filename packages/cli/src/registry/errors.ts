@@ -199,7 +199,7 @@ export class RegistryItemNotFoundError extends RegistryError {
 export class RegistryInvalidNamespaceError extends RegistryError {
   constructor(public readonly registryName: string) {
     super(
-      `Invalid registry namespace: "${registryName}". Names must start with @ (e.g., @dashfy, @acme).`,
+      `Invalid registry namespace: "${registryName}". Names must start with @ (e.g., @getdashfy, @acme).`,
       {
         code: RegistryErrorCode.VALIDATION_ERROR,
         context: { registryName },

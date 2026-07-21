@@ -20,7 +20,7 @@ function makeItem(overrides: Partial<RegistryItem> = {}): RegistryItem {
     type: 'registry:extension',
     title: 'GitHub',
     description: 'GitHub widgets',
-    dependencies: ['@dashfy/ext-github@^0.1.0'],
+    dependencies: ['@getdashfy/ext-github@^0.1.0'],
     envVars: ['GITHUB_TOKEN'],
     categories: ['developer'],
     docs: 'Create a token at github.com/settings/tokens',
@@ -28,7 +28,7 @@ function makeItem(overrides: Partial<RegistryItem> = {}): RegistryItem {
       extensionKey: 'github',
       widgets: ['RepoBadge', 'PullRequests'],
       client: {
-        import: '@dashfy/ext-github',
+        import: '@getdashfy/ext-github',
         factory: 'createGitHubClient',
         mode: 'poll',
       },
@@ -38,7 +38,7 @@ function makeItem(overrides: Partial<RegistryItem> = {}): RegistryItem {
 }
 
 describe('itemAddress', () => {
-  it('prefixes bare names with @dashfy', () => {
+  it('prefixes bare names with @getdashfy', () => {
     expect(itemAddress({ name: 'github' })).toBe(`${BUILTIN_REGISTRY_NAMESPACE}/github`)
   })
 
@@ -49,8 +49,8 @@ describe('itemAddress', () => {
 
 describe('formatRegistryNames', () => {
   it('lists configured registries', () => {
-    const text = formatRegistryNames({ '@dashfy': 'https://r/{name}.json' })
-    expect(text).toContain('@dashfy -> https://r/{name}.json')
+    const text = formatRegistryNames({ '@getdashfy': 'https://r/{name}.json' })
+    expect(text).toContain('@getdashfy -> https://r/{name}.json')
   })
 
   it('handles object form registries', () => {
@@ -64,7 +64,7 @@ describe('formatSearchResults', () => {
     const results: SearchResults = {
       results: [
         {
-          registry: '@dashfy',
+          registry: '@getdashfy',
           items: [
             { name: 'github', type: 'registry:extension', title: 'GitHub', description: 'GH' },
           ],
@@ -74,15 +74,15 @@ describe('formatSearchResults', () => {
     }
     const text = formatSearchResults(results, { query: 'git' })
     expect(text).toContain('Found 1 item')
-    expect(text).toContain('@dashfy/github (GitHub)')
-    expect(text).toContain('Add: dashfy add @dashfy/github')
+    expect(text).toContain('@getdashfy/github (GitHub)')
+    expect(text).toContain('Add: dashfy add @getdashfy/github')
   })
 
   it('prefixes the inline add command with the package runner', () => {
     const results: SearchResults = {
       results: [
         {
-          registry: '@dashfy',
+          registry: '@getdashfy',
           items: [
             { name: 'github', type: 'registry:extension', title: 'GitHub', description: 'GH' },
           ],
@@ -91,14 +91,14 @@ describe('formatSearchResults', () => {
       ],
     }
     const text = formatSearchResults(results, { query: 'git', command: 'pnpm dlx dashfy@latest' })
-    expect(text).toContain('Add: pnpm dlx dashfy@latest add @dashfy/github')
+    expect(text).toContain('Add: pnpm dlx dashfy@latest add @getdashfy/github')
   })
 
   it('shows a pagination hint when more items remain', () => {
     const results: SearchResults = {
       results: [
         {
-          registry: '@dashfy',
+          registry: '@getdashfy',
           items: [
             { name: 'github', type: 'registry:extension', title: 'GitHub', description: 'GH' },
           ],
@@ -107,7 +107,7 @@ describe('formatSearchResults', () => {
       ],
     }
     const text = formatSearchResults(results, { query: 'git', offset: 0 })
-    expect(text).toContain('4 more in @dashfy — use offset: 1')
+    expect(text).toContain('4 more in @getdashfy — use offset: 1')
   })
 
   it('reports no items and skipped registries', () => {
@@ -124,11 +124,11 @@ describe('formatSearchResults', () => {
 describe('formatRegistryItems', () => {
   it('renders item details including setup metadata', () => {
     const text = formatRegistryItems([makeItem()])
-    expect(text).toContain('# @dashfy/github')
-    expect(text).toContain('Dependencies: @dashfy/ext-github@^0.1.0')
+    expect(text).toContain('# @getdashfy/github')
+    expect(text).toContain('Dependencies: @getdashfy/ext-github@^0.1.0')
     expect(text).toContain('Environment variables: GITHUB_TOKEN')
     expect(text).toContain('Widgets: RepoBadge, PullRequests')
-    expect(text).toContain('Server client: createGitHubClient from @dashfy/ext-github (poll)')
+    expect(text).toContain('Server client: createGitHubClient from @getdashfy/ext-github (poll)')
   })
 
   it('handles empty input', () => {
@@ -139,16 +139,16 @@ describe('formatRegistryItems', () => {
 describe('formatAddCommands', () => {
   it('returns add command and variants', () => {
     const text = formatAddCommands([makeItem(), makeItem({ name: '@acme/widget' })])
-    expect(text).toContain('dashfy add @dashfy/github @acme/widget')
+    expect(text).toContain('dashfy add @getdashfy/github @acme/widget')
     expect(text).toContain('--dry-run')
     expect(text).toContain('--no-install')
   })
 
   it('prefixes the command and variants with the package runner', () => {
     const text = formatAddCommands([makeItem()], { command: 'bunx dashfy@latest' })
-    expect(text).toContain('bunx dashfy@latest add @dashfy/github')
-    expect(text).toContain('bunx dashfy@latest add @dashfy/github --dry-run')
-    expect(text).toContain('bunx dashfy@latest add @dashfy/github --no-install')
+    expect(text).toContain('bunx dashfy@latest add @getdashfy/github')
+    expect(text).toContain('bunx dashfy@latest add @getdashfy/github --dry-run')
+    expect(text).toContain('bunx dashfy@latest add @getdashfy/github --no-install')
   })
 })
 
@@ -160,7 +160,7 @@ describe('buildExtensionDocs', () => {
         extensionKey: 'github',
         widgets: ['RepoBadge', 'Status'],
         client: {
-          import: '@dashfy/ext-github',
+          import: '@getdashfy/ext-github',
           factory: 'createGitHubClient',
           mode: 'poll',
           options: '{ token: process.env.GITHUB_TOKEN! }',
@@ -171,13 +171,13 @@ describe('buildExtensionDocs', () => {
 
     const docs = buildExtensionDocs(item)
 
-    expect(docs.address).toBe('@dashfy/github')
+    expect(docs.address).toBe('@getdashfy/github')
     expect(docs.setup).toBe('Create a token at github.com/settings/tokens')
     expect(docs.envVars).toEqual(['GITHUB_TOKEN'])
     expect(docs.integration.extensionKey).toBe('github')
     expect(docs.integration.client?.options).toBe('{ token: process.env.GITHUB_TOKEN! }')
     expect(docs.starter).toHaveLength(2)
-    expect(docs.addCommand).toBe('dashfy add @dashfy/github')
+    expect(docs.addCommand).toBe('dashfy add @getdashfy/github')
   })
 
   it('omits setup when docs is absent', () => {
@@ -188,7 +188,7 @@ describe('buildExtensionDocs', () => {
 
   it('prefixes the add command with the package runner', () => {
     const docs = buildExtensionDocs(makeItem(), { command: 'pnpm dlx dashfy@latest' })
-    expect(docs.addCommand).toBe('pnpm dlx dashfy@latest add @dashfy/github')
+    expect(docs.addCommand).toBe('pnpm dlx dashfy@latest add @getdashfy/github')
   })
 
   it('omits client for frontend-only extensions', () => {
@@ -209,7 +209,7 @@ describe('formatExtensionDocs', () => {
         extensionKey: 'github',
         widgets: ['RepoBadge', 'Status'],
         client: {
-          import: '@dashfy/ext-github',
+          import: '@getdashfy/ext-github',
           factory: 'createGitHubClient',
           mode: 'poll',
           options: '{ token: process.env.GITHUB_TOKEN! }',
@@ -220,13 +220,13 @@ describe('formatExtensionDocs', () => {
 
     const text = formatExtensionDocs([item])
 
-    expect(text).toContain('@dashfy/github — GitHub')
+    expect(text).toContain('@getdashfy/github — GitHub')
     expect(text).toContain('Setup\n  Create a token')
     expect(text).toContain('Environment\n  GITHUB_TOKEN')
-    expect(text).toContain('Server: createGitHubClient from @dashfy/ext-github (poll)')
+    expect(text).toContain('Server: createGitHubClient from @getdashfy/ext-github (poll)')
     expect(text).toContain('Options: { token: process.env.GITHUB_TOKEN! }')
     expect(text).toContain('- RepoBadge (repository: facebook/react)')
-    expect(text).toContain('Install\n  dashfy add @dashfy/github')
+    expect(text).toContain('Install\n  dashfy add @getdashfy/github')
   })
 
   it('omits setup, environment, and server lines when not applicable', () => {
@@ -247,7 +247,7 @@ describe('formatExtensionDocs', () => {
 
   it('prefixes the install command with the package runner', () => {
     const text = formatExtensionDocs([makeItem()], { command: 'bunx dashfy@latest' })
-    expect(text).toContain('Install\n  bunx dashfy@latest add @dashfy/github')
+    expect(text).toContain('Install\n  bunx dashfy@latest add @getdashfy/github')
   })
 
   it('handles empty input', () => {

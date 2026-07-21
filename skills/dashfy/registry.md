@@ -13,11 +13,11 @@ A registry has two forms:
 
 ## Authored metadata: the `dashfy` package field
 
-Each `@dashfy/ext-*` package declares a `dashfy` object in its `package.json`:
+Each `@getdashfy/ext-*` package declares a `dashfy` object in its `package.json`:
 
 ```jsonc
 {
-  "name": "@dashfy/ext-github",
+  "name": "@getdashfy/ext-github",
   "version": "0.1.0",
   "dashfy": {
     "id": "github",
@@ -27,7 +27,7 @@ Each `@dashfy/ext-*` package declares a `dashfy` object in its `package.json`:
     "docs": "Create a token at https://github.com/settings/tokens",
     "widgets": ["UserBadge", "RepoBadge", "PullRequests"],
     "client": {
-      "import": "@dashfy/ext-github",
+      "import": "@getdashfy/ext-github",
       "factory": "createGitHubClient",
       "mode": "poll",
       "options": "{ token: process.env.GITHUB_TOKEN! }",
@@ -67,7 +67,7 @@ Field reference:
   "type": "registry:extension",
   "title": "GitHub",
   "description": "Display GitHub data with widgets and charts.",
-  "dependencies": ["@dashfy/ext-github@^0.1.0"],
+  "dependencies": ["@getdashfy/ext-github@^0.1.0"],
   "registryDependencies": [],
   "envVars": ["GITHUB_TOKEN"],
   "categories": ["developer"],
@@ -76,7 +76,7 @@ Field reference:
     "extensionKey": "github",
     "widgets": ["UserBadge", "RepoBadge", "PullRequests"],
     "client": {
-      "import": "@dashfy/ext-github",
+      "import": "@getdashfy/ext-github",
       "factory": "createGitHubClient",
       "mode": "poll",
       "options": "{ token: process.env.GITHUB_TOKEN! }",
@@ -89,7 +89,7 @@ Field reference:
 Rules:
 
 - `type` is always `registry:extension`.
-- `dependencies` lists at least one npm package (the `@dashfy/ext-*` package, optionally version-pinned).
+- `dependencies` lists at least one npm package (the `@getdashfy/ext-*` package, optionally version-pinned).
 - The built filename must match the item `name` (e.g. `github` → `github.json`).
 - `index.json` is a condensed catalog (`name`, `type`, `title`, `description`, `categories`) and must stay in sync with the item files.
 
@@ -105,7 +105,7 @@ Rules:
 
 Dependency rules:
 
-- Bare names such as `"other-ext"` mean items in the built-in `@dashfy` namespace.
+- Bare names such as `"other-ext"` mean items in the built-in `@getdashfy` namespace.
 - Bare names never mean same-registry or same-repository items.
 - Namespaced dependencies use `@namespace/item-name`.
 - GitHub dependencies use `owner/repo/item-name`, optionally pinned with `#ref`.
@@ -117,8 +117,8 @@ When reasoning about an extension address string, classify it first.
 
 | Address                          | Scheme    | Meaning                                                 |
 | -------------------------------- | --------- | ------------------------------------------------------- |
-| `github`                         | dashfy    | Item `github` from the built-in `@dashfy` namespace.    |
-| `@dashfy/github`                 | namespace | The `@dashfy` namespace, explicitly.                    |
+| `github`                         | dashfy    | Item `github` from the built-in `@getdashfy` namespace. |
+| `@getdashfy/github`              | namespace | The `@getdashfy` namespace, explicitly.                 |
 | `@acme/widget`                   | namespace | Item `widget` from configured registry `@acme`.         |
 | `https://example.com/r/foo.json` | url       | Built registry item JSON at that URL.                   |
 | `./local/foo.json`               | file      | Built registry item JSON on disk.                       |
@@ -129,7 +129,7 @@ Addresses ending in `.json` keep file/URL precedence over GitHub item parsing.
 
 ## Custom & third-party registries
 
-A custom registry endpoint is declared in `dashfy.json` under `registries`, merged over the built-in `@dashfy`:
+A custom registry endpoint is declared in `dashfy.json` under `registries`, merged over the built-in `@getdashfy`:
 
 ```jsonc
 {

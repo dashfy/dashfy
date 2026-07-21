@@ -39,7 +39,7 @@ describe('getConfig', () => {
 })
 
 describe('resolveConfig', () => {
-  it('always exposes the built-in @dashfy registry', async () => {
+  it('always exposes the built-in @getdashfy registry', async () => {
     const config = await resolveConfig(await tmp())
     expect(config.registries[BUILTIN_REGISTRY_NAMESPACE]).toBeDefined()
     expect(config.userRegistries).toBeUndefined()

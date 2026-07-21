@@ -33,12 +33,12 @@ body:
       description: Which part of Dashfy would this affect?
       multiple: true
       options:
-        - '@dashfy/cli (scaffolding, extensions, commands)'
-        - '@dashfy/server (runtime, config, APIs)'
-        - '@dashfy/themes (tokens, theming, styling)'
+        - '@getdashfy/cli (scaffolding, extensions, commands)'
+        - '@getdashfy/server (runtime, config, APIs)'
+        - '@getdashfy/themes (tokens, theming, styling)'
         - '@getdashfy/types (shared contracts)'
-        - '@dashfy/ui (components, widgets, client)'
-        - '@dashfy/utils (formatting, strings, platform)'
+        - '@getdashfy/ui (components, widgets, client)'
+        - '@getdashfy/utils (formatting, strings, platform)'
         - 'examples (demo apps)'
         - 'Tooling/CI'
         - 'Other / Not sure'

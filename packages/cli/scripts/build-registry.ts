@@ -1,5 +1,5 @@
 /**
- * Builds the hosted Dashfy registry from each `@dashfy/ext-*` package's `dashfy`
+ * Builds the hosted Dashfy registry from each `@getdashfy/ext-*` package's `dashfy`
  * metadata field, writing per-extension item documents and an `index.json` to
  * the registry app at `apps/registry/public/r`.
  *

@@ -1,4 +1,4 @@
-import { Dashfy } from '@dashfy/server'
+import { Dashfy } from '@getdashfy/server'
 
 // Create a new Dashfy server instance
 const dashfy = new Dashfy()

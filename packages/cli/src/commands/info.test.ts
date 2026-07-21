@@ -19,7 +19,7 @@ describe('collectInfo', () => {
     const cwd = await tmp()
     await fs.writeJson(path.join(cwd, 'package.json'), {
       name: 'demo',
-      dependencies: { '@dashfy/ext-github': '^0.1.0', react: '^18.0.0' },
+      dependencies: { '@getdashfy/ext-github': '^0.1.0', react: '^18.0.0' },
     })
     await fs.writeJson(path.join(cwd, 'dashfy.json'), {
       registries: { '@acme': 'https://acme.com/r/{name}.json' },
@@ -29,9 +29,9 @@ describe('collectInfo', () => {
     const data = await collectInfo(cwd)
 
     expect(data.config.paths?.app).toBe(DEFAULT_APP_PATH)
-    expect(data.config.registries['@dashfy']).toBeDefined()
+    expect(data.config.registries['@getdashfy']).toBeDefined()
     expect(data.config.registries['@acme']).toBe('https://acme.com/r/{name}.json')
-    expect(data.installedExtensions).toContain('@dashfy/ext-github')
+    expect(data.installedExtensions).toContain('@getdashfy/ext-github')
     expect(data.installedExtensions).not.toContain('react')
     expect(data.links.registry).toBeDefined()
     expect(data.links.registries).toBeDefined()

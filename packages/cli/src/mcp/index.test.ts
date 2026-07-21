@@ -46,49 +46,49 @@ afterEach(async () => {
 })
 
 describe('mcp tools', () => {
-  it('get_project_registries lists the configured @dashfy registry', async () => {
+  it('get_project_registries lists the configured @getdashfy registry', async () => {
     const cwd = await projectDir()
     const text = await getProjectRegistries(cwd)
-    expect(text).toContain('@dashfy ->')
+    expect(text).toContain('@getdashfy ->')
   })
 
   it('list_items_in_registries returns the built extensions', async () => {
     const cwd = await projectDir()
     const text = await listItems(cwd, {})
-    expect(text).toContain('@dashfy/github')
+    expect(text).toContain('@getdashfy/github')
     expect(text).toMatch(/Found \d+ items/)
   })
 
   it('search_items_in_registries filters by query', async () => {
     const cwd = await projectDir()
     const text = await searchItems(cwd, { query: 'github' })
-    expect(text).toContain('@dashfy/github')
-    expect(text).not.toContain('@dashfy/nba')
-    expect(text).toContain('Add: pnpm dlx dashfy@latest add @dashfy/github')
+    expect(text).toContain('@getdashfy/github')
+    expect(text).not.toContain('@getdashfy/nba')
+    expect(text).toContain('Add: pnpm dlx dashfy@latest add @getdashfy/github')
   })
 
   it('view_items_in_registries renders full details', async () => {
     const cwd = await projectDir()
     const text = await viewItems(cwd, ['github'])
-    expect(text).toContain('# @dashfy/github')
+    expect(text).toContain('# @getdashfy/github')
     expect(text).toContain('Widgets:')
   })
 
   it('get_add_command_for_items returns the runner-prefixed dashfy add command', async () => {
     const cwd = await projectDir()
     const text = await getAddCommand(cwd, ['github'])
-    expect(text).toContain('pnpm dlx dashfy@latest add @dashfy/github')
+    expect(text).toContain('pnpm dlx dashfy@latest add @getdashfy/github')
   })
 
   it('get_docs_for_items renders setup-oriented docs with a runner-prefixed install command', async () => {
     const cwd = await projectDir()
     const text = await getDocsForItems(cwd, ['github'])
-    expect(text).toContain('@dashfy/github — GitHub')
+    expect(text).toContain('@getdashfy/github — GitHub')
     expect(text).toContain('Setup')
     expect(text).toContain('GITHUB_TOKEN')
     expect(text).toContain('Integration')
     expect(text).toContain('Extension key: github')
-    expect(text).toContain('pnpm dlx dashfy@latest add @dashfy/github')
+    expect(text).toContain('pnpm dlx dashfy@latest add @getdashfy/github')
   })
 
   it('get_audit_checklist surfaces missing env vars and setup for added items', async () => {

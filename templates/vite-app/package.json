@@ -14,12 +14,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@dashfy/ext-github": "^0.1.0",
-    "@dashfy/ext-market-live": "^0.1.0",
-    "@dashfy/ext-nba": "^0.1.0",
-    "@dashfy/ext-system": "^0.1.0",
-    "@dashfy/server": "^0.1.0",
-    "@dashfy/ui": "^0.1.0",
+    "@getdashfy/ext-github": "^0.1.0",
+    "@getdashfy/ext-market-live": "^0.1.0",
+    "@getdashfy/ext-nba": "^0.1.0",
+    "@getdashfy/ext-system": "^0.1.0",
+    "@getdashfy/server": "^0.1.0",
+    "@getdashfy/ui": "^0.1.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

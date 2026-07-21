@@ -1,6 +1,6 @@
-import '@dashfy/ui/styles.css'
+import '@getdashfy/ui/styles.css'
 
-import { ThemeRegistry } from '@dashfy/ui'
+import { ThemeRegistry } from '@getdashfy/ui'
 import * as React from 'react'
 import { createRoot } from 'react-dom/client'
 

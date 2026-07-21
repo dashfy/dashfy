@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest'
 
 import { removeFromApp, updateApp } from '@/utils/updaters/update-app'
 
-const MINIMAL_APP = `import { Dashfy } from '@dashfy/ui'
+const MINIMAL_APP = `import { Dashfy } from '@getdashfy/ui'
 
 export const App = () => {
   return <Dashfy />
@@ -27,7 +27,7 @@ describe('updateApp', () => {
     const result = await updateApp({
       appFile,
       extensionKey: 'github',
-      widgetPackage: '@dashfy/ext-github',
+      widgetPackage: '@getdashfy/ext-github',
       widgets: ['Status', 'RepoBadge'],
     })
 
@@ -36,25 +36,25 @@ describe('updateApp', () => {
     expect(result).toBe('added')
     expect(content).toContain("WidgetRegistry.addExtension('github'")
     expect(content).toContain('WidgetRegistry')
-    expect(content).toMatch(/from '@dashfy\/ext-github'/)
+    expect(content).toMatch(/from '@getdashfy\/ext-github'/)
     expect(content).toContain('Status')
     expect(content).toContain('RepoBadge')
   })
 
-  it('merges WidgetRegistry into the existing @dashfy/ui import', async () => {
+  it('merges WidgetRegistry into the existing @getdashfy/ui import', async () => {
     const appFile = await makeAppFile()
 
     await updateApp({
       appFile,
       extensionKey: 'github',
-      widgetPackage: '@dashfy/ext-github',
+      widgetPackage: '@getdashfy/ext-github',
       widgets: ['Status'],
     })
 
     const content = await readFile(appFile, 'utf-8')
-    const uiImports = content.match(/from '@dashfy\/ui'/g) ?? []
+    const uiImports = content.match(/from '@getdashfy\/ui'/g) ?? []
     expect(uiImports).toHaveLength(1)
-    expect(content).toMatch(/import \{ Dashfy, WidgetRegistry \} from '@dashfy\/ui'/)
+    expect(content).toMatch(/import \{ Dashfy, WidgetRegistry \} from '@getdashfy\/ui'/)
   })
 
   it('is idempotent on re-run', async () => {
@@ -62,7 +62,7 @@ describe('updateApp', () => {
     const options = {
       appFile,
       extensionKey: 'github',
-      widgetPackage: '@dashfy/ext-github',
+      widgetPackage: '@getdashfy/ext-github',
       widgets: ['Status'],
     }
 
@@ -83,7 +83,7 @@ describe('removeFromApp', () => {
     const options = {
       appFile,
       extensionKey: 'github',
-      widgetPackage: '@dashfy/ext-github',
+      widgetPackage: '@getdashfy/ext-github',
       widgets: ['Status', 'RepoBadge'],
     }
 
@@ -93,9 +93,9 @@ describe('removeFromApp', () => {
 
     expect(removed).toBe('removed')
     expect(content).not.toContain("WidgetRegistry.addExtension('github'")
-    expect(content).not.toContain('@dashfy/ext-github')
+    expect(content).not.toContain('@getdashfy/ext-github')
     expect(content).not.toContain('WidgetRegistry')
-    expect(content).toContain("import { Dashfy } from '@dashfy/ui'")
+    expect(content).toContain("import { Dashfy } from '@getdashfy/ui'")
   })
 
   it('skips when the extension is not registered', async () => {
@@ -104,7 +104,7 @@ describe('removeFromApp', () => {
     const removed = await removeFromApp({
       appFile,
       extensionKey: 'github',
-      widgetPackage: '@dashfy/ext-github',
+      widgetPackage: '@getdashfy/ext-github',
       widgets: ['Status'],
     })
 
@@ -116,20 +116,20 @@ describe('removeFromApp', () => {
     await updateApp({
       appFile,
       extensionKey: 'github',
-      widgetPackage: '@dashfy/ext-github',
+      widgetPackage: '@getdashfy/ext-github',
       widgets: ['Status'],
     })
     await updateApp({
       appFile,
       extensionKey: 'nba',
-      widgetPackage: '@dashfy/ext-nba',
+      widgetPackage: '@getdashfy/ext-nba',
       widgets: ['Scores'],
     })
 
     await removeFromApp({
       appFile,
       extensionKey: 'github',
-      widgetPackage: '@dashfy/ext-github',
+      widgetPackage: '@getdashfy/ext-github',
       widgets: ['Status'],
     })
     const content = await readFile(appFile, 'utf-8')
@@ -137,7 +137,7 @@ describe('removeFromApp', () => {
     expect(content).not.toContain("WidgetRegistry.addExtension('github'")
     expect(content).toContain("WidgetRegistry.addExtension('nba'")
     expect(content).toContain('WidgetRegistry')
-    expect(content).not.toContain('@dashfy/ext-github')
-    expect(content).toContain('@dashfy/ext-nba')
+    expect(content).not.toContain('@getdashfy/ext-github')
+    expect(content).toContain('@getdashfy/ext-nba')
   })
 })

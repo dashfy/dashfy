@@ -1,10 +1,10 @@
 # Storybook Configuration
 
-This directory contains the Storybook configuration for the `@dashfy/ui` package.
+This directory contains the Storybook configuration for the `@getdashfy/ui` package.
 
 ## 🎨 Theme System
 
-Storybook uses the **App component** which includes the `ThemeProvider` from `@dashfy/themes`. This ensures that the same theme system used in the application is available in Storybook.
+Storybook uses the **App component** which includes the `ThemeProvider` from `@getdashfy/themes`. This ensures that the same theme system used in the application is available in Storybook.
 
 ### How It Works
 
@@ -59,7 +59,7 @@ The `@/` alias points to `../src/` directory, matching the tsconfig setup.
 
 The following workspace packages are pre-bundled for performance:
 
-- `@dashfy/themes`
+- `@getdashfy/themes`
 - `@getdashfy/types`
 
 ## 🛠️ Development

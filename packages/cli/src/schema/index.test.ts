@@ -7,13 +7,17 @@ const validItem = {
   name: 'github',
   type: 'registry:extension' as const,
   title: 'GitHub',
-  dependencies: ['@dashfy/ext-github@^0.1.0'],
+  dependencies: ['@getdashfy/ext-github@^0.1.0'],
   envVars: ['GITHUB_TOKEN'],
-  registryDependencies: ['@dashfy/json'],
+  registryDependencies: ['@getdashfy/json'],
   meta: {
     extensionKey: 'github',
     widgets: ['UserBadge'],
-    client: { import: '@dashfy/ext-github', factory: 'createGitHubClient', mode: 'poll' as const },
+    client: {
+      import: '@getdashfy/ext-github',
+      factory: 'createGitHubClient',
+      mode: 'poll' as const,
+    },
   },
 }
 
@@ -45,16 +49,16 @@ describe('registryConfigSchema', () => {
 
   it('requires the {name} placeholder', () => {
     expect(
-      registryConfigSchema.safeParse({ '@dashfy': 'https://r.dashfy.dev/github.json' }).success,
+      registryConfigSchema.safeParse({ '@getdashfy': 'https://r.dashfy.dev/github.json' }).success,
     ).toBe(false)
   })
 
   it('accepts string and object registry endpoints', () => {
     const parsed = registryConfigSchema.parse({
-      '@dashfy': 'https://r.dashfy.dev/{name}.json',
+      '@getdashfy': 'https://r.dashfy.dev/{name}.json',
       '@acme': { url: 'https://acme.com/r/{name}.json', headers: { Authorization: 'Bearer x' } },
     })
-    expect(Object.keys(parsed)).toEqual(['@dashfy', '@acme'])
+    expect(Object.keys(parsed)).toEqual(['@getdashfy', '@acme'])
   })
 })
 

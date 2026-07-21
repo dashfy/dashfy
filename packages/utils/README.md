@@ -1,10 +1,10 @@
-# `@dashfy/utils`
+# `@getdashfy/utils`
 
 > Formatting and utility functions for Dashfy - numbers, currencies, bytes, dates, times, strings, platform detection, and more.
 
 ## Introduction
 
-`@dashfy/utils` provides formatting and utility functions for Dashfy dashboards. It includes:
+`@getdashfy/utils` provides formatting and utility functions for Dashfy dashboards. It includes:
 
 - **Format** - A flexible format API inspired by [Numeral.js](https://numeraljs.com) for numbers, dates, times, bytes, and more
 - **Error** - Safe error message extraction
@@ -21,31 +21,31 @@ Install with your favorite package manager:
 #### `npm`
 
 ```bash
-npm install @dashfy/utils
+npm install @getdashfy/utils
 ```
 
 #### `pnpm`
 
 ```bash
-pnpm add @dashfy/utils
+pnpm add @getdashfy/utils
 ```
 
 #### `yarn`
 
 ```bash
-yarn add @dashfy/utils
+yarn add @getdashfy/utils
 ```
 
 #### `bun`
 
 ```bash
-bun add @dashfy/utils
+bun add @getdashfy/utils
 ```
 
 ## Quick Start
 
 ```ts
-import { format, debounce, get, truncate, isClient } from '@dashfy/utils'
+import { format, debounce, get, truncate, isClient } from '@getdashfy/utils'
 
 // Format numbers with thousands separators
 format(1000, '0,0')

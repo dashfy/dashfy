@@ -1,5 +1,5 @@
-import type { Theme } from '@dashfy/themes'
-import { DEFAULT_THEME, getTheme, listThemes } from '@dashfy/themes'
+import type { Theme } from '@getdashfy/themes'
+import { DEFAULT_THEME, getTheme, listThemes } from '@getdashfy/themes'
 import type { ThemeId } from '@getdashfy/types'
 
 /**
@@ -11,13 +11,13 @@ import type { ThemeId } from '@getdashfy/types'
  * Supports:
  * - Individual theme registration
  * - Bulk theme registration
- * - Load all built-in themes from @dashfy/themes
+ * - Load all built-in themes from @getdashfy/themes
  * - Default theme configuration
  * - Theme lookup by ID
  *
  * @example
  * ```tsx
- * // Load all themes from @dashfy/themes
+ * // Load all themes from @getdashfy/themes
  * ThemeRegistry.loadAllThemes()
  *
  * // Or register themes individually
@@ -57,7 +57,7 @@ class ThemeRegistryClass {
   }
 
   /**
-   * Register all themes from @dashfy/themes.
+   * Register all themes from @getdashfy/themes.
    */
   public loadAllThemes(): void {
     listThemes().forEach((id) => {
@@ -136,8 +136,8 @@ class ThemeRegistryClass {
         throw new Error(
           `Theme "${themeId}" is not registered. No themes have been registered yet.\n\n` +
             `Please register themes before setting a default:\n\n` +
-            `  import { ThemeRegistry } from '@dashfy/ui'\n` +
-            `  import { defaultTheme, nordTheme } from '@dashfy/themes'\n\n` +
+            `  import { ThemeRegistry } from '@getdashfy/ui'\n` +
+            `  import { defaultTheme, nordTheme } from '@getdashfy/themes'\n\n` +
             `  ThemeRegistry.addAll([defaultTheme, nordTheme])\n` +
             `  ThemeRegistry.defaultTheme = '${themeId}'`,
         )

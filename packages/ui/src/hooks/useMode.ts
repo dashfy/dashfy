@@ -1,5 +1,5 @@
-import type { ThemeMode } from '@dashfy/themes'
-import { isClient, isServer } from '@dashfy/utils'
+import type { ThemeMode } from '@getdashfy/themes'
+import { isClient, isServer } from '@getdashfy/utils'
 import * as React from 'react'
 
 import { MODE_STORAGE_KEY } from '@/constants/storageConstants'

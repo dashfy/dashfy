@@ -102,7 +102,7 @@ function rankByQuery(items: RegistryIndexItem[], query: string): RegistryIndexIt
   return ranked.map((result) => result.obj)
 }
 
-/** Returns the install address for an item (`@dashfy/<name>` for bare names). */
+/** Returns the install address for an item (`@getdashfy/<name>` for bare names). */
 function itemAddress(item: RegistryIndexItem): string {
   return item.name.startsWith('@') ? item.name : `${BUILTIN_REGISTRY_NAMESPACE}/${item.name}`
 }

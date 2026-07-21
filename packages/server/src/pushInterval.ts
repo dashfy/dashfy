@@ -1,5 +1,5 @@
-import { getErrorMessage } from '@dashfy/utils'
 import type { CreatePushInterval, Logger } from '@getdashfy/types'
+import { getErrorMessage } from '@getdashfy/utils'
 
 import { DEFAULT_PUSH_INTERVAL } from './constants'
 

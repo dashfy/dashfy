@@ -15,7 +15,7 @@ afterEach(() => {
 })
 
 describe('buildUrlAndHeadersForRegistryItem', () => {
-  it('resolves the default @dashfy namespace for bare names', () => {
+  it('resolves the default @getdashfy namespace for bare names', () => {
     const registries: RegistryConfig = {
       [BUILTIN_REGISTRY_NAMESPACE]: 'https://r.dashfy.dev/{name}.json',
     }
@@ -69,7 +69,7 @@ describe('buildUrlAndHeadersForRegistryItem', () => {
 })
 
 describe('withBuiltinRegistries', () => {
-  it('always includes the @dashfy namespace', () => {
+  it('always includes the @getdashfy namespace', () => {
     expect(withBuiltinRegistries()[BUILTIN_REGISTRY_NAMESPACE]).toBeDefined()
   })
 

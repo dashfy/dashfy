@@ -28,7 +28,7 @@ export async function buildLocalRegistry(): Promise<string> {
   return dir
 }
 
-/** Registry config that points the `@dashfy` namespace at a local directory. */
+/** Registry config that points the `@getdashfy` namespace at a local directory. */
 export function localRegistries(dir: string): RegistryConfig {
   return { [BUILTIN_REGISTRY_NAMESPACE]: `${dir}/{name}.json` }
 }

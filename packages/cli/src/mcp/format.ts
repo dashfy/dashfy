@@ -8,7 +8,7 @@ import type {
   RegistryItem,
 } from '@/schema'
 
-/** Returns the install address for an item (`@dashfy/<name>` for bare names). */
+/** Returns the install address for an item (`@getdashfy/<name>` for bare names). */
 export function itemAddress(item: Pick<RegistryItem, 'name'>): string {
   return item.name.startsWith('@') ? item.name : `${BUILTIN_REGISTRY_NAMESPACE}/${item.name}`
 }
@@ -25,7 +25,7 @@ function flattenRegistries(registries: RegistryConfig): [string, string][] {
 export function formatRegistryNames(registries: RegistryConfig): string {
   const entries = flattenRegistries(registries)
   if (entries.length === 0) {
-    return 'No registries are configured. The built-in @dashfy registry is always available.'
+    return 'No registries are configured. The built-in @getdashfy registry is always available.'
   }
   const lines = entries.map(([namespace, url]) => `- ${namespace} -> ${url}`)
   return `Configured registries:\n${lines.join('\n')}`
@@ -120,7 +120,7 @@ function formatRegistryItem(item: RegistryItem): string {
 
 /** Structured, setup-oriented documentation for a single extension. */
 export interface ExtensionDocs {
-  /** Install address, e.g. `@dashfy/github`. */
+  /** Install address, e.g. `@getdashfy/github`. */
   address: string
   name: string
   title: string

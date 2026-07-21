@@ -21,27 +21,27 @@ npx dashfy@latest init -t vite-app
 Add an extension to an existing Dashfy project:
 
 ```bash
-npx dashfy@latest add @dashfy/github
+npx dashfy@latest add @getdashfy/github
 ```
 
 ## How it works
 
 Extensions are resolved from a **registry** at runtime over HTTP, the same model as
-shadcn-ui. The default registry is the `@dashfy` namespace, served from
+shadcn-ui. The default registry is the `@getdashfy` namespace, served from
 `https://registry.dashfy.dev/r`. The difference from shadcn: a Dashfy registry item
 describes an npm package plus setup metadata, so "applying" an extension means
 _installing_ the package and running codemods, rather than copying source files.
 
 You reference extensions by **address**:
 
-| Address                          | Resolves to                                           |
-| -------------------------------- | ----------------------------------------------------- |
-| `github`                         | the `@dashfy` namespace (default) → `…/r/github.json` |
-| `@dashfy/github`                 | the `@dashfy` namespace explicitly                    |
-| `@acme/widget`                   | a custom namespace declared in `dashfy.json`          |
-| `https://example.com/r/foo.json` | a direct URL                                          |
-| `./local/foo.json`               | a local registry file                                 |
-| `owner/repo/foo`                 | a registry item in a GitHub repo (`#ref` optional)    |
+| Address                          | Resolves to                                              |
+| -------------------------------- | -------------------------------------------------------- |
+| `github`                         | the `@getdashfy` namespace (default) → `…/r/github.json` |
+| `@getdashfy/github`              | the `@getdashfy` namespace explicitly                    |
+| `@acme/widget`                   | a custom namespace declared in `dashfy.json`             |
+| `https://example.com/r/foo.json` | a direct URL                                             |
+| `./local/foo.json`               | a local registry file                                    |
+| `owner/repo/foo`                 | a registry item in a GitHub repo (`#ref` optional)       |
 
 ## Commands
 
@@ -82,7 +82,7 @@ You can also override the source repository with `DASHFY_GITHUB_URL` (defaults t
 ### `dashfy add [extensions...]`
 
 Resolves the given extension address(es) from the registry, installs the
-`@dashfy/ext-*` npm package(s), and sets them up automatically:
+`@getdashfy/ext-*` npm package(s), and sets them up automatically:
 
 - registers widgets in your `App.tsx` via `WidgetRegistry.addExtension`
 - registers the server API in your server bootstrap via `dashfy.registerApi`
@@ -116,7 +116,7 @@ Reverses what `add` set up. For each extension it:
 - removes the `dashfy.registerApi` registration and client import from your server bootstrap
 - removes the starter dashboard it created from `dashfy.config.yml`
 - removes the extension's `.env` entries — **only when they are still empty placeholders** (e.g. `GITHUB_TOKEN=`). Lines that hold a value are preserved and reported, so your secrets are never deleted.
-- uninstalls the `@dashfy/ext-*` npm package(s) (unless `--keep-deps`)
+- uninstalls the `@getdashfy/ext-*` npm package(s) (unless `--keep-deps`)
 
 With no arguments, `remove` detects installed extensions from your `package.json`
 and prompts you to pick. Removal is registry-first: it resolves each item to
@@ -136,20 +136,20 @@ Options:
 
 Searches extension catalogs and prints matches. Aliased as `dashfy list`. With no
 arguments it searches every registry configured in `dashfy.json` (including the
-built-in `@dashfy`); pass `@namespace`(s) to search specific ones. Queries are
+built-in `@getdashfy`); pass `@namespace`(s) to search specific ones. Queries are
 fuzzy-matched (and ranked) across name, title, description, and categories, each
 result includes a ready-to-run add command, and a pagination hint is
 shown when more matches remain (use `--offset` to page through them).
 
 The suggested add command adapts to your project's package manager (see
-[Package runner](#package-runner)), e.g. `pnpm dlx dashfy@latest add @dashfy/github`.
+[Package runner](#package-runner)), e.g. `pnpm dlx dashfy@latest add @getdashfy/github`.
 
 ```bash
 # search everything, filter by query
 npx dashfy@latest search --query git
 
 # search a specific registry as JSON
-npx dashfy@latest search @dashfy --json
+npx dashfy@latest search @getdashfy --json
 ```
 
 Options:
@@ -168,7 +168,7 @@ Resolves the given address(es) and prints the full registry item JSON (deps,
 env vars, widgets, starter config). Useful for inspection and piping:
 
 ```bash
-npx dashfy@latest view @dashfy/github | jq '.dependencies'
+npx dashfy@latest view @getdashfy/github | jq '.dependencies'
 ```
 
 Options:
@@ -186,7 +186,7 @@ starter dashboard it seeds, and a ready-to-run install command. Unlike `view`
 
 ```bash
 dashfy docs github
-dashfy docs @dashfy/github --json
+dashfy docs @getdashfy/github --json
 ```
 
 The `docs` field is authored in each extension's `package.json` under
@@ -210,11 +210,11 @@ Commands that Dashfy suggests for copy-pasting (the inline add command in
 with the runner for your project's detected package manager, so they work as-is
 in monorepos:
 
-| Package manager | Suggested command                           |
-| --------------- | ------------------------------------------- |
-| pnpm            | `pnpm dlx dashfy@latest add @dashfy/github` |
-| bun             | `bunx dashfy@latest add @dashfy/github`     |
-| npm / yarn      | `npx dashfy@latest add @dashfy/github`      |
+| Package manager | Suggested command                              |
+| --------------- | ---------------------------------------------- |
+| pnpm            | `pnpm dlx dashfy@latest add @getdashfy/github` |
+| bun             | `bunx dashfy@latest add @getdashfy/github`     |
+| npm / yarn      | `npx dashfy@latest add @getdashfy/github`      |
 
 Detection follows the same logic as installs: the `npm_config_user_agent` of the
 running process first, then a lockfile in the working directory, falling back to
@@ -247,7 +247,7 @@ and CI.
 
 ```bash
 npx dashfy@latest doctor              # auto-detect installed extensions
-npx dashfy@latest doctor @dashfy/github  # scope to specific extension(s)
+npx dashfy@latest doctor @getdashfy/github  # scope to specific extension(s)
 npx dashfy@latest doctor --json       # machine-readable report for CI
 ```
 
@@ -272,7 +272,7 @@ These apply to every command:
 
 - `--json` — emit machine-readable JSON only and suppress human output (spinners,
   status lines). Errors are printed to stderr as a structured `{ "error", "message" }`
-  object. Place before the command (e.g. `dashfy --json add @dashfy/github`);
+  object. Place before the command (e.g. `dashfy --json add @getdashfy/github`);
   `info`, `search`, `view`, `docs`, and `doctor` also accept `--json` after the command.
 - `--silent` — mute non-error output.
 
@@ -296,7 +296,7 @@ It declares where the CLI applies changes and any custom registries:
 }
 ```
 
-- `registries` are merged over the built-in `@dashfy` namespace, so you can add
+- `registries` are merged over the built-in `@getdashfy` namespace, so you can add
   third-party sources or override the default. A registry endpoint is a URL
   template containing `{name}`, or an object with `url` plus optional `params` /
   `headers` (values may reference `${ENV_VAR}` for auth).
@@ -313,7 +313,7 @@ install with `dashfy add @yourscope/widget`. Items can also live in a GitHub rep
 ### `dashfy registry add [registries...]`
 
 Adds custom registries to your `dashfy.json` (merged over the built-in
-`@dashfy`). Accepts either a bare namespace resolved from the discovery index, or
+`@getdashfy`). Accepts either a bare namespace resolved from the discovery index, or
 an explicit `namespace=url` pair:
 
 ```bash
@@ -347,7 +347,7 @@ npx dashfy@latest registry remove @acme @beta -y
 
 With no arguments it lists the registries configured in `dashfy.json` for
 interactive multiselect. Removing a namespace that is not configured is a safe
-no-op. The built-in `@dashfy` namespace is implicit (never written to the file),
+no-op. The built-in `@getdashfy` namespace is implicit (never written to the file),
 so it cannot be removed. When the last custom registry is removed, the
 `registries` key is dropped entirely to keep the file tidy.
 
@@ -416,7 +416,7 @@ discover and install Dashfy extensions. It exposes these tools:
 
 | Tool                         | Description                                                                                                    |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `get_project_registries`     | List the registries configured for the project (plus built-in @dashfy).                                        |
+| `get_project_registries`     | List the registries configured for the project (plus built-in @getdashfy).                                     |
 | `list_items_in_registries`   | List extensions across registries (filter by `types`, paginate).                                               |
 | `search_items_in_registries` | Fuzzy-search extensions by text query (ranked, paginated; runner-aware add command).                           |
 | `view_items_in_registries`   | Full details for one or more extensions (deps, env vars, setup).                                               |
@@ -468,7 +468,7 @@ Options:
 the registry analog of `DASHFY_TEMPLATE_DIR`:
 
 ```bash
-DASHFY_REGISTRY_URL="/path/to/apps/registry/public/r" dashfy add @dashfy/github --no-install
+DASHFY_REGISTRY_URL="/path/to/apps/registry/public/r" dashfy add @getdashfy/github --no-install
 ```
 
 ## Environment variables
@@ -502,7 +502,7 @@ with `ACME_TOKEN=...` in your `.env`.
 
 CLI behavior can also be tuned with:
 
-- `DASHFY_REGISTRY_URL` — base URL/dir for `@dashfy` items (offline/dev).
+- `DASHFY_REGISTRY_URL` — base URL/dir for `@getdashfy` items (offline/dev).
 - `DASHFY_REGISTRIES_URL` — location of the discovery index (`registries.json`).
 - `DASHFY_TEMPLATE_DIR` / `DASHFY_GITHUB_URL` — template source for `init`.
 

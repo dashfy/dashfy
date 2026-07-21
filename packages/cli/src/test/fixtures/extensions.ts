@@ -19,7 +19,7 @@ interface FixtureExtensionMeta {
 }
 
 /**
- * Self-contained fixtures mirroring the former `@dashfy/ext-*` packages. These
+ * Self-contained fixtures mirroring the former `@getdashfy/ext-*` packages. These
  * back the CLI test registry so the suite no longer depends on real extension
  * packages living in the monorepo. Keep the metadata in sync with the shape the
  * tests assert on (see setup-extension / search / integration tests).
@@ -42,7 +42,7 @@ const FIXTURE_EXTENSIONS: FixtureExtensionMeta[] = [
       'Gitmap',
     ],
     client: {
-      import: '@dashfy/ext-github',
+      import: '@getdashfy/ext-github',
       factory: 'createGitHubClient',
       mode: 'poll',
       options: '{ token: process.env.GITHUB_TOKEN! }',
@@ -56,7 +56,7 @@ const FIXTURE_EXTENSIONS: FixtureExtensionMeta[] = [
     categories: ['data'],
     widgets: ['CustomJson', 'JsonKeys', 'JsonStatus'],
     client: {
-      import: '@dashfy/ext-json',
+      import: '@getdashfy/ext-json',
       factory: 'createJsonClient',
       mode: 'poll',
     },
@@ -75,7 +75,7 @@ const FIXTURE_EXTENSIONS: FixtureExtensionMeta[] = [
     categories: ['sports'],
     widgets: ['GameCard', 'Scoreboard', 'Standings'],
     client: {
-      import: '@dashfy/ext-nba',
+      import: '@getdashfy/ext-nba',
       factory: 'createNbaClient',
       mode: 'poll',
     },
@@ -101,7 +101,7 @@ const FIXTURE_EXTENSIONS: FixtureExtensionMeta[] = [
       'SystemInfo',
     ],
     client: {
-      import: '@dashfy/ext-system/client',
+      import: '@getdashfy/ext-system/client',
       factory: 'createSystemClient',
       mode: 'push',
     },
@@ -130,7 +130,7 @@ export async function writeFixtureExtensions(packagesDir: string): Promise<void>
     const dir = path.join(packagesDir, `ext-${meta.id}`)
     await fs.ensureDir(dir)
     await fs.writeJson(path.join(dir, 'package.json'), {
-      name: `@dashfy/ext-${meta.id}`,
+      name: `@getdashfy/ext-${meta.id}`,
       version: '0.1.0',
       type: 'module',
       dashfy: meta,

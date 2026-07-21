@@ -39,8 +39,8 @@ async function scaffold(): Promise<string> {
 
 describe('stripVersion', () => {
   it('removes the version range from a dependency spec', () => {
-    expect(stripVersion('@dashfy/ext-github@^0.1.0')).toBe('@dashfy/ext-github')
-    expect(stripVersion('@dashfy/ext-system@1.2.3')).toBe('@dashfy/ext-system')
+    expect(stripVersion('@getdashfy/ext-github@^0.1.0')).toBe('@getdashfy/ext-github')
+    expect(stripVersion('@getdashfy/ext-system@1.2.3')).toBe('@getdashfy/ext-system')
   })
 })
 
@@ -72,7 +72,7 @@ describe('setupExtension (template integration)', () => {
 
     expect(result.server).toBe('added')
     const server = await readFile(project.serverFile!, 'utf-8')
-    expect(server).toContain("from '@dashfy/ext-system/client'")
+    expect(server).toContain("from '@getdashfy/ext-system/client'")
     expect(server).toContain("dashfy.registerApi('system', createSystemClient(), 'push')")
   })
 
@@ -135,7 +135,7 @@ describe('teardownExtension (template integration)', () => {
     const server = await readFile(project.serverFile!, 'utf-8')
 
     expect(app).not.toContain("WidgetRegistry.addExtension('github'")
-    expect(app).not.toContain('@dashfy/ext-github')
+    expect(app).not.toContain('@getdashfy/ext-github')
     expect(server).not.toContain("dashfy.registerApi('github'")
   })
 
