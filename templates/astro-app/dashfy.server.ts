@@ -1,7 +1,7 @@
-import { createGitHubClient } from '@dashfy/ext-github'
-import { createNbaClient } from '@dashfy/ext-nba'
-import { createSystemClient } from '@dashfy/ext-system/client'
-import { Dashfy } from '@dashfy/server'
+import { createGitHubClient } from '@getdashfy/ext-github'
+import { createNbaClient } from '@getdashfy/ext-nba'
+import { createSystemClient } from '@getdashfy/ext-system/client'
+import { Dashfy } from '@getdashfy/server'
 
 // Create a new Dashfy server instance
 const dashfy = new Dashfy()

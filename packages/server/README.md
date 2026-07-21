@@ -1,10 +1,10 @@
-# `@dashfy/server`
+# `@getdashfy/server`
 
 > Dashfy server with real-time data streaming and multi-dashboard support.
 
 ## Introduction
 
-`@dashfy/server` is the backend runtime for Dashfy dashboards. It handles configuration loading, API registration, real-time data streaming, and WebSocket communication with clients.
+`@getdashfy/server` is the backend runtime for Dashfy dashboards. It handles configuration loading, API registration, real-time data streaming, and WebSocket communication with clients.
 
 The server acts as the central orchestrator that:
 
@@ -21,25 +21,25 @@ Install with your favorite package manager:
 #### `npm`
 
 ```bash
-npm install @dashfy/server
+npm install @getdashfy/server
 ```
 
 #### `pnpm`
 
 ```bash
-pnpm add @dashfy/server
+pnpm add @getdashfy/server
 ```
 
 #### `yarn`
 
 ```bash
-yarn add @dashfy/server
+yarn add @getdashfy/server
 ```
 
 #### `bun`
 
 ```bash
-bun add @dashfy/server
+bun add @getdashfy/server
 ```
 
 ## Quick Start
@@ -47,9 +47,9 @@ bun add @dashfy/server
 Create a Dashfy server and load a dashboard configuration:
 
 ```ts
-import { createJsonClient } from '@dashfy/ext-json/client'
-import { createGitHubClient } from '@dashfy/ext-github/client'
-import { Dashfy } from '@dashfy/server'
+import { createJsonClient } from '@getdashfy/ext-json/client'
+import { createGitHubClient } from '@getdashfy/ext-github/client'
+import { Dashfy } from '@getdashfy/server'
 
 // Create server instance
 const dashfy = new Dashfy()
@@ -224,7 +224,7 @@ When started, the server exposes:
 Structured logging with [Pino](https://github.com/pinojs/pino):
 
 ```ts
-import { Dashfy } from '@dashfy/server'
+import { Dashfy } from '@getdashfy/server'
 import pino from 'pino'
 
 // Custom logger
@@ -244,7 +244,7 @@ Use an existing [Fastify](https://github.com/fastify/fastify) instance:
 
 ```ts
 import Fastify from 'fastify'
-import { Dashfy } from '@dashfy/server'
+import { Dashfy } from '@getdashfy/server'
 
 const app = Fastify()
 
@@ -517,7 +517,7 @@ interface RequestOptions {
 #### » Basic Server
 
 ```ts
-import { Dashfy } from '@dashfy/server'
+import { Dashfy } from '@getdashfy/server'
 
 const dashfy = new Dashfy()
 await dashfy.configureFromFile('./dashfy.config.json')
@@ -527,7 +527,7 @@ await dashfy.start()
 #### » With Custom Logger
 
 ```ts
-import { Dashfy } from '@dashfy/server'
+import { Dashfy } from '@getdashfy/server'
 import pino from 'pino'
 
 const logger = pino({ level: 'debug' })
@@ -540,10 +540,10 @@ await dashfy.start()
 #### » Multiple APIs
 
 ```ts
-import { createJsonClient } from '@dashfy/ext-json/client'
-import { createGitHubClient } from '@dashfy/ext-github/client'
-import { createNbaClient } from '@dashfy/ext-nba/client'
-import { Dashfy } from '@dashfy/server'
+import { createJsonClient } from '@getdashfy/ext-json/client'
+import { createGitHubClient } from '@getdashfy/ext-github/client'
+import { createNbaClient } from '@getdashfy/ext-nba/client'
+import { Dashfy } from '@getdashfy/server'
 
 const dashfy = new Dashfy()
 await dashfy.configureFromFile('./dashfy.config.yml')

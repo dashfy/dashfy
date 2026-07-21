@@ -1,8 +1,8 @@
 'use client'
 
-import '@dashfy/ui/styles.css'
+import '@getdashfy/ui/styles.css'
 
-import { Dashfy, ThemeRegistry } from '@dashfy/ui'
+import { Dashfy, ThemeRegistry } from '@getdashfy/ui'
 
 ThemeRegistry.loadAllThemes()
 

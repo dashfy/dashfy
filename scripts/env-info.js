@@ -19,7 +19,7 @@ const root = join(__dirname, '..')
 function getDashfyVersion() {
   try {
     const serverPkg = JSON.parse(readFileSync(join(root, 'packages/server/package.json'), 'utf8'))
-    return `@dashfy/server@${serverPkg.version}`
+    return `@getdashfy/server@${serverPkg.version}`
   } catch {
     return 'unknown'
   }

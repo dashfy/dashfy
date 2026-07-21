@@ -1,4 +1,4 @@
-import { getErrorMessage } from '@dashfy/utils'
+import { getErrorMessage } from '@getdashfy/utils'
 import * as React from 'react'
 import type { FallbackProps } from 'react-error-boundary'
 import { ErrorBoundary } from 'react-error-boundary'

@@ -1,4 +1,4 @@
-import { applyTheme, defaultTheme as builtInDefaultTheme } from '@dashfy/themes'
+import { applyTheme, defaultTheme as builtInDefaultTheme } from '@getdashfy/themes'
 import type { ThemeId } from '@getdashfy/types'
 import * as React from 'react'
 

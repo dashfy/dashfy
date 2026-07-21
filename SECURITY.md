@@ -16,7 +16,7 @@ Include as much of the following as possible:
 - Clear description of the vulnerability.
 - Steps or proof-of-concept to reproduce the vulnerability.
 - Potential impact or implications of the vulnerability.
-- Affected package(s) and version(s) (for example: `@dashfy/server@x.y.z`).
+- Affected package(s) and version(s) (for example: `@getdashfy/server@x.y.z`).
 - Any relevant logs, configuration snippets, or stack traces (**redact secrets**).
 
 We ask you **not to publicly disclose the vulnerability** until we have had a reasonable opportunity to address it.

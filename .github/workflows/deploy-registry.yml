@@ -38,10 +38,10 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build registry artifacts
-        run: pnpm --filter @dashfy/registry build
+        run: pnpm --filter @getdashfy/registry build
 
       - name: Validate registry artifacts
-        run: pnpm --filter @dashfy/registry validate
+        run: pnpm --filter @getdashfy/registry validate
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

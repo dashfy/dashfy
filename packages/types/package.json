@@ -52,7 +52,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@dashfy/tsconfig": "workspace:*",
+    "@getdashfy/tsconfig": "workspace:*",
     "@types/react": "^19.2.0",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2"

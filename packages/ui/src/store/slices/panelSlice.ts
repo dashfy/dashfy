@@ -1,4 +1,4 @@
-import { isServer } from '@dashfy/utils'
+import { isServer } from '@getdashfy/utils'
 import type { StateCreator } from 'zustand'
 
 export interface PanelSlice {

@@ -20,7 +20,7 @@ export interface ResolvedRegistryUrl {
 }
 
 /**
- * Resolves a namespaced item (e.g. `@dashfy/github`) to a concrete URL or local
+ * Resolves a namespaced item (e.g. `@getdashfy/github`) to a concrete URL or local
  * path plus any auth headers, using the built-in and user-configured registries.
  */
 export function buildUrlAndHeadersForRegistryItem(
@@ -41,7 +41,7 @@ export function buildUrlAndHeadersForRegistryItem(
   }
 }
 
-/** Resolves the URL/path for a registry's index document (defaults to `@dashfy`). */
+/** Resolves the URL/path for a registry's index document (defaults to `@getdashfy`). */
 export function resolveRegistryIndexUrl(
   registries: RegistryConfig,
   namespace = BUILTIN_REGISTRY_NAMESPACE,

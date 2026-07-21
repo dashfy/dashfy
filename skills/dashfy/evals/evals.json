@@ -4,10 +4,10 @@
     {
       "id": 1,
       "prompt": "I have an existing Dashfy project. Add the GitHub extension and place a RepoBadge for vercel/next.js and a Status widget on a new 4x3 dashboard.",
-      "expected_output": "Runs `dashfy add @dashfy/github`, then adds widget blocks with full grid coordinates to dashfy.config.yml and reminds the user to set GITHUB_TOKEN.",
+      "expected_output": "Runs `dashfy add @getdashfy/github`, then adds widget blocks with full grid coordinates to dashfy.config.yml and reminds the user to set GITHUB_TOKEN.",
       "files": [],
       "expectations": [
-        "Uses `dashfy add @dashfy/github` (or bare `github`) instead of manually editing App.tsx / the server / .env",
+        "Uses `dashfy add @getdashfy/github` (or bare `github`) instead of manually editing App.tsx / the server / .env",
         "Adds widget blocks with extension, widget, x, y, columns, and rows keys (not just props)",
         "Keeps widgets inside the 4x3 grid (x + columns <= 4, y + rows <= 3) with no overlap",
         "Only references real GitHub widget exports (e.g. RepoBadge, Status) and passes repository as a prop",

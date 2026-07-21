@@ -84,7 +84,7 @@ export const search = new Command()
           throw new Error(
             `Invalid registr${invalid.length === 1 ? 'y' : 'ies'}: ${invalid.join(
               ', ',
-            )}. Use an @namespace, e.g. @dashfy.`,
+            )}. Use an @namespace, e.g. @getdashfy.`,
           )
         }
         const ensured = await ensureRegistries(

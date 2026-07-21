@@ -18,13 +18,13 @@ export const REGISTRIES_INDEX_URL = `${REGISTRY_HOST}/registries.json`
 export const REGISTRY_CATALOG_NAME = 'dashfy'
 
 /** Built-in registry namespace for official Dashfy extensions. */
-export const BUILTIN_REGISTRY_NAMESPACE = '@dashfy'
+export const BUILTIN_REGISTRY_NAMESPACE = '@getdashfy'
 
 /** Filename/package prefix marking a Dashfy extension package (e.g. `ext-github`). */
 export const EXTENSION_PACKAGE_PREFIX = 'ext-'
 
 /**
- * Built-in registries that are always available. The `@dashfy` namespace maps
+ * Built-in registries that are always available. The `@getdashfy` namespace maps
  * to one JSON file per extension under the registry base.
  */
 export const BUILTIN_REGISTRIES: RegistryConfig = {

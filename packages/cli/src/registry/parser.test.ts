@@ -4,8 +4,8 @@ import { parseRegistryAndItemFromString } from '@/registry/parser'
 
 describe('parseRegistryAndItemFromString', () => {
   it('splits a namespaced address', () => {
-    expect(parseRegistryAndItemFromString('@dashfy/github')).toEqual({
-      registry: '@dashfy',
+    expect(parseRegistryAndItemFromString('@getdashfy/github')).toEqual({
+      registry: '@getdashfy',
       item: 'github',
     })
   })

@@ -23,7 +23,7 @@ const config: StorybookConfig = {
         },
       },
       optimizeDeps: {
-        include: ['@dashfy/themes', '@getdashfy/types'],
+        include: ['@getdashfy/themes', '@getdashfy/types'],
       },
     })
   },

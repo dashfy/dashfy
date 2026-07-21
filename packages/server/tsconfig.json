@@ -1,5 +1,5 @@
 {
-  "extends": "@dashfy/tsconfig/node.json",
+  "extends": "@getdashfy/tsconfig/node.json",
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": ".",

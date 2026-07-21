@@ -1,5 +1,5 @@
 {
-  "name": "@dashfy/themes",
+  "name": "@getdashfy/themes",
   "version": "0.1.0",
   "description": "Customizable theme system with pre-built themes for Dashfy",
   "keywords": [
@@ -60,7 +60,7 @@
     "@getdashfy/types": "workspace:*"
   },
   "devDependencies": {
-    "@dashfy/tsconfig": "workspace:*",
+    "@getdashfy/tsconfig": "workspace:*",
     "@types/node": "^22.8.6",
     "jsdom": "^25.0.1",
     "tsup": "^8.3.5",

@@ -32,7 +32,7 @@ const listInputSchema = z.object({
   registries: z
     .array(z.string())
     .optional()
-    .describe('Registry namespaces to query (e.g. @dashfy). Defaults to all configured.'),
+    .describe('Registry namespaces to query (e.g. @getdashfy). Defaults to all configured.'),
   types: z.array(z.string()).optional().describe(`Filter by item type. ${TYPES_HINT}`),
   limit: z.number().optional().describe('Maximum items per registry (default 100).'),
   offset: z.number().optional().describe('Number of items to skip for pagination.'),
@@ -47,7 +47,7 @@ const searchInputSchema = listInputSchema.extend({
 const itemsInputSchema = z.object({
   items: z
     .array(z.string())
-    .describe('Item addresses, e.g. @dashfy/github, github, owner/repo/item, or a URL.'),
+    .describe('Item addresses, e.g. @getdashfy/github, github, owner/repo/item, or a URL.'),
 })
 
 const auditInputSchema = z.object({
@@ -253,7 +253,7 @@ export function createMcpServer(cwd: string): Server {
       {
         name: 'get_project_registries',
         description:
-          'List the registries configured for this project (from dashfy.json plus the built-in @dashfy).',
+          'List the registries configured for this project (from dashfy.json plus the built-in @getdashfy).',
         inputSchema: zodToJsonSchema(z.object({})),
       },
       {

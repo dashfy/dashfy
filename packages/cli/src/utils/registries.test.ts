@@ -32,7 +32,7 @@ describe('ensureRegistries', () => {
   it('returns added [] for already-known namespaces', async () => {
     const cwd = await tmp()
     const config = await resolveConfig(cwd)
-    const result = await ensureRegistries(['github', '@dashfy/github'], config, {
+    const result = await ensureRegistries(['github', '@getdashfy/github'], config, {
       cwd,
       persist: false,
     })

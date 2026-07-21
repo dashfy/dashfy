@@ -1,10 +1,10 @@
-# `@dashfy/themes`
+# `@getdashfy/themes`
 
 > Customizable theme system with pre-built themes for Dashfy.
 
 ## Introduction
 
-`@dashfy/themes` provides the theming layer for Dashfy, with a set of pre-built themes and helpers for applying, switching, and creating custom themes.
+`@getdashfy/themes` provides the theming layer for Dashfy, with a set of pre-built themes and helpers for applying, switching, and creating custom themes.
 
 ## Install
 
@@ -13,25 +13,25 @@ Install with your favorite package manager:
 #### `npm`
 
 ```bash
-npm install @dashfy/themes
+npm install @getdashfy/themes
 ```
 
 #### `pnpm`
 
 ```bash
-pnpm add @dashfy/themes
+pnpm add @getdashfy/themes
 ```
 
 #### `yarn`
 
 ```bash
-yarn add @dashfy/themes
+yarn add @getdashfy/themes
 ```
 
 #### `bun`
 
 ```bash
-bun add @dashfy/themes
+bun add @getdashfy/themes
 ```
 
 ## Community

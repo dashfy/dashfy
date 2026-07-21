@@ -136,7 +136,7 @@ The `widget` value must be an export listed in the extension's `widgets[]` (see 
   rows: 1
 ```
 
-**Correct:** use a real export (e.g. `CommitActivityLine`). Verify with `npx dashfy@latest view @dashfy/github` or `dashfy docs github`.
+**Correct:** use a real export (e.g. `CommitActivityLine`). Verify with `npx dashfy@latest view @getdashfy/github` or `dashfy docs github`.
 
 ```yaml
 - extension: github

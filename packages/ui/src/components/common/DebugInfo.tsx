@@ -1,4 +1,4 @@
-import { isClient, isDevelopment } from '@dashfy/utils'
+import { isClient, isDevelopment } from '@getdashfy/utils'
 import * as React from 'react'
 
 import { useDashfyStore } from '@/store'

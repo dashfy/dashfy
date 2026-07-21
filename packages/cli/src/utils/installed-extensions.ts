@@ -6,7 +6,7 @@ import { EXTENSION_PACKAGE_PREFIX } from '@/registry/constants'
 /**
  * Returns the extension packages installed in the project, detected from
  * `package.json` dependencies whose name is or contains `ext-` (e.g.
- * `@dashfy/ext-github`, `ext-github`). Returns an empty list when there is no
+ * `@getdashfy/ext-github`, `ext-github`). Returns an empty list when there is no
  * package.json or it cannot be read.
  */
 export async function getInstalledExtensions(cwd: string): Promise<string[]> {

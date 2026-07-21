@@ -19,7 +19,7 @@ function makeItem(overrides: Partial<RegistryItem> = {}): RegistryItem {
     type: 'registry:extension',
     title: 'GitHub',
     description: 'GitHub widgets',
-    dependencies: ['@dashfy/ext-github@^0.1.0'],
+    dependencies: ['@getdashfy/ext-github@^0.1.0'],
     categories: ['developer'],
     meta: {
       extensionKey: 'github',
@@ -196,7 +196,7 @@ describe('validateRegistry', () => {
   it('reports unresolved local registryDependencies', async () => {
     const dir = await tmp()
     cleanups.push(dir)
-    const item = makeItem({ name: 'github', registryDependencies: ['@dashfy/missing', 'base'] })
+    const item = makeItem({ name: 'github', registryDependencies: ['@getdashfy/missing', 'base'] })
     await fs.writeJson(path.join(dir, 'github.json'), item)
     await fs.writeJson(path.join(dir, 'index.json'), { name: 'test', items: [indexEntry(item)] })
 
@@ -204,7 +204,7 @@ describe('validateRegistry', () => {
 
     expect(report.valid).toBe(false)
     const messages = report.diagnostics.map((d) => d.message).join('\n')
-    expect(messages).toMatch(/Unresolved registry dependency "@dashfy\/missing"/)
+    expect(messages).toMatch(/Unresolved registry dependency "@getdashfy\/missing"/)
     expect(messages).toMatch(/Unresolved registry dependency "base"/)
   })
 
@@ -226,7 +226,7 @@ describe('validateRegistry', () => {
     const dir = await tmp()
     cleanups.push(dir)
     const base = makeItem({ name: 'base' })
-    const item = makeItem({ name: 'github', registryDependencies: ['base', '@dashfy/base'] })
+    const item = makeItem({ name: 'github', registryDependencies: ['base', '@getdashfy/base'] })
     await writeRegistry(dir, [base, item])
 
     const report = await validateRegistry({ dir })
@@ -244,7 +244,7 @@ describe('validateRegistry', () => {
 
     const goodFile = path.join(discoveryDir, 'registries.json')
     await fs.writeJson(goodFile, {
-      registries: { '@dashfy': { url: 'https://registry.dashfy.dev/r/{name}.json' } },
+      registries: { '@getdashfy': { url: 'https://registry.dashfy.dev/r/{name}.json' } },
     })
     const good = await validateRegistry({ dir, registriesFile: goodFile })
     expect(good.valid).toBe(true)

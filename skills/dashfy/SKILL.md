@@ -46,8 +46,8 @@ These rules are **always enforced**. Each links to a file with Incorrect/Correct
 
 ### Addresses → [rules/addresses.md](./rules/addresses.md)
 
-- **Classify the address before resolving.** Bare `github` → `@dashfy`; `@ns/name` → namespace; `owner/repo/name[#ref]` → GitHub; `https://…/foo.json` → URL; `./foo.json` → local file.
-- **Bare names mean `@dashfy`, never same-repo.** They are not relative references.
+- **Classify the address before resolving.** Bare `github` → `@getdashfy`; `@ns/name` → namespace; `owner/repo/name[#ref]` → GitHub; `https://…/foo.json` → URL; `./foo.json` → local file.
+- **Bare names mean `@getdashfy`, never same-repo.** They are not relative references.
 
 ### Extension Authoring → [rules/extension-authoring.md](./rules/extension-authoring.md)
 
@@ -80,7 +80,7 @@ These are the most common patterns that differentiate correct Dashfy usage.
   "docs": "Create a token at https://github.com/settings/tokens",
   "widgets": ["UserBadge", "RepoBadge", "PullRequests"],
   "client": {
-    "import": "@dashfy/ext-github",
+    "import": "@getdashfy/ext-github",
     "factory": "createGitHubClient",
     "mode": "poll",
     "options": "{ token: process.env.GITHUB_TOKEN! }"
@@ -92,10 +92,10 @@ These are the most common patterns that differentiate correct Dashfy usage.
 
 ```bash
 # Add an extension (installs the package + sets everything up).
-npx dashfy@latest add @dashfy/github
+npx dashfy@latest add @getdashfy/github
 
 # Preview without writing.
-npx dashfy@latest add @dashfy/github --dry-run
+npx dashfy@latest add @getdashfy/github --dry-run
 
 # Verify the project after adding.
 npx dashfy@latest doctor
@@ -126,7 +126,7 @@ The CLI ships an MCP server (`dashfy mcp`) so AI assistants can discover and ins
 
 | Tool                         | Description                                                               |
 | ---------------------------- | ------------------------------------------------------------------------- |
-| `get_project_registries`     | List registries configured for the project (plus built-in `@dashfy`).     |
+| `get_project_registries`     | List registries configured for the project (plus built-in `@getdashfy`).  |
 | `list_items_in_registries`   | List extensions across registries (filter by `types`, paginate).          |
 | `search_items_in_registries` | Fuzzy-search extensions by text query (ranked; runner-aware add command). |
 | `view_items_in_registries`   | Full details for one or more extensions (deps, env vars, setup).          |
@@ -161,22 +161,22 @@ npx dashfy@latest init my-app -t start-app    # full pre-configured TanStack Sta
 npx dashfy@latest init my-app -e github,nba   # set up specific extensions (*-starter)
 
 # Add / remove extensions.
-npx dashfy@latest add @dashfy/github
+npx dashfy@latest add @getdashfy/github
 npx dashfy@latest add github nba --dry-run
 npx dashfy@latest add owner/repo/widget
-npx dashfy@latest remove @dashfy/github
+npx dashfy@latest remove @getdashfy/github
 npx dashfy@latest remove github --keep-deps
 
 # Discover.
 npx dashfy@latest search --query git
-npx dashfy@latest search @dashfy --json
-npx dashfy@latest view @dashfy/github
+npx dashfy@latest search @getdashfy --json
+npx dashfy@latest view @getdashfy/github
 npx dashfy@latest docs github
 
 # Inspect & audit.
 npx dashfy@latest info
 npx dashfy@latest doctor
-npx dashfy@latest doctor @dashfy/github --json
+npx dashfy@latest doctor @getdashfy/github --json
 
 # Registries.
 npx dashfy@latest registry add @acme=https://acme.com/r/{name}.json
@@ -189,7 +189,7 @@ npx dashfy@latest mcp
 npx dashfy@latest mcp init --client cursor
 ```
 
-**Built-in namespace:** `@dashfy` (served from `https://registry.dashfy.dev/r`)
+**Built-in namespace:** `@getdashfy` (served from `https://registry.dashfy.dev/r`)
 **Templates:** `vite-starter` (default, interactive), `vite-app` (full demo), `astro-starter` (interactive), `astro-app` (full demo), `next-starter` (interactive), `next-app` (full demo), `react-router-starter` (interactive), `react-router-app` (full demo), `start-starter` (interactive), `start-app` (full demo)
 **Bundled extensions:** `github`, `json`, `nba`, `system`, `market-live`
 

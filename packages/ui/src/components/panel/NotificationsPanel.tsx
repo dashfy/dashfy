@@ -1,4 +1,4 @@
-import { format } from '@dashfy/utils'
+import { format } from '@getdashfy/utils'
 import * as React from 'react'
 
 import {

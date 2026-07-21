@@ -10,7 +10,7 @@ import { dashfyConfigSchema } from '@/schema'
 export const CONFIG_FILE = 'dashfy.json'
 
 export interface ResolvedConfig extends DashfyConfig {
-  /** Registries merged with the built-ins (`@dashfy` always present). */
+  /** Registries merged with the built-ins (`@getdashfy` always present). */
   registries: RegistryConfig
   /** Only the registries declared by the user in dashfy.json (no built-ins). */
   userRegistries?: RegistryConfig

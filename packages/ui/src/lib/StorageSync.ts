@@ -1,4 +1,4 @@
-import { isClient } from '@dashfy/utils'
+import { isClient } from '@getdashfy/utils'
 
 import { STORAGE_KEY } from '@/constants/storageConstants'
 

@@ -19,7 +19,7 @@ export type ResolvedItemAddress =
 /**
  * Classifies an `add`/`init` address into a resolvable shape: a URL, a local
  * `.json` file, an `@namespace/item`, or a `owner/repo/item#ref` GitHub source.
- * Bare names (e.g. `github`) resolve to the default `@dashfy` namespace.
+ * Bare names (e.g. `github`) resolve to the default `@getdashfy` namespace.
  */
 export function resolveItemAddress(address: string): ResolvedItemAddress {
   if (isUrl(address)) {
@@ -40,7 +40,7 @@ export function resolveItemAddress(address: string): ResolvedItemAddress {
     return github
   }
 
-  // Bare name -> default @dashfy namespace.
+  // Bare name -> default @getdashfy namespace.
   return { scheme: 'namespace', namespace: BUILTIN_REGISTRY_NAMESPACE, item: address }
 }
 

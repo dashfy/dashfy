@@ -40,21 +40,21 @@ describe('getInstallArgs', () => {
 
 describe('getUninstallArgs', () => {
   it('uses uninstall for npm and remove for others', () => {
-    expect(getUninstallArgs('npm', ['@dashfy/ext-github'])).toEqual([
+    expect(getUninstallArgs('npm', ['@getdashfy/ext-github'])).toEqual([
       'uninstall',
-      '@dashfy/ext-github',
+      '@getdashfy/ext-github',
     ])
-    expect(getUninstallArgs('pnpm', ['@dashfy/ext-github'])).toEqual([
+    expect(getUninstallArgs('pnpm', ['@getdashfy/ext-github'])).toEqual([
       'remove',
-      '@dashfy/ext-github',
+      '@getdashfy/ext-github',
     ])
-    expect(getUninstallArgs('yarn', ['@dashfy/ext-github'])).toEqual([
+    expect(getUninstallArgs('yarn', ['@getdashfy/ext-github'])).toEqual([
       'remove',
-      '@dashfy/ext-github',
+      '@getdashfy/ext-github',
     ])
-    expect(getUninstallArgs('bun', ['@dashfy/ext-github'])).toEqual([
+    expect(getUninstallArgs('bun', ['@getdashfy/ext-github'])).toEqual([
       'remove',
-      '@dashfy/ext-github',
+      '@getdashfy/ext-github',
     ])
   })
 })

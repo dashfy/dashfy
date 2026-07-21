@@ -8,12 +8,12 @@
   "packageRules": [
     {
       "matchPackageNames": [
-        "@dashfy/cli",
-        "@dashfy/server",
-        "@dashfy/themes",
+        "@getdashfy/cli",
+        "@getdashfy/server",
+        "@getdashfy/themes",
         "@getdashfy/types",
-        "@dashfy/ui",
-        "@dashfy/utils"
+        "@getdashfy/ui",
+        "@getdashfy/utils"
       ],
       "groupName": "dashfy monorepo packages",
       "automerge": true

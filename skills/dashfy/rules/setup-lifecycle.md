@@ -19,7 +19,7 @@ Adding an extension is a codemod across four files. Do not edit them by hand —
 **Incorrect:** manually editing `App.tsx` to import and register a widget.
 
 ```tsx
-import { UserBadge } from '@dashfy/ext-github'
+import { UserBadge } from '@getdashfy/ext-github'
 
 WidgetRegistry.addExtension('github', { UserBadge })
 ```
@@ -27,7 +27,7 @@ WidgetRegistry.addExtension('github', { UserBadge })
 **Correct:**
 
 ```bash
-npx dashfy@latest add @dashfy/github
+npx dashfy@latest add @getdashfy/github
 ```
 
 The same applies to the server bootstrap, `.env`, and `dashfy.config.yml` — let the CLI write them.
@@ -55,7 +55,7 @@ The same applies to the server bootstrap, `.env`, and `dashfy.config.yml` — le
 - removes the `dashfy.registerApi` registration and client import from the server bootstrap
 - removes the starter dashboard it created from `dashfy.config.yml`
 - removes the extension's `.env` entries — **only empty placeholders**
-- uninstalls the `@dashfy/ext-*` package (unless `--keep-deps`)
+- uninstalls the `@getdashfy/ext-*` package (unless `--keep-deps`)
 
 ---
 

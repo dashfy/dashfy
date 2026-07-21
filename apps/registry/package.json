@@ -1,5 +1,5 @@
 {
-  "name": "@dashfy/registry",
+  "name": "@getdashfy/registry",
   "version": "0.1.0",
   "private": true,
   "description": "Static hosting for the Dashfy extension registry (registry.dashfy.dev)",

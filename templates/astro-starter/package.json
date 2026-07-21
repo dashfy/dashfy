@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@astrojs/react": "^5.0.0",
-    "@dashfy/server": "^0.1.0",
-    "@dashfy/ui": "^0.1.0",
+    "@getdashfy/server": "^0.1.0",
+    "@getdashfy/ui": "^0.1.0",
     "astro": "^6.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"

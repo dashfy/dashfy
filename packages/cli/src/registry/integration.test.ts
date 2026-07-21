@@ -17,14 +17,14 @@ let acmeDir: string
 beforeAll(async () => {
   registryDir = await buildLocalRegistry()
 
-  // A third-party "@acme" registry whose item depends on a @dashfy extension.
+  // A third-party "@acme" registry whose item depends on a @getdashfy extension.
   acmeDir = await mkdtemp(path.join(tmpdir(), 'dashfy-acme-'))
   await fs.writeJson(path.join(acmeDir, 'analytics.json'), {
     name: 'analytics',
     type: 'registry:extension',
     title: 'Acme Analytics',
     dependencies: ['@acme/ext-analytics@^1.0.0'],
-    registryDependencies: ['@dashfy/json'],
+    registryDependencies: ['@getdashfy/json'],
     meta: { extensionKey: 'analytics', widgets: ['AnalyticsBoard'] },
   })
   clearRegistryCache()
@@ -43,7 +43,7 @@ function combinedRegistries(): RegistryConfig {
 }
 
 describe('registry api (local source)', () => {
-  it('fetches a single item by bare name (default @dashfy)', async () => {
+  it('fetches a single item by bare name (default @getdashfy)', async () => {
     const item = await getRegistryItem('github', {
       registries: localRegistries(registryDir),
       useCache: false,
@@ -66,7 +66,7 @@ describe('registry api (local source)', () => {
 
 describe('resolveRegistryItems', () => {
   it('returns a single item when there are no registry dependencies', async () => {
-    const items = await resolveRegistryItems(['@dashfy/github'], {
+    const items = await resolveRegistryItems(['@getdashfy/github'], {
       registries: localRegistries(registryDir),
       useCache: false,
     })
@@ -82,7 +82,7 @@ describe('resolveRegistryItems', () => {
   })
 
   it('de-duplicates items requested more than once', async () => {
-    const items = await resolveRegistryItems(['github', '@dashfy/github'], {
+    const items = await resolveRegistryItems(['github', '@getdashfy/github'], {
       registries: localRegistries(registryDir),
       useCache: false,
     })

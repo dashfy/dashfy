@@ -1,4 +1,4 @@
-import { format } from '@dashfy/utils'
+import { format } from '@getdashfy/utils'
 import { ActivityIcon } from 'lucide-react'
 
 import { Widget } from '@/components/widget/base/Widget'

@@ -88,13 +88,13 @@ function captureLogs(): string[] {
 
 describe('runDoctor', () => {
   it('reports all checks passing for a healthy, fully set up project', async () => {
-    const cwd = await scaffold({ withGithub: true, deps: ['@dashfy/ext-github'] })
+    const cwd = await scaffold({ withGithub: true, deps: ['@getdashfy/ext-github'] })
     process.env.GITHUB_TOKEN = 'test-token'
 
-    const report = await runDoctor(cwd, { items: ['@dashfy/github'] })
+    const report = await runDoctor(cwd, { items: ['@getdashfy/github'] })
 
     expect(report.ok).toBe(true)
-    const github = report.extensions.find((extension) => extension.address === '@dashfy/github')
+    const github = report.extensions.find((extension) => extension.address === '@getdashfy/github')
     expect(github).toBeDefined()
     expect(github?.checks.every((check) => check.status !== 'fail')).toBe(true)
     const statuses = Object.fromEntries(github!.checks.map((check) => [check.label, check.status]))
@@ -102,21 +102,21 @@ describe('runDoctor', () => {
   })
 
   it('fails when widget setup is missing', async () => {
-    const cwd = await scaffold({ deps: ['@dashfy/ext-github'] })
+    const cwd = await scaffold({ deps: ['@getdashfy/ext-github'] })
     process.env.GITHUB_TOKEN = 'test-token'
 
-    const report = await runDoctor(cwd, { items: ['@dashfy/github'] })
+    const report = await runDoctor(cwd, { items: ['@getdashfy/github'] })
 
     expect(report.ok).toBe(false)
-    const github = report.extensions.find((extension) => extension.address === '@dashfy/github')
+    const github = report.extensions.find((extension) => extension.address === '@getdashfy/github')
     const appCheck = github?.checks.find((check) => check.label.includes('Widgets registered'))
     expect(appCheck?.status).toBe('fail')
   })
 
   it('fails when a required env var is missing and passes when set', async () => {
-    const cwd = await scaffold({ withGithub: true, deps: ['@dashfy/ext-github'] })
+    const cwd = await scaffold({ withGithub: true, deps: ['@getdashfy/ext-github'] })
 
-    const missing = await runDoctor(cwd, { items: ['@dashfy/github'] })
+    const missing = await runDoctor(cwd, { items: ['@getdashfy/github'] })
     const missingEnv = missing.extensions[0]?.checks.find((check) =>
       check.label.includes('GITHUB_TOKEN'),
     )
@@ -124,7 +124,7 @@ describe('runDoctor', () => {
     expect(missing.ok).toBe(false)
 
     process.env.GITHUB_TOKEN = 'test-token'
-    const present = await runDoctor(cwd, { items: ['@dashfy/github'] })
+    const present = await runDoctor(cwd, { items: ['@getdashfy/github'] })
     const presentEnv = present.extensions[0]?.checks.find((check) =>
       check.label.includes('GITHUB_TOKEN'),
     )
@@ -134,16 +134,16 @@ describe('runDoctor', () => {
   it('scopes checks to the passed extension argument', async () => {
     const cwd = await scaffold({
       withGithub: true,
-      deps: ['@dashfy/ext-github', '@dashfy/ext-nba'],
+      deps: ['@getdashfy/ext-github', '@getdashfy/ext-nba'],
     })
 
-    const scoped = await runDoctor(cwd, { items: ['@dashfy/github'] })
-    expect(scoped.extensions.map((extension) => extension.address)).toEqual(['@dashfy/github'])
+    const scoped = await runDoctor(cwd, { items: ['@getdashfy/github'] })
+    expect(scoped.extensions.map((extension) => extension.address)).toEqual(['@getdashfy/github'])
 
     const auto = await runDoctor(cwd)
     expect(auto.extensions.map((extension) => extension.address).sort()).toEqual([
-      '@dashfy/github',
-      '@dashfy/nba',
+      '@getdashfy/github',
+      '@getdashfy/nba',
     ])
   })
 
@@ -161,20 +161,20 @@ describe('runDoctor', () => {
 
 describe('doctor command', () => {
   it('sets a non-zero exit code when checks fail', async () => {
-    const cwd = await scaffold({ deps: ['@dashfy/ext-github'] })
+    const cwd = await scaffold({ deps: ['@getdashfy/ext-github'] })
     captureLogs()
 
-    await doctor.parseAsync(['@dashfy/github', '-c', cwd], { from: 'user' })
+    await doctor.parseAsync(['@getdashfy/github', '-c', cwd], { from: 'user' })
 
     expect(process.exitCode).toBe(1)
   })
 
   it('emits the structured report with --json', async () => {
-    const cwd = await scaffold({ withGithub: true, deps: ['@dashfy/ext-github'] })
+    const cwd = await scaffold({ withGithub: true, deps: ['@getdashfy/ext-github'] })
     process.env.GITHUB_TOKEN = 'test-token'
     const logs = captureLogs()
 
-    await doctor.parseAsync(['@dashfy/github', '-c', cwd, '--json'], { from: 'user' })
+    await doctor.parseAsync(['@getdashfy/github', '-c', cwd, '--json'], { from: 'user' })
 
     const report = JSON.parse(logs.join('\n')) as DoctorReport
     expect(report.project).not.toBeNull()
@@ -211,7 +211,7 @@ describe('setup helpers', () => {
 
 describe('packageToAddress', () => {
   it('maps package names to registry addresses', () => {
-    expect(packageToAddress('@dashfy/ext-github')).toBe(`${BUILTIN_REGISTRY_NAMESPACE}/github`)
+    expect(packageToAddress('@getdashfy/ext-github')).toBe(`${BUILTIN_REGISTRY_NAMESPACE}/github`)
     expect(packageToAddress('ext-github')).toBe(`${BUILTIN_REGISTRY_NAMESPACE}/github`)
     expect(packageToAddress('@acme/ext-foo')).toBe('@acme/foo')
   })

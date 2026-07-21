@@ -1,10 +1,10 @@
-# `@dashfy/ui`
+# `@getdashfy/ui`
 
 > Dashfy UI component library for building Dashfy dashboards.
 
 ## Introduction
 
-`@dashfy/ui` is the frontend runtime for Dashfy dashboards. It provides a complete React component library for rendering dashboards, managing WebSocket connections, handling real-time data subscriptions, and providing an extensible widget system.
+`@getdashfy/ui` is the frontend runtime for Dashfy dashboards. It provides a complete React component library for rendering dashboards, managing WebSocket connections, handling real-time data subscriptions, and providing an extensible widget system.
 
 The UI library acts as the client-side orchestrator that:
 
@@ -22,25 +22,25 @@ Install with your favorite package manager:
 #### `npm`
 
 ```bash
-npm install @dashfy/ui
+npm install @getdashfy/ui
 ```
 
 #### `pnpm`
 
 ```bash
-pnpm add @dashfy/ui
+pnpm add @getdashfy/ui
 ```
 
 #### `yarn`
 
 ```bash
-yarn add @dashfy/ui
+yarn add @getdashfy/ui
 ```
 
 #### `bun`
 
 ```bash
-bun add @dashfy/ui
+bun add @getdashfy/ui
 ```
 
 ## Quick Start
@@ -48,7 +48,7 @@ bun add @dashfy/ui
 Create a Dashfy client and register extension widgets:
 
 ```tsx
-import { CustomJson, JsonKeys, JsonStatus } from '@dashfy/ext-json'
+import { CustomJson, JsonKeys, JsonStatus } from '@getdashfy/ext-json'
 import {
   Branches,
   CommitActivityLine,
@@ -59,8 +59,8 @@ import {
   RepoBadge,
   Status,
   UserBadge,
-} from '@dashfy/ext-github'
-import { Dashfy, WidgetRegistry } from '@dashfy/ui'
+} from '@getdashfy/ext-github'
+import { Dashfy, WidgetRegistry } from '@getdashfy/ui'
 
 // Register GitHub extension widgets
 WidgetRegistry.addExtension('github', {
@@ -94,7 +94,7 @@ export const App = () => {
 Extensible widget registry for registering and managing dashboard widgets:
 
 ```tsx
-import { WidgetRegistry } from '@dashfy/ui'
+import { WidgetRegistry } from '@getdashfy/ui'
 import { MyCustomWidget, AnotherWidget } from './widgets'
 
 // Register a single widget
@@ -130,7 +130,7 @@ import {
   WidgetBody,
   WidgetLoader,
   WidgetError,
-} from '@dashfy/ui'
+} from '@getdashfy/ui'
 
 export const MyWidget = ({ repository }: { repository: string }) => {
   const { data, error, loading } = useApiSubscription<RepoData>({
@@ -166,7 +166,7 @@ export const MyWidget = ({ repository }: { repository: string }) => {
 Managed [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) connection with automatic reconnection:
 
 ```tsx
-import { useWebSocket } from '@dashfy/ui'
+import { useWebSocket } from '@getdashfy/ui'
 
 const socket = useWebSocket({
   url: 'http://localhost:5001', // Server URL
@@ -194,11 +194,11 @@ if (!socket) {
 Built-in theme support with light/dark mode:
 
 ```tsx
-import { ThemeRegistry } from '@dashfy/ui'
-import { defaultTheme, nordTheme } from '@dashfy/themes'
+import { ThemeRegistry } from '@getdashfy/ui'
+import { defaultTheme, nordTheme } from '@getdashfy/themes'
 import { myCustomTheme } from './themes/custom'
 
-// Load all built-in themes from @dashfy/themes
+// Load all built-in themes from @getdashfy/themes
 ThemeRegistry.loadAllThemes()
 
 // Or register themes individually
@@ -219,7 +219,7 @@ const theme = ThemeRegistry.get('nord')
 
 **Theme Features:**
 
-- Built-in themes from `@dashfy/themes` package
+- Built-in themes from `@getdashfy/themes` package
 - Light/dark mode support
 - CSS variable-based theming
 - LocalStorage persistence
@@ -251,7 +251,7 @@ Tabbed bottom panel with built-in tabs:
 Centralized state management with [Zustand](https://github.com/pmndrs/zustand):
 
 ```tsx
-import { useDashfyStore } from '@dashfy/ui'
+import { useDashfyStore } from '@getdashfy/ui'
 
 // Access store slices
 const config = useDashfyStore((state) => state.config)
@@ -298,7 +298,7 @@ import {
   WidgetLoader,
   WidgetError,
   WidgetEmpty,
-} from '@dashfy/ui'
+} from '@getdashfy/ui'
 
 interface MyWidgetProps {
   title?: string
@@ -347,7 +347,7 @@ export const MyWidget = ({ title, repository }: MyWidgetProps) => {
 Register widgets before rendering the Dashfy component:
 
 ```tsx
-import { WidgetRegistry } from '@dashfy/ui'
+import { WidgetRegistry } from '@getdashfy/ui'
 import { MyWidget } from './widgets/MyWidget'
 
 // Register extension with multiple widgets
@@ -419,7 +419,7 @@ The UI library uses [Tailwind CSS](https://tailwindcss.com) with custom theme to
 Fully typed with TypeScript:
 
 ```tsx
-import type { DashfyConfig, DashboardConfig, WidgetConfig } from '@dashfy/ui'
+import type { DashfyConfig, DashboardConfig, WidgetConfig } from '@getdashfy/ui'
 
 const dashfyConfig: DashfyConfig = {
   dashboards: [

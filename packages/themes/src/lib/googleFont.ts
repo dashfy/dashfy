@@ -29,7 +29,7 @@ export interface GoogleFontConfig {
  *
  * @example
  * ```ts
- * import { googleFont } from '@dashfy/themes'
+ * import { googleFont } from '@getdashfy/themes'
  *
  * const fonts = googleFont({
  *   sans:  { family: 'Merriweather', weights: [400, 500, 600, 700], fallback: 'serif' },

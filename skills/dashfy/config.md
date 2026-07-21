@@ -31,7 +31,7 @@ Written by `dashfy init` and read by `add` / `remove` / `doctor`. It declares wh
 }
 ```
 
-- `registries` — custom registry endpoints, merged over the built-in `@dashfy`. A value is a URL template containing `{name}`, or an object with `url` plus optional `params` / `headers` (values may reference `${ENV_VAR}`). See [registry.md](./registry.md).
+- `registries` — custom registry endpoints, merged over the built-in `@getdashfy`. A value is a URL template containing `{name}`, or an object with `url` plus optional `params` / `headers` (values may reference `${ENV_VAR}`). See [registry.md](./registry.md).
 - `paths` — where the CLI applies changes. These take precedence over the CLI's heuristic file discovery (preflight). All keys are optional.
 
 ---
@@ -149,4 +149,4 @@ Any keys beyond the required ones are passed to the widget as props (the schema 
 
 ## Theming
 
-Dashfy ships a customizable theme system with pre-built themes in the `@dashfy/themes` package (Tailwind CSS based). Use it to switch the dashboard's look without touching widget code. Refer to the package's README for the available themes and how to apply one in the scaffolded app. When adding custom colors, follow the app's Tailwind/global CSS setup rather than hardcoding raw color values in widgets.
+Dashfy ships a customizable theme system with pre-built themes in the `@getdashfy/themes` package (Tailwind CSS based). Use it to switch the dashboard's look without touching widget code. Refer to the package's README for the available themes and how to apply one in the scaffolded app. When adding custom colors, follow the app's Tailwind/global CSS setup rather than hardcoding raw color values in widgets.

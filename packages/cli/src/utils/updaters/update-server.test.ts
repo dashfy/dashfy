@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest'
 import { DEFAULT_CONFIG_PATH, DEFAULT_SERVER_PATH } from '@/constants/paths'
 import { removeFromServer, updateServer } from '@/utils/updaters/update-server'
 
-const MINIMAL_SERVER = `import { Dashfy } from '@dashfy/server'
+const MINIMAL_SERVER = `import { Dashfy } from '@getdashfy/server'
 
 const dashfy = new Dashfy()
 
@@ -31,7 +31,7 @@ describe('updateServer', () => {
       serverFile,
       extensionKey: 'github',
       client: {
-        import: '@dashfy/ext-github',
+        import: '@getdashfy/ext-github',
         factory: 'createGitHubClient',
         mode: 'poll',
         options: '{ token: process.env.GITHUB_TOKEN! }',
@@ -41,7 +41,7 @@ describe('updateServer', () => {
     const content = await readFile(serverFile, 'utf-8')
 
     expect(result).toBe('added')
-    expect(content).toContain("import { createGitHubClient } from '@dashfy/ext-github'")
+    expect(content).toContain("import { createGitHubClient } from '@getdashfy/ext-github'")
     expect(content).toContain(
       "dashfy.registerApi('github', createGitHubClient({ token: process.env.GITHUB_TOKEN! }))",
     )
@@ -55,14 +55,14 @@ describe('updateServer', () => {
       serverFile,
       extensionKey: 'system',
       client: {
-        import: '@dashfy/ext-system/client',
+        import: '@getdashfy/ext-system/client',
         factory: 'createSystemClient',
         mode: 'push',
       },
     })
 
     const content = await readFile(serverFile, 'utf-8')
-    expect(content).toContain("import { createSystemClient } from '@dashfy/ext-system/client'")
+    expect(content).toContain("import { createSystemClient } from '@getdashfy/ext-system/client'")
     expect(content).toContain("dashfy.registerApi('system', createSystemClient(), 'push')")
   })
 
@@ -72,7 +72,7 @@ describe('updateServer', () => {
       serverFile,
       extensionKey: 'nba',
       client: {
-        import: '@dashfy/ext-nba',
+        import: '@getdashfy/ext-nba',
         factory: 'createNbaClient',
         mode: 'poll' as const,
       },
@@ -93,7 +93,7 @@ describe('removeFromServer', () => {
   it('removes the registerApi call and the factory import', async () => {
     const serverFile = await makeServerFile()
     const client = {
-      import: '@dashfy/ext-github',
+      import: '@getdashfy/ext-github',
       factory: 'createGitHubClient',
       mode: 'poll' as const,
       options: '{ token: process.env.GITHUB_TOKEN! }',
@@ -106,7 +106,7 @@ describe('removeFromServer', () => {
     expect(removed).toBe('removed')
     expect(content).not.toContain('registerApi')
     expect(content).not.toContain('createGitHubClient')
-    expect(content).not.toContain('@dashfy/ext-github')
+    expect(content).not.toContain('@getdashfy/ext-github')
     expect(content).toContain('dashfy.start()')
   })
 
@@ -116,7 +116,7 @@ describe('removeFromServer', () => {
     const removed = await removeFromServer({
       serverFile,
       extensionKey: 'github',
-      client: { import: '@dashfy/ext-github', factory: 'createGitHubClient', mode: 'poll' },
+      client: { import: '@getdashfy/ext-github', factory: 'createGitHubClient', mode: 'poll' },
     })
 
     expect(removed).toBe('skipped')

@@ -43,13 +43,13 @@ describe('search', () => {
       logs.push(String(message))
     })
 
-    await search.parseAsync(['@dashfy', '-c', cwd], { from: 'user' })
+    await search.parseAsync(['@getdashfy', '-c', cwd], { from: 'user' })
 
     expect(process.exitCode).toBe(0)
     const payload = JSON.parse(logs.join('\n')) as {
       results: { registry: string; items: { name: string }[] }[]
     }
-    const group = payload.results.find((entry) => entry.registry === '@dashfy')
+    const group = payload.results.find((entry) => entry.registry === '@getdashfy')
     expect(group?.items.length ?? 0).toBeGreaterThan(0)
   })
 
@@ -63,9 +63,9 @@ describe('search', () => {
       logs.push(String(message))
     })
 
-    await search.parseAsync(['@dashfy', '--query', 'github', '-c', cwd], { from: 'user' })
+    await search.parseAsync(['@getdashfy', '--query', 'github', '-c', cwd], { from: 'user' })
 
-    expect(logs.join('\n')).toContain('pnpm dlx dashfy@latest add @dashfy/github')
+    expect(logs.join('\n')).toContain('pnpm dlx dashfy@latest add @getdashfy/github')
   })
 
   it('rejects unknown --type values', async () => {
@@ -77,7 +77,7 @@ describe('search', () => {
     vi.spyOn(console, 'log').mockImplementation(() => undefined)
 
     await expect(
-      search.parseAsync(['@dashfy', '--type', 'bogus', '-c', cwd], { from: 'user' }),
+      search.parseAsync(['@getdashfy', '--type', 'bogus', '-c', cwd], { from: 'user' }),
     ).rejects.toThrow('process.exit')
     expect(exit).toHaveBeenCalledWith(1)
   })
