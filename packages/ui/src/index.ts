@@ -39,21 +39,3 @@ export * from './hooks/useWidget'
 export * from './lib/utils'
 export * from './registry/ThemeRegistry'
 export * from './store'
-
-// UI primitives (shadcn/ui - https://v3.shadcn.com)
-export * from './components/ui'
-
-// Re-export types from @getdashfy/types for convenience
-export type {
-  ApiConfig,
-  Dashboard,
-  DashboardConfig,
-  DashfyConfig,
-  Notification,
-  NotificationType,
-  Subscription,
-  WebSocketStatus,
-  WidgetComponent,
-  WidgetConfig,
-  WidgetProps,
-} from '@getdashfy/types'
