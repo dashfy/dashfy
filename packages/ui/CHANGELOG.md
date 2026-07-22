@@ -1,5 +1,11 @@
 # @getdashfy/ui
 
+## 0.2.0
+
+### Minor Changes
+
+- Remove shadcn UI primitives and types re-exports from public API
+
 ## 0.1.1
 
 ### Patch Changes
