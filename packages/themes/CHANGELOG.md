@@ -1,5 +1,14 @@
 # @getdashfy/themes
 
+## 0.1.1
+
+### Patch Changes
+
+- Fix npm publish by resolving workspace dependencies to semver ranges
+
+- Updated dependencies []:
+  - @getdashfy/types@0.1.1
+
 ## 0.1.0
 
 ### Initial Release

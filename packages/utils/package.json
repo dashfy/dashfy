@@ -1,6 +1,6 @@
 {
   "name": "@getdashfy/utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Formatting and utility functions for Dashfy - numbers, currencies, bytes, dates, times, strings, platform detection, and more",
   "keywords": [
     "dashfy",
