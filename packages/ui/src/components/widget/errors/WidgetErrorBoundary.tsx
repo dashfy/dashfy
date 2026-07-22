@@ -54,22 +54,28 @@ const DefaultFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
  * Wraps react-error-boundary with Dashfy-specific defaults.
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <WidgetErrorBoundary>
  *   <MyWidget />
  * </WidgetErrorBoundary>
+ * ```
  *
  * @example
+ * ```tsx
  * // With custom fallback
  * <WidgetErrorBoundary fallback={<div>Custom error</div>}>
  *   <MyWidget />
  * </WidgetErrorBoundary>
+ * ```
  *
  * @example
+ * ```tsx
  * // With error logging
  * <WidgetErrorBoundary onError={(error) => logToSentry(error)}>
  *   <MyWidget />
  * </WidgetErrorBoundary>
+ * ```
  */
 export const WidgetErrorBoundary = ({
   children,
