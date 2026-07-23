@@ -246,9 +246,9 @@ and its starter dashboard block exists. It is the CLI counterpart of the MCP
 and CI.
 
 ```bash
-npx dashfy@latest doctor              # auto-detect installed extensions
-npx dashfy@latest doctor @getdashfy/github  # scope to specific extension(s)
-npx dashfy@latest doctor --json       # machine-readable report for CI
+npx dashfy@latest doctor # auto-detect installed extensions
+npx dashfy@latest doctor @getdashfy/github # scope to specific extension(s)
+npx dashfy@latest doctor --json # machine-readable report for CI
 ```
 
 With no arguments, `doctor` auto-detects installed extensions from
