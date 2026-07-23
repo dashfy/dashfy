@@ -518,4 +518,4 @@ CLI behavior can also be tuned with:
 
 ## License
 
-This project is licensed under the AGPL-3.0 License - see the [LICENSE](../../LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.

@@ -643,6 +643,8 @@ Join the conversation on X (Twitter) and follow [@dashfydev](https://x.com/dashf
 
 This project is licensed under the AGPL-3.0 License - see the [LICENSE](./LICENSE) file for details.
 
+The CLI (`dashfy`) is MIT-licensed; the runtime libraries (`@getdashfy/*`) are AGPL-3.0.
+
 ---
 
 <p align="center">
