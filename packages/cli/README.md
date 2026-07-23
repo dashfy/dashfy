@@ -27,7 +27,7 @@ npx dashfy@latest add @getdashfy/github
 ## How it works
 
 Extensions are resolved from a **registry** at runtime over HTTP, the same model as
-shadcn-ui. The default registry is the `@getdashfy` namespace, served from
+[shadcn-ui](https://ui.shadcn.com/docs/registry). The default registry is the `@getdashfy` namespace, served from
 `https://registry.dashfy.dev/r`. The difference from shadcn: a Dashfy registry item
 describes an npm package plus setup metadata, so "applying" an extension means
 _installing_ the package and running codemods, rather than copying source files.
@@ -55,15 +55,15 @@ Options:
 
 - `-t, --template <template>` — template to use. Available:
   - `vite-starter` (default) — minimal Vite app; the CLI prompts you for extensions and sets them up.
-  - `vite-app` — full Vite demo (GitHub, NBA, System, Market Live) copied as-is, no prompts.
+  - `vite-app` — full Vite demo (GitHub, System, Market Live) copied as-is, no prompts.
   - `astro-starter` — minimal Astro app; the CLI prompts you for extensions and sets them up.
-  - `astro-app` — full Astro demo (GitHub, NBA, System, Market Live) copied as-is, no prompts.
+  - `astro-app` — full Astro demo (GitHub, System, Market Live) copied as-is, no prompts.
   - `next-starter` — minimal Next.js app; the CLI prompts you for extensions and sets them up.
-  - `next-app` — full Next.js demo (GitHub, NBA, System, Market Live) copied as-is, no prompts.
+  - `next-app` — full Next.js demo (GitHub, System, Market Live) copied as-is, no prompts.
   - `react-router-starter` — minimal React Router app; the CLI prompts you for extensions and sets them up.
-  - `react-router-app` — full React Router demo (GitHub, NBA, System, Market Live) copied as-is, no prompts.
+  - `react-router-app` — full React Router demo (GitHub, System, Market Live) copied as-is, no prompts.
   - `start-starter` — minimal TanStack Start app; the CLI prompts you for extensions and sets them up.
-  - `start-app` — full TanStack Start demo (GitHub, NBA, System, Market Live) copied as-is, no prompts.
+  - `start-app` — full TanStack Start demo (GitHub, System, Market Live) copied as-is, no prompts.
 - `-e, --extensions <names>` — comma-separated extensions to set up (skips the prompt; `*-starter` only).
 - `-c, --cwd <cwd>` — working directory.
 - `--no-install` — skip installing npm dependencies.
@@ -506,15 +506,11 @@ CLI behavior can also be tuned with:
 - `DASHFY_REGISTRIES_URL` — location of the discovery index (`registries.json`).
 - `DASHFY_TEMPLATE_DIR` / `DASHFY_GITHUB_URL` — template source for `init`.
 
-## Available extensions
+## Community
 
-| Extension     | Widgets                                     | Server API |
-| ------------- | ------------------------------------------- | ---------- |
-| `github`      | badges, charts, pull requests, gitmap, etc. | poll       |
-| `json`        | CustomJson, JsonKeys, JsonStatus            | poll       |
-| `nba`         | GameCard, Scoreboard, Standings             | poll       |
-| `system`      | CPU, memory, disk, network, processes       | push       |
-| `market-live` | PriceLive, TableLive                        | none       |
+Join the community on [Dashfy's Discord server](https://dashfy.dev/discord) to discuss the project, ask questions, or get help.
+
+Join the conversation on X (Twitter) and follow [@dashfydev](https://x.com/dashfydev) for updates and announcements.
 
 ## License
 
