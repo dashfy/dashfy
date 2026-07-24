@@ -39,3 +39,6 @@ export * from './hooks/useWidget'
 export * from './lib/utils'
 export * from './registry/ThemeRegistry'
 export * from './store'
+
+// UI primitives (shadcn/ui - https://v3.shadcn.com)
+export * from './components/ui'
