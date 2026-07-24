@@ -1,5 +1,11 @@
 # @getdashfy/ui
 
+## 0.2.1
+
+### Patch Changes
+
+- [`a9cbd29`](https://github.com/dashfy/dashfy/commit/a9cbd297ac0a8818a3c7a801d7716ccb5c8c78ba) Thanks [@brenopolanski](https://github.com/brenopolanski)! - Re-export shadcn/ui primitives from the public API
+
 ## 0.2.0
 
 ### Minor Changes
