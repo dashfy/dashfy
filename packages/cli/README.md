@@ -371,7 +371,7 @@ Override the index location with `DASHFY_REGISTRIES_URL` (a URL or a local
 directory/file) for offline work or testing, the discovery analog of
 `DASHFY_REGISTRY_URL`.
 
-### `dashfy registry:build [packages]`
+### `dashfy registry build [packages]`
 
 Builds the hosted registry artifacts (`<name>.json` per extension + `index.json`)
 from the `dashfy` metadata field of each `ext-*` package. Used to produce the files
