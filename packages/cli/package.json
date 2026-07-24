@@ -1,6 +1,6 @@
 {
   "name": "dashfy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Dashfy CLI - scaffold dashboards and add extensions",
   "keywords": [
     "dashfy",
