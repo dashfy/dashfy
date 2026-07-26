@@ -43,7 +43,7 @@ describe('updateConfig', () => {
       configFile,
       title: 'GitHub',
       extensionKey: 'github',
-      starter: [{ widget: 'RepoBadge', repository: 'facebook/react' }, { widget: 'Status' }],
+      starter: [{ widget: 'RepoBadge', repository: 'react/react' }, { widget: 'Status' }],
     })
 
     const parsed = parseYaml(await readFile(configFile, 'utf-8')) as ParsedConfig
@@ -60,7 +60,7 @@ describe('updateConfig', () => {
       widget: 'RepoBadge',
       x: 0,
       y: 0,
-      repository: 'facebook/react',
+      repository: 'react/react',
     })
     expect(dashboard.widgets[1]).toMatchObject({ widget: 'Status', x: 1 })
   })

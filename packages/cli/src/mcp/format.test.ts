@@ -165,7 +165,7 @@ describe('buildExtensionDocs', () => {
           mode: 'poll',
           options: '{ token: process.env.GITHUB_TOKEN! }',
         },
-        starter: [{ widget: 'RepoBadge', repository: 'facebook/react' }, { widget: 'Status' }],
+        starter: [{ widget: 'RepoBadge', repository: 'react/react' }, { widget: 'Status' }],
       },
     })
 
@@ -214,7 +214,7 @@ describe('formatExtensionDocs', () => {
           mode: 'poll',
           options: '{ token: process.env.GITHUB_TOKEN! }',
         },
-        starter: [{ widget: 'RepoBadge', repository: 'facebook/react' }],
+        starter: [{ widget: 'RepoBadge', repository: 'react/react' }],
       },
     })
 
@@ -225,7 +225,7 @@ describe('formatExtensionDocs', () => {
     expect(text).toContain('Environment\n  GITHUB_TOKEN')
     expect(text).toContain('Server: createGitHubClient from @getdashfy/ext-github (poll)')
     expect(text).toContain('Options: { token: process.env.GITHUB_TOKEN! }')
-    expect(text).toContain('- RepoBadge (repository: facebook/react)')
+    expect(text).toContain('- RepoBadge (repository: react/react)')
     expect(text).toContain('Install\n  dashfy add @getdashfy/github')
   })
 

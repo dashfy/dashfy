@@ -86,7 +86,7 @@ These are the most common patterns that differentiate correct Dashfy usage.
     "options": "{ token: process.env.GITHUB_TOKEN! }"
   },
   "envVars": ["GITHUB_TOKEN"],
-  "starter": [{ "widget": "RepoBadge", "repository": "facebook/react" }]
+  "starter": [{ "widget": "RepoBadge", "repository": "react/react" }]
 }
 ```
 

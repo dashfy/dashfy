@@ -378,7 +378,7 @@ Reference widgets in dashboard configuration:
           "columns": 1,
           "rows": 1,
           "title": "Custom Title",
-          "repository": "facebook/react"
+          "repository": "react/react"
         }
       ]
     }

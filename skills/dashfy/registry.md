@@ -33,7 +33,7 @@ Each `@getdashfy/ext-*` package declares a `dashfy` object in its `package.json`
       "options": "{ token: process.env.GITHUB_TOKEN! }",
     },
     "envVars": ["GITHUB_TOKEN"],
-    "starter": [{ "widget": "RepoBadge", "repository": "facebook/react" }],
+    "starter": [{ "widget": "RepoBadge", "repository": "react/react" }],
     "registryDependencies": [],
   },
 }
@@ -81,7 +81,7 @@ Field reference:
       "mode": "poll",
       "options": "{ token: process.env.GITHUB_TOKEN! }",
     },
-    "starter": [{ "widget": "RepoBadge", "repository": "facebook/react" }],
+    "starter": [{ "widget": "RepoBadge", "repository": "react/react" }],
   },
 }
 ```

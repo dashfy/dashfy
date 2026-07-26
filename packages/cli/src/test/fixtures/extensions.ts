@@ -48,7 +48,7 @@ const FIXTURE_EXTENSIONS: FixtureExtensionMeta[] = [
       options: '{ token: process.env.GITHUB_TOKEN! }',
     },
     envVars: ['GITHUB_TOKEN'],
-    starter: [{ widget: 'RepoBadge', repository: 'facebook/react' }, { widget: 'Status' }],
+    starter: [{ widget: 'RepoBadge', repository: 'react/react' }, { widget: 'Status' }],
   },
   {
     id: 'json',
