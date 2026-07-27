@@ -44,5 +44,8 @@ jobs:
       - name: Type check
         run: pnpm typecheck
 
+      - name: Check circular dependencies
+        run: pnpm check:circular
+
       - name: Test
         run: pnpm test
