@@ -14,7 +14,7 @@
 - **String** - String manipulation and display helpers
 - **Libs** - Re-export of [date-fns](https://date-fns.org)
 
-## Install
+## Installation
 
 Install with your favorite package manager:
 

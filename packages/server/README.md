@@ -14,7 +14,7 @@ The server acts as the central orchestrator that:
 - Streams data to connected clients via WebSockets
 - Provides HTTP endpoints for health checks and configuration
 
-## Install
+## Installation
 
 Install with your favorite package manager:
 

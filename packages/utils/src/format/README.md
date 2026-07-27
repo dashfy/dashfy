@@ -17,7 +17,7 @@ The `format` module provides a unified formatting API for Dashfy dashboards. It 
 - **[Exponential](#exponential)** - Scientific notation
 - **[List](#list)** - Array to human-readable list
 
-## Install
+## Installation
 
 Install with your favorite package manager:
 

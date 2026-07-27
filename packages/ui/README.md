@@ -15,7 +15,7 @@ The UI library acts as the client-side orchestrator that:
 - Handles user interactions and keyboard shortcuts
 - Manages application state with Zustand
 
-## Install
+## Installation
 
 Install with your favorite package manager:
 

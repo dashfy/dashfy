@@ -6,7 +6,7 @@
 
 `@getdashfy/types` is the single source of truth for the TypeScript contracts shared across Dashfy.
 
-## Install
+## Installation
 
 Install as a dev dependency with your favorite package manager:
 

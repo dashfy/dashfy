@@ -6,7 +6,7 @@
 
 `@getdashfy/themes` provides the theming layer for Dashfy, with a set of pre-built themes and helpers for applying, switching, and creating custom themes.
 
-## Install
+## Installation
 
 Install with your favorite package manager:
 
