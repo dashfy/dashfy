@@ -190,6 +190,20 @@ The registry is deployed to `registry.dashfy.dev` on release via the
 registry (a public URL serving `<name>.json` + `index.json`, or items under
 `r/<name>.json` in a GitHub repo) and reference it from a project's `dashfy.json`.
 
+#### » Working on the JSON Schemas
+
+The published JSON Schemas ship with the registry, in `apps/registry/public`:
+[`schema.json`](./apps/registry/public/schema.json) describes a project's
+`dashfy.json`, and `schema/*.json` describe the registry documents. Each one is
+hand-written to mirror its Zod counterpart in
+[`packages/cli/src/schema/index.ts`](./packages/cli/src/schema/index.ts), so update
+both together.
+
+Their `$id` is on `dashfy.dev` rather than `registry.dashfy.dev`, because that is the
+URL the CLI stamps into the files it writes. The website rewrites `/schema.json` and
+`/schema/*` to this deployment, so the canonical URLs resolve without a second copy of
+the schemas living in the website repo.
+
 ## Coding Principles (project-level)
 
 - Prefer **small, explicit contracts** over "magic".
