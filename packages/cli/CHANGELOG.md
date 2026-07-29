@@ -1,5 +1,11 @@
 # dashfy
 
+## 0.1.2
+
+### Patch Changes
+
+- Build the hosted registry from published npm manifests instead of local ext-\* packages, and add `--from-npm` for registry builds. Align templates, fixtures, and docs with `/client` import paths and current extension metadata.
+
 ## 0.1.0
 
 ### Initial Release
