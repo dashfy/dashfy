@@ -28,7 +28,7 @@ function makeItem(overrides: Partial<RegistryItem> = {}): RegistryItem {
       extensionKey: 'github',
       widgets: ['RepoBadge', 'PullRequests'],
       client: {
-        import: '@getdashfy/ext-github',
+        import: '@getdashfy/ext-github/client',
         factory: 'createGitHubClient',
         mode: 'poll',
       },
@@ -128,7 +128,9 @@ describe('formatRegistryItems', () => {
     expect(text).toContain('Dependencies: @getdashfy/ext-github@^0.1.0')
     expect(text).toContain('Environment variables: GITHUB_TOKEN')
     expect(text).toContain('Widgets: RepoBadge, PullRequests')
-    expect(text).toContain('Server client: createGitHubClient from @getdashfy/ext-github (poll)')
+    expect(text).toContain(
+      'Server client: createGitHubClient from @getdashfy/ext-github/client (poll)',
+    )
   })
 
   it('handles empty input', () => {
@@ -160,7 +162,7 @@ describe('buildExtensionDocs', () => {
         extensionKey: 'github',
         widgets: ['RepoBadge', 'Status'],
         client: {
-          import: '@getdashfy/ext-github',
+          import: '@getdashfy/ext-github/client',
           factory: 'createGitHubClient',
           mode: 'poll',
           options: '{ token: process.env.GITHUB_TOKEN! }',
@@ -209,7 +211,7 @@ describe('formatExtensionDocs', () => {
         extensionKey: 'github',
         widgets: ['RepoBadge', 'Status'],
         client: {
-          import: '@getdashfy/ext-github',
+          import: '@getdashfy/ext-github/client',
           factory: 'createGitHubClient',
           mode: 'poll',
           options: '{ token: process.env.GITHUB_TOKEN! }',
@@ -223,7 +225,7 @@ describe('formatExtensionDocs', () => {
     expect(text).toContain('@getdashfy/github — GitHub')
     expect(text).toContain('Setup\n  Create a token')
     expect(text).toContain('Environment\n  GITHUB_TOKEN')
-    expect(text).toContain('Server: createGitHubClient from @getdashfy/ext-github (poll)')
+    expect(text).toContain('Server: createGitHubClient from @getdashfy/ext-github/client (poll)')
     expect(text).toContain('Options: { token: process.env.GITHUB_TOKEN! }')
     expect(text).toContain('- RepoBadge (repository: react/react)')
     expect(text).toContain('Install\n  dashfy add @getdashfy/github')

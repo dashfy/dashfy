@@ -27,7 +27,7 @@ Each `@getdashfy/ext-*` package declares a `dashfy` object in its `package.json`
     "docs": "Create a token at https://github.com/settings/tokens",
     "widgets": ["UserBadge", "RepoBadge", "PullRequests"],
     "client": {
-      "import": "@getdashfy/ext-github",
+      "import": "@getdashfy/ext-github/client",
       "factory": "createGitHubClient",
       "mode": "poll",
       "options": "{ token: process.env.GITHUB_TOKEN! }",
@@ -48,7 +48,7 @@ Field reference:
 - `docs` — author's setup notes, surfaced by `dashfy docs` (optional).
 - `widgets` — array of exported component names registered via `WidgetRegistry.addExtension` (at least one; must match real exports).
 - `client` — server data-source setup (omit for browser-only extensions):
-  - `import` — module specifier to import the factory from.
+  - `import` — module specifier to import the factory from. Use the exact subpath that exports it: extensions keep server factories in a `./client` entry point, so this is normally `@scope/ext-name/client`, not the package root.
   - `factory` — named factory export (e.g. `createGitHubClient`).
   - `mode` — `poll` (server polls the API) or `push` (API streams via callback).
   - `options` — raw TS source for the factory's options argument, e.g. `{ token: process.env.GITHUB_TOKEN! }` (optional).
@@ -76,7 +76,7 @@ Field reference:
     "extensionKey": "github",
     "widgets": ["UserBadge", "RepoBadge", "PullRequests"],
     "client": {
-      "import": "@getdashfy/ext-github",
+      "import": "@getdashfy/ext-github/client",
       "factory": "createGitHubClient",
       "mode": "poll",
       "options": "{ token: process.env.GITHUB_TOKEN! }",
@@ -172,9 +172,13 @@ To list a community registry, open a PR adding it to `apps/registry/public/regis
 ## Build and Verify
 
 ```bash
-# Build from package metadata.
+# Build from the metadata of local ext-* package directories.
 npx dashfy@latest registry build
 npx dashfy@latest registry build ./packages --output apps/registry/public/r
+
+# Build from the metadata published on npm, listed in a JSON file. This is how the
+# hosted registry is built, since extensions live in their own repositories.
+npx dashfy@latest registry build --from-npm apps/registry/extensions.json
 
 # Validate the output before publishing.
 npx dashfy@latest registry validate

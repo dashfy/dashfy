@@ -5,7 +5,12 @@ import fs from 'fs-extra'
 import path from 'path'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { buildRegistryFromPackages, registryBuild } from '@/commands/registry/build'
+import {
+  buildRegistryFromNpm,
+  buildRegistryFromPackages,
+  readExtensionList,
+  registryBuild,
+} from '@/commands/registry/build'
 import { DASHFY_SITE, REGISTRY_ITEM_SCHEMA_URL } from '@/constants/site'
 import { REGISTRY_CATALOG_NAME } from '@/registry/constants'
 import type { RegistryIndex, RegistryItem } from '@/schema'
@@ -239,6 +244,141 @@ describe('buildRegistryFromPackages', () => {
     })
 
     await expect(buildRegistryFromPackages({ packagesDir, outputDir })).rejects.toThrow()
+  })
+})
+
+/** Writes a packument the local DASHFY_NPM_REGISTRY_URL override can resolve. */
+async function writePackument(
+  registryDir: string,
+  packageName: string,
+  versions: Record<string, unknown>,
+  latest?: string,
+): Promise<void> {
+  const file = path.join(registryDir, `${packageName}.json`)
+  await fs.ensureDir(path.dirname(file))
+  await fs.writeJson(file, {
+    'dist-tags': latest === undefined ? {} : { latest },
+    versions,
+  })
+}
+
+describe('buildRegistryFromNpm', () => {
+  afterEach(() => {
+    delete process.env.DASHFY_NPM_REGISTRY_URL
+  })
+
+  it('builds items from the dashfy metadata of each package latest version', async () => {
+    const registryDir = await tmp('dashfy-registry-npm-')
+    const outputDir = await tmp('dashfy-registry-build-out-')
+    cleanups.push(registryDir, outputDir)
+
+    await writePackument(
+      registryDir,
+      '@getdashfy/ext-alpha',
+      {
+        '0.9.0': { name: '@getdashfy/ext-alpha', version: '0.9.0' },
+        '1.2.3': {
+          name: '@getdashfy/ext-alpha',
+          version: '1.2.3',
+          dashfy: {
+            id: 'alpha',
+            title: 'Alpha',
+            widgets: ['AlphaWidget'],
+            client: {
+              import: '@getdashfy/ext-alpha/client',
+              factory: 'createAlphaClient',
+              mode: 'poll',
+            },
+          },
+        },
+      },
+      '1.2.3',
+    )
+    process.env.DASHFY_NPM_REGISTRY_URL = registryDir
+
+    const { count } = await buildRegistryFromNpm({
+      packages: ['@getdashfy/ext-alpha'],
+      outputDir,
+    })
+
+    expect(count).toBe(1)
+
+    const item = (await fs.readJson(path.join(outputDir, 'alpha.json'))) as RegistryItem
+    expect(item).toMatchObject({
+      name: 'alpha',
+      dependencies: ['@getdashfy/ext-alpha@^1.2.3'],
+      meta: {
+        widgets: ['AlphaWidget'],
+        client: { import: '@getdashfy/ext-alpha/client' },
+      },
+    })
+  })
+
+  it('throws when a package has no dashfy metadata', async () => {
+    const registryDir = await tmp('dashfy-registry-npm-')
+    const outputDir = await tmp('dashfy-registry-build-out-')
+    cleanups.push(registryDir, outputDir)
+
+    await writePackument(
+      registryDir,
+      '@getdashfy/ext-bare',
+      { '1.0.0': { name: '@getdashfy/ext-bare', version: '1.0.0' } },
+      '1.0.0',
+    )
+    process.env.DASHFY_NPM_REGISTRY_URL = registryDir
+
+    await expect(
+      buildRegistryFromNpm({ packages: ['@getdashfy/ext-bare'], outputDir }),
+    ).rejects.toThrow('no "dashfy" metadata field')
+  })
+
+  it('throws when a package has no latest dist-tag', async () => {
+    const registryDir = await tmp('dashfy-registry-npm-')
+    const outputDir = await tmp('dashfy-registry-build-out-')
+    cleanups.push(registryDir, outputDir)
+
+    await writePackument(registryDir, '@getdashfy/ext-untagged', {
+      '1.0.0': { name: '@getdashfy/ext-untagged', version: '1.0.0' },
+    })
+    process.env.DASHFY_NPM_REGISTRY_URL = registryDir
+
+    await expect(
+      buildRegistryFromNpm({ packages: ['@getdashfy/ext-untagged'], outputDir }),
+    ).rejects.toThrow('no "latest" dist-tag')
+  })
+
+  it('throws when a package is missing from the registry', async () => {
+    const registryDir = await tmp('dashfy-registry-npm-')
+    const outputDir = await tmp('dashfy-registry-build-out-')
+    cleanups.push(registryDir, outputDir)
+
+    process.env.DASHFY_NPM_REGISTRY_URL = registryDir
+
+    await expect(
+      buildRegistryFromNpm({ packages: ['@getdashfy/ext-missing'], outputDir }),
+    ).rejects.toThrow()
+  })
+})
+
+describe('readExtensionList', () => {
+  it('reads the committed package list', async () => {
+    const dir = await tmp('dashfy-registry-list-')
+    cleanups.push(dir)
+
+    const file = path.join(dir, 'extensions.json')
+    await fs.writeJson(file, { packages: ['@getdashfy/ext-alpha'] })
+
+    expect(await readExtensionList(file)).toEqual(['@getdashfy/ext-alpha'])
+  })
+
+  it('throws on an empty or malformed list', async () => {
+    const dir = await tmp('dashfy-registry-list-')
+    cleanups.push(dir)
+
+    const file = path.join(dir, 'extensions.json')
+    await fs.writeJson(file, { packages: [] })
+
+    await expect(readExtensionList(file)).rejects.toThrow('not a valid extension list')
   })
 })
 

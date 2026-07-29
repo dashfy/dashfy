@@ -17,6 +17,14 @@ export const REGISTRIES_INDEX_URL = `${REGISTRY_HOST}/registries.json`
 /** Catalog name written to hosted `index.json`. */
 export const REGISTRY_CATALOG_NAME = 'dashfy'
 
+/**
+ * npm registry origin (no trailing slash) the hosted catalog is built from.
+ *
+ * Override with `DASHFY_NPM_REGISTRY_URL` to build against a mirror, or point it
+ * at a local directory of `<package name>.json` packuments for offline work.
+ */
+export const NPM_REGISTRY_URL = 'https://registry.npmjs.org'
+
 /** Built-in registry namespace for official Dashfy extensions. */
 export const BUILTIN_REGISTRY_NAMESPACE = '@getdashfy'
 

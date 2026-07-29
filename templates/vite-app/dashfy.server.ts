@@ -1,5 +1,5 @@
-import { createGitHubClient } from '@getdashfy/ext-github'
-import { createNbaClient } from '@getdashfy/ext-nba'
+import { createGitHubClient } from '@getdashfy/ext-github/client'
+import { createNbaClient } from '@getdashfy/ext-nba/client'
 import { createSystemClient } from '@getdashfy/ext-system/client'
 import { Dashfy } from '@getdashfy/server'
 

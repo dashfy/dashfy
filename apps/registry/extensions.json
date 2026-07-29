@@ -1,0 +1,9 @@
+{
+  "packages": [
+    "@getdashfy/ext-github",
+    "@getdashfy/ext-json",
+    "@getdashfy/ext-market-live",
+    "@getdashfy/ext-nba",
+    "@getdashfy/ext-system"
+  ]
+}

@@ -19,7 +19,7 @@ The source of truth is the `dashfy` object in the extension package's `package.j
 **Correct:**
 
 ```jsonc
-// packages/ext-acme/package.json
+// ext-weather/package.json, in the extension's own repository
 {
   "name": "@acme/ext-weather",
   "version": "0.1.0",
@@ -29,7 +29,7 @@ The source of truth is the `dashfy` object in the extension package's `package.j
     "categories": ["data"],
     "widgets": ["CurrentConditions", "Forecast"],
     "client": {
-      "import": "@acme/ext-weather",
+      "import": "@acme/ext-weather/client",
       "factory": "createWeatherClient",
       "mode": "poll",
       "options": "{ apiKey: process.env.WEATHER_API_KEY! }",
