@@ -56,7 +56,7 @@
     "build": "tsup && pnpm run build:css",
     "build:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
     "build:storybook": "storybook build",
-    "check:circular": "madge --circular --extensions ts,tsx src/",
+    "check:circular": "madge --circular --extensions ts,tsx src/ --ts-config tsconfig.json",
     "clean": "rm -rf .turbo dist node_modules",
     "dev": "tsup --watch",
     "storybook": "storybook dev -p 6006",

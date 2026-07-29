@@ -49,7 +49,7 @@
   },
   "scripts": {
     "build": "tsup",
-    "check:circular": "madge --circular --extensions ts src/",
+    "check:circular": "madge --circular --extensions ts src/ --ts-config tsconfig.json",
     "clean": "rm -rf .turbo dist node_modules",
     "dev": "tsup --watch",
     "test": "vitest run",
