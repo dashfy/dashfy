@@ -156,14 +156,21 @@ cd demo && pnpm dev:all
 
 #### » Working on the extension registry
 
-Extensions are resolved by the CLI from a registry over HTTP. The authoring source of
-truth is the `dashfy` field in each `packages/ext-*/package.json`. Build the hosted
-artifacts (per-extension `<name>.json` + `index.json`) into `apps/registry/public/r`:
+Extensions are resolved by the CLI from a registry over HTTP. Each extension lives in
+its own repository, so the authoring source of truth is the `dashfy` field in its own
+`package.json`, read from what it publishes to npm. The packages to include are listed
+in [`apps/registry/extensions.json`](./apps/registry/extensions.json) — add an entry
+there when a new extension is published. Build the hosted artifacts (per-extension
+`<name>.json` + `index.json`) into `apps/registry/public/r`:
 
 ```bash
 pnpm --filter @getdashfy/registry build      # == dashfy registry:build
 pnpm --filter @getdashfy/registry validate   # == dashfy registry validate
 ```
+
+The build fetches each package's latest published manifest, so it needs network access
+and fails outright if a package is missing or has no `dashfy` field, rather than
+publishing a short catalog.
 
 `validate` checks the built artifacts (and the `registries.json` discovery index)
 against the registry schemas before publishing. Release deploys run it

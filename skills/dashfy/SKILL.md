@@ -80,7 +80,7 @@ These are the most common patterns that differentiate correct Dashfy usage.
   "docs": "Create a token at https://github.com/settings/tokens",
   "widgets": ["UserBadge", "RepoBadge", "PullRequests"],
   "client": {
-    "import": "@getdashfy/ext-github",
+    "import": "@getdashfy/ext-github/client",
     "factory": "createGitHubClient",
     "mode": "poll",
     "options": "{ token: process.env.GITHUB_TOKEN! }"

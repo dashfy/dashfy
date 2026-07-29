@@ -14,7 +14,7 @@ const validItem = {
     extensionKey: 'github',
     widgets: ['UserBadge'],
     client: {
-      import: '@getdashfy/ext-github',
+      import: '@getdashfy/ext-github/client',
       factory: 'createGitHubClient',
       mode: 'poll' as const,
     },

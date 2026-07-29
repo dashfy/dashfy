@@ -1,6 +1,11 @@
 name: Deploy Registry
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - apps/registry/extensions.json
+      - .github/workflows/deploy-registry.yml
   release:
     types: [published]
   workflow_dispatch:

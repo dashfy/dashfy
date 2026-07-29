@@ -19,10 +19,12 @@ interface FixtureExtensionMeta {
 }
 
 /**
- * Self-contained fixtures mirroring the former `@getdashfy/ext-*` packages. These
- * back the CLI test registry so the suite no longer depends on real extension
- * packages living in the monorepo. Keep the metadata in sync with the shape the
- * tests assert on (see setup-extension / search / integration tests).
+ * Self-contained fixtures mirroring the `dashfy` manifests published on npm for
+ * each `@getdashfy/ext-*` package. These back the CLI test registry so the suite
+ * does not depend on the extension repositories or the network.
+ *
+ * The suite asserts against this metadata, so it has to stay faithful to what npm
+ * serves — a fixture that drifts turns a real bug into a passing test.
  */
 const FIXTURE_EXTENSIONS: FixtureExtensionMeta[] = [
   {
@@ -39,10 +41,12 @@ const FIXTURE_EXTENSIONS: FixtureExtensionMeta[] = [
       'PullRequests',
       'ContributorsStats',
       'CommitActivityLine',
+      'TrafficViewsHistogram',
+      'TrafficClonesHistogram',
       'Gitmap',
     ],
     client: {
-      import: '@getdashfy/ext-github',
+      import: '@getdashfy/ext-github/client',
       factory: 'createGitHubClient',
       mode: 'poll',
       options: '{ token: process.env.GITHUB_TOKEN! }',
@@ -56,7 +60,7 @@ const FIXTURE_EXTENSIONS: FixtureExtensionMeta[] = [
     categories: ['data'],
     widgets: ['CustomJson', 'JsonKeys', 'JsonStatus'],
     client: {
-      import: '@getdashfy/ext-json',
+      import: '@getdashfy/ext-json/client',
       factory: 'createJsonClient',
       mode: 'poll',
     },
@@ -75,7 +79,7 @@ const FIXTURE_EXTENSIONS: FixtureExtensionMeta[] = [
     categories: ['sports'],
     widgets: ['GameCard', 'Scoreboard', 'Standings'],
     client: {
-      import: '@getdashfy/ext-nba',
+      import: '@getdashfy/ext-nba/client',
       factory: 'createNbaClient',
       mode: 'poll',
     },
@@ -115,8 +119,9 @@ const FIXTURE_EXTENSIONS: FixtureExtensionMeta[] = [
     id: 'market-live',
     title: 'Market Live',
     categories: ['finance'],
+    docs: 'Browse feed IDs at https://pyth.network/developers/price-feed-ids',
     widgets: ['PriceLive', 'TableLive'],
-    starter: [{ widget: 'PriceLive', feedId: 'crypto.BTC_USD', showChart: false }],
+    starter: [{ widget: 'PriceLive', feedId: 'crypto.BTC_USD', showChart: true }],
   },
 ]
 

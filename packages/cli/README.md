@@ -374,12 +374,30 @@ directory/file) for offline work or testing, the discovery analog of
 ### `dashfy registry build [packages]`
 
 Builds the hosted registry artifacts (`<name>.json` per extension + `index.json`)
-from the `dashfy` metadata field of each `ext-*` package. Used to produce the files
-served at `registry.dashfy.dev`.
+from the `dashfy` metadata field of each extension.
+
+By default it reads local `ext-*` package directories, which is what you want while
+authoring an extension in a monorepo. With `--from-npm` it instead reads the latest
+manifest each listed package has published, which is how the files served at
+`registry.dashfy.dev` are produced — Dashfy's own extensions live in their own
+repositories, so npm is the only place their manifests all exist together.
+
+```bash
+# from local package directories
+npx dashfy@latest registry build ./packages
+
+# from the published manifests of the packages listed in a JSON file
+npx dashfy@latest registry build --from-npm apps/registry/extensions.json
+```
+
+The list file is `{ "packages": ["@scope/ext-name", ...] }`. A package that cannot be
+fetched or has no `dashfy` field fails the build instead of being skipped, so a
+transient error cannot publish a catalog that is missing extensions.
 
 Options:
 
 - `[packages]` — directory containing the `ext-*` packages (default `./packages`).
+- `-n, --from-npm <path>` — JSON file listing published packages to build from.
 - `-o, --output <path>` — destination directory (default `apps/registry/public/r`).
 - `-c, --cwd <cwd>` — working directory.
 
@@ -504,6 +522,8 @@ CLI behavior can also be tuned with:
 
 - `DASHFY_REGISTRY_URL` — base URL/dir for `@getdashfy` items (offline/dev).
 - `DASHFY_REGISTRIES_URL` — location of the discovery index (`registries.json`).
+- `DASHFY_NPM_REGISTRY_URL` — npm origin (or a local dir of packuments) that
+  `registry build --from-npm` reads manifests from.
 - `DASHFY_TEMPLATE_DIR` / `DASHFY_GITHUB_URL` — template source for `init`.
 
 ## Community

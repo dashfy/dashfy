@@ -11,6 +11,8 @@ import {
   PullRequests,
   RepoBadge,
   Status,
+  TrafficClonesHistogram,
+  TrafficViewsHistogram,
   UserBadge,
 } from '@getdashfy/ext-github'
 import { PriceLive, TableLive } from '@getdashfy/ext-market-live'
@@ -44,6 +46,8 @@ WidgetRegistry.addExtension('github', {
   PullRequests,
   RepoBadge,
   Status,
+  TrafficClonesHistogram,
+  TrafficViewsHistogram,
   UserBadge,
 })
 
