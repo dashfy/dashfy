@@ -321,8 +321,8 @@ widgets:
 Create a Dashfy server and load a dashboard configuration:
 
 ```ts
-import { createJsonClient } from '@getdashfy/ext-json'
-import { createGitHubClient } from '@getdashfy/ext-github'
+import { createJsonClient } from '@getdashfy/ext-json/client'
+import { createGitHubClient } from '@getdashfy/ext-github/client'
 import { Dashfy } from '@getdashfy/server'
 
 // Create server instance
