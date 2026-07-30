@@ -40,7 +40,7 @@ Dashfy is designed to make dashboards:
 
 Dashfy is published as a set of npm packages (for example `@getdashfy/server`, `@getdashfy/ui`, `@getdashfy/themes`, and `@getdashfy/ext-*`).
 
-[![Dashfy](./docs/images/dashfy-screenshot-github.png)](https://demo.dashfy.dev)
+[![Dashfy](https://raw.githubusercontent.com/dashfy/dashfy-brand/refs/heads/main/dashfy-promo_03.png)](https://demo.dashfy.dev)
 
 > _A live demo is available at: [demo.dashfy.dev ⇗](https://demo.dashfy.dev)_
 
