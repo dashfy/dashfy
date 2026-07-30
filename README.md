@@ -16,7 +16,7 @@
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://demo.dashfy.dev">Demo</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://docs.dashfy.dev">Docs</a>
+  <a href="https://dashfy.dev/docs">Docs</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://github.com/orgs/dashfy/projects/1">Roadmap</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -160,7 +160,7 @@ This makes Dashfy suitable for both local development and production systems.
 
 ## Configuration
 
-Dashfy dashboards are defined using declarative configuration. You can use `TypeScript` object, `JSON` or `YAML` to define your dashboards. To learn more about the configuration options, please refer to the [configuration documentation](https://docs.dashfy.dev/configuration).
+Dashfy dashboards are defined using declarative configuration. You can use `TypeScript` object, `JSON` or `YAML` to define your dashboards. To learn more about the configuration options, please refer to the [configuration documentation](https://dashfy.dev/docs/configuration).
 
 <details>
   <summary>TypeScript Example</summary>
@@ -657,4 +657,4 @@ The CLI (`dashfy`) is MIT-licensed; the runtime libraries (`@getdashfy/*`) are A
   </picture>
 </p>
 
-**For AI/LLM agents:** [https://docs.dashfy.dev/llms.txt](https://docs.dashfy.dev/llms.txt)
+**For AI/LLM agents:** [https://dashfy.dev/llms.txt](https://dashfy.dev/llms.txt)
