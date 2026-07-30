@@ -1,5 +1,11 @@
 # dashfy
 
+## 0.1.4
+
+### Patch Changes
+
+- Remove NBA extension from Dashfy app templates.
+
 ## 0.1.3
 
 ### Patch Changes
