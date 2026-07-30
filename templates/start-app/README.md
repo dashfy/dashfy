@@ -1,6 +1,6 @@
 # Dashfy App
 
-A dashboard built with [Dashfy](https://github.com/dashfy/dashfy), scaffolded from the `start-app` template (GitHub, NBA, System, and Market Live extensions included).
+A dashboard built with [Dashfy](https://github.com/dashfy/dashfy), scaffolded from the `start-app` template (GitHub, System, and Market Live extensions included).
 
 ## Getting started
 

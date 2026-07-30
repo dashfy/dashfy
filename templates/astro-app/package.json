@@ -21,7 +21,6 @@
     "@astrojs/react": "^5.0.0",
     "@getdashfy/ext-github": "^0.1.1",
     "@getdashfy/ext-market-live": "^0.1.1",
-    "@getdashfy/ext-nba": "^0.1.0",
     "@getdashfy/ext-system": "^0.1.0",
     "@getdashfy/server": "^0.1.1",
     "@getdashfy/ui": "^0.2.1",

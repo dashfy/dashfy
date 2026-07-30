@@ -1,5 +1,4 @@
 import { createGitHubClient } from '@getdashfy/ext-github/client'
-import { createNbaClient } from '@getdashfy/ext-nba/client'
 import { createSystemClient } from '@getdashfy/ext-system/client'
 import { Dashfy } from '@getdashfy/server'
 
@@ -18,9 +17,6 @@ dashfy.registerApi(
     token: process.env.GITHUB_TOKEN!,
   }),
 )
-
-// Register NBA API
-dashfy.registerApi('nba', createNbaClient())
 
 // Register System API (push mode for real-time updates)
 dashfy.registerApi('system', createSystemClient(), 'push')

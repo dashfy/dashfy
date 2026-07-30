@@ -47,11 +47,11 @@ describe('runInit (as-is template, -t vite-app)', () => {
     const pkg = (await fs.readJson(path.join(targetDir, 'package.json'))) as PackageJson
     expect(pkg.name).toBe('demo')
     expect(pkg.dependencies?.['@getdashfy/ext-github']).toBeDefined()
-    expect(pkg.dependencies?.['@getdashfy/ext-nba']).toBeDefined()
+    expect(pkg.dependencies?.['@getdashfy/ext-system']).toBeDefined()
 
     const app = await readFile(path.join(targetDir, DEFAULT_APP_PATH), 'utf-8')
     expect(app).toContain("WidgetRegistry.addExtension('github'")
-    expect(app).toContain("WidgetRegistry.addExtension('nba'")
+    expect(app).toContain("WidgetRegistry.addExtension('system'")
 
     // .env should be created from .env.example, and the example preserved.
     expect(await fs.pathExists(path.join(targetDir, DEFAULT_ENV_PATH))).toBe(true)
@@ -77,11 +77,11 @@ describe('runInit (as-is template, -t astro-app)', () => {
     const pkg = (await fs.readJson(path.join(targetDir, 'package.json'))) as PackageJson
     expect(pkg.name).toBe('demo')
     expect(pkg.dependencies?.['@getdashfy/ext-github']).toBeDefined()
-    expect(pkg.dependencies?.['@getdashfy/ext-nba']).toBeDefined()
+    expect(pkg.dependencies?.['@getdashfy/ext-system']).toBeDefined()
 
     const app = await readFile(path.join(targetDir, ASTRO_APP_PATH), 'utf-8')
     expect(app).toContain("WidgetRegistry.addExtension('github'")
-    expect(app).toContain("WidgetRegistry.addExtension('nba'")
+    expect(app).toContain("WidgetRegistry.addExtension('system'")
 
     expect(await fs.pathExists(path.join(targetDir, DEFAULT_ENV_PATH))).toBe(true)
 
@@ -138,11 +138,11 @@ describe('runInit (as-is template, -t next-app)', () => {
     const pkg = (await fs.readJson(path.join(targetDir, 'package.json'))) as PackageJson
     expect(pkg.name).toBe('demo')
     expect(pkg.dependencies?.['@getdashfy/ext-github']).toBeDefined()
-    expect(pkg.dependencies?.['@getdashfy/ext-nba']).toBeDefined()
+    expect(pkg.dependencies?.['@getdashfy/ext-system']).toBeDefined()
 
     const app = await readFile(path.join(targetDir, NEXT_APP_PATH), 'utf-8')
     expect(app).toContain("WidgetRegistry.addExtension('github'")
-    expect(app).toContain("WidgetRegistry.addExtension('nba'")
+    expect(app).toContain("WidgetRegistry.addExtension('system'")
 
     expect(await fs.pathExists(path.join(targetDir, DEFAULT_ENV_PATH))).toBe(true)
 
@@ -199,11 +199,11 @@ describe('runInit (as-is template, -t react-router-app)', () => {
     const pkg = (await fs.readJson(path.join(targetDir, 'package.json'))) as PackageJson
     expect(pkg.name).toBe('demo')
     expect(pkg.dependencies?.['@getdashfy/ext-github']).toBeDefined()
-    expect(pkg.dependencies?.['@getdashfy/ext-nba']).toBeDefined()
+    expect(pkg.dependencies?.['@getdashfy/ext-system']).toBeDefined()
 
     const app = await readFile(path.join(targetDir, RR_APP_PATH), 'utf-8')
     expect(app).toContain("WidgetRegistry.addExtension('github'")
-    expect(app).toContain("WidgetRegistry.addExtension('nba'")
+    expect(app).toContain("WidgetRegistry.addExtension('system'")
 
     expect(await fs.pathExists(path.join(targetDir, DEFAULT_ENV_PATH))).toBe(true)
 
@@ -260,11 +260,11 @@ describe('runInit (as-is template, -t start-app)', () => {
     const pkg = (await fs.readJson(path.join(targetDir, 'package.json'))) as PackageJson
     expect(pkg.name).toBe('demo')
     expect(pkg.dependencies?.['@getdashfy/ext-github']).toBeDefined()
-    expect(pkg.dependencies?.['@getdashfy/ext-nba']).toBeDefined()
+    expect(pkg.dependencies?.['@getdashfy/ext-system']).toBeDefined()
 
     const app = await readFile(path.join(targetDir, START_APP_PATH), 'utf-8')
     expect(app).toContain("WidgetRegistry.addExtension('github'")
-    expect(app).toContain("WidgetRegistry.addExtension('nba'")
+    expect(app).toContain("WidgetRegistry.addExtension('system'")
 
     expect(await fs.pathExists(path.join(targetDir, DEFAULT_ENV_PATH))).toBe(true)
 

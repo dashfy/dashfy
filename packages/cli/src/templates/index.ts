@@ -38,7 +38,7 @@ export const templates: Record<string, TemplateConfig> = {
   'vite-app': {
     name: 'vite-app',
     title: 'Vite App (full demo)',
-    description: 'A full Dashfy demo with GitHub, NBA, System and Market Live.',
+    description: 'A full Dashfy demo with GitHub, System and Market Live.',
     templateDir: 'vite-app',
     defaultProjectName: 'my-dashfy-app',
     kind: 'asis',
@@ -55,7 +55,7 @@ export const templates: Record<string, TemplateConfig> = {
   'astro-app': {
     name: 'astro-app',
     title: 'Astro App (full demo)',
-    description: 'A full Astro + Dashfy demo with GitHub, NBA, System and Market Live.',
+    description: 'A full Astro + Dashfy demo with GitHub, System and Market Live.',
     templateDir: 'astro-app',
     defaultProjectName: 'my-dashfy-app',
     kind: 'asis',
@@ -73,7 +73,7 @@ export const templates: Record<string, TemplateConfig> = {
   'next-app': {
     name: 'next-app',
     title: 'Next.js App (full demo)',
-    description: 'A full Next.js + Dashfy demo with GitHub, NBA, System and Market Live.',
+    description: 'A full Next.js + Dashfy demo with GitHub, System and Market Live.',
     templateDir: 'next-app',
     defaultProjectName: 'my-dashfy-app',
     kind: 'asis',
@@ -91,7 +91,7 @@ export const templates: Record<string, TemplateConfig> = {
   'react-router-app': {
     name: 'react-router-app',
     title: 'React Router App (full demo)',
-    description: 'A full React Router + Dashfy demo with GitHub, NBA, System and Market Live.',
+    description: 'A full React Router + Dashfy demo with GitHub, System and Market Live.',
     templateDir: 'react-router-app',
     defaultProjectName: 'my-dashfy-app',
     kind: 'asis',
@@ -109,7 +109,7 @@ export const templates: Record<string, TemplateConfig> = {
   'start-app': {
     name: 'start-app',
     title: 'TanStack Start App (full demo)',
-    description: 'A full TanStack Start + Dashfy demo with GitHub, NBA, System and Market Live.',
+    description: 'A full TanStack Start + Dashfy demo with GitHub, System and Market Live.',
     templateDir: 'start-app',
     defaultProjectName: 'my-dashfy-app',
     kind: 'asis',

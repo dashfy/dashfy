@@ -12,7 +12,6 @@ import {
   UserBadge,
 } from '@getdashfy/ext-github'
 import { PriceLive, TableLive } from '@getdashfy/ext-market-live'
-import { GameCard, Scoreboard, Standings } from '@getdashfy/ext-nba'
 import {
   CpuUsage,
   CpuUsageGauge,
@@ -43,13 +42,6 @@ WidgetRegistry.addExtension('github', {
   TrafficClonesHistogram,
   TrafficViewsHistogram,
   UserBadge,
-})
-
-// Register NBA extension
-WidgetRegistry.addExtension('nba', {
-  GameCard,
-  Scoreboard,
-  Standings,
 })
 
 // Register System extension widgets

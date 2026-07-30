@@ -62,44 +62,6 @@ dashboards:
         columns: 2
         rows: 1
         user: rauchg
-  - title: NBA Dashboard
-    columns: 4
-    rows: 3
-    widgets:
-      - extension: nba
-        widget: Scoreboard
-        x: 0
-        y: 0
-        columns: 1
-        rows: 3
-      - extension: nba
-        widget: Standings
-        x: 1
-        y: 0
-        columns: 1
-        rows: 2
-        conference: East
-      - extension: nba
-        widget: Standings
-        x: 2
-        y: 0
-        columns: 1
-        rows: 2
-        conference: West
-      - extension: nba
-        widget: GameCard
-        x: 3
-        y: 0
-        columns: 1
-        rows: 2
-        gameIndex: 0
-      - extension: nba
-        widget: Standings
-        x: 1
-        y: 2
-        columns: 3
-        rows: 1
-        conference: both
   - title: System Monitor
     columns: 4
     rows: 3

@@ -54,15 +54,15 @@ dashfy/
 ├── apps/
 │   └── registry           # Static host for the extension registry (registry.dashfy.dev)
 ├── templates/             # Standalone project templates (NOT in the workspace)
-│   ├── vite-app           # Full Vite demo (GitHub, NBA, System, Market Live)
+│   ├── vite-app           # Full Vite demo (GitHub, System, Market Live)
 │   ├── vite-starter       # Minimal Vite starter for the interactive `init` flow
-│   ├── astro-app          # Full Astro demo (GitHub, NBA, System, Market Live)
+│   ├── astro-app          # Full Astro demo (GitHub, System, Market Live)
 │   ├── astro-starter      # Minimal Astro starter for the interactive `init` flow
-│   ├── next-app           # Full Next.js demo (GitHub, NBA, System, Market Live)
+│   ├── next-app           # Full Next.js demo (GitHub, System, Market Live)
 │   ├── next-starter       # Minimal Next.js starter for the interactive `init` flow
-│   ├── react-router-app   # Full React Router demo (GitHub, NBA, System, Market Live)
+│   ├── react-router-app   # Full React Router demo (GitHub, System, Market Live)
 │   ├── react-router-starter # Minimal React Router starter for the interactive `init` flow
-│   ├── start-app          # Full TanStack Start demo (GitHub, NBA, System, Market Live)
+│   ├── start-app          # Full TanStack Start demo (GitHub, System, Market Live)
 │   └── start-starter      # Minimal TanStack Start starter for the interactive `init` flow
 ├── packages/
 │   ├── cli                # `dashfy` CLI (init / add / registry:build)

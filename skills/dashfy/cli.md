@@ -51,15 +51,15 @@ Scaffolds a runnable Dashfy app (a framework client + Node server + config). Tem
 | `--yes`                 | `-y`  | Accept defaults / skip prompts                                                                                                                                                     | `false`        |
 
 - `vite-starter` — minimal Vite app; the CLI prompts for extensions and sets them up.
-- `vite-app` — full Vite demo (GitHub, NBA, System, Market Live) copied as-is, no prompts.
+- `vite-app` — full Vite demo (GitHub, System, Market Live) copied as-is, no prompts.
 - `astro-starter` — minimal Astro app; the CLI prompts for extensions and sets them up.
-- `astro-app` — full Astro demo (GitHub, NBA, System, Market Live) copied as-is, no prompts.
+- `astro-app` — full Astro demo (GitHub, System, Market Live) copied as-is, no prompts.
 - `next-starter` — minimal Next.js app; the CLI prompts for extensions and sets them up.
-- `next-app` — full Next.js demo (GitHub, NBA, System, Market Live) copied as-is, no prompts.
+- `next-app` — full Next.js demo (GitHub, System, Market Live) copied as-is, no prompts.
 - `react-router-starter` — minimal React Router app; the CLI prompts for extensions and sets them up.
-- `react-router-app` — full React Router demo (GitHub, NBA, System, Market Live) copied as-is, no prompts.
+- `react-router-app` — full React Router demo (GitHub, System, Market Live) copied as-is, no prompts.
 - `start-starter` — minimal TanStack Start app; the CLI prompts for extensions and sets them up.
-- `start-app` — full TanStack Start demo (GitHub, NBA, System, Market Live) copied as-is, no prompts.
+- `start-app` — full TanStack Start demo (GitHub, System, Market Live) copied as-is, no prompts.
 
 ### `add` — Add an extension
 
@@ -270,18 +270,18 @@ Existing config files are preserved; only the `dashfy` server entry is merged in
 
 ## Templates
 
-| Value                  | Description                                                                | Prompts |
-| ---------------------- | -------------------------------------------------------------------------- | ------- |
-| `vite-starter`         | Minimal Vite app; CLI prompts for extensions and sets them up (default).   | Yes     |
-| `vite-app`             | Full Vite demo (GitHub, NBA, System, Market Live), copied as-is.           | No      |
-| `astro-starter`        | Minimal Astro app; CLI prompts for extensions and sets them up.            | Yes     |
-| `astro-app`            | Full Astro demo (GitHub, NBA, System, Market Live), copied as-is.          | No      |
-| `next-starter`         | Minimal Next.js app; CLI prompts for extensions and sets them up.          | Yes     |
-| `next-app`             | Full Next.js demo (GitHub, NBA, System, Market Live), copied as-is.        | No      |
-| `react-router-starter` | Minimal React Router app; CLI prompts for extensions and sets them up.     | Yes     |
-| `react-router-app`     | Full React Router demo (GitHub, NBA, System, Market Live), copied as-is.   | No      |
-| `start-starter`        | Minimal TanStack Start app; CLI prompts for extensions and sets them up.   | Yes     |
-| `start-app`            | Full TanStack Start demo (GitHub, NBA, System, Market Live), copied as-is. | No      |
+| Value                  | Description                                                              | Prompts |
+| ---------------------- | ------------------------------------------------------------------------ | ------- |
+| `vite-starter`         | Minimal Vite app; CLI prompts for extensions and sets them up (default). | Yes     |
+| `vite-app`             | Full Vite demo (GitHub, System, Market Live), copied as-is.              | No      |
+| `astro-starter`        | Minimal Astro app; CLI prompts for extensions and sets them up.          | Yes     |
+| `astro-app`            | Full Astro demo (GitHub, System, Market Live), copied as-is.             | No      |
+| `next-starter`         | Minimal Next.js app; CLI prompts for extensions and sets them up.        | Yes     |
+| `next-app`             | Full Next.js demo (GitHub, System, Market Live), copied as-is.           | No      |
+| `react-router-starter` | Minimal React Router app; CLI prompts for extensions and sets them up.   | Yes     |
+| `react-router-app`     | Full React Router demo (GitHub, System, Market Live), copied as-is.      | No      |
+| `start-starter`        | Minimal TanStack Start app; CLI prompts for extensions and sets them up. | Yes     |
+| `start-app`            | Full TanStack Start demo (GitHub, System, Market Live), copied as-is.    | No      |
 
 By default `init` fetches the template via a sparse `git` checkout. Set `DASHFY_TEMPLATE_DIR` to scaffold from a local checkout (offline), and `DASHFY_GITHUB_URL` to override the source repository.
 
