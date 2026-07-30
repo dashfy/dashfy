@@ -52,29 +52,29 @@ Examples:
 ```
 dashfy/
 ├── apps/
-│   └── registry           # Static host for the extension registry (registry.dashfy.dev)
-├── templates/             # Standalone project templates (NOT in the workspace)
-│   ├── vite-app           # Full Vite demo (GitHub, System, Market Live)
-│   ├── vite-starter       # Minimal Vite starter for the interactive `init` flow
-│   ├── astro-app          # Full Astro demo (GitHub, System, Market Live)
-│   ├── astro-starter      # Minimal Astro starter for the interactive `init` flow
-│   ├── next-app           # Full Next.js demo (GitHub, System, Market Live)
-│   ├── next-starter       # Minimal Next.js starter for the interactive `init` flow
-│   ├── react-router-app   # Full React Router demo (GitHub, System, Market Live)
+│   └── registry             # Static host for the extension registry (registry.dashfy.dev)
+├── templates/               # Standalone project templates (NOT in the workspace)
+│   ├── vite-app             # Full Vite demo (GitHub, System, Market Live)
+│   ├── vite-starter         # Minimal Vite starter for the interactive `init` flow
+│   ├── astro-app            # Full Astro demo (GitHub, System, Market Live)
+│   ├── astro-starter        # Minimal Astro starter for the interactive `init` flow
+│   ├── next-app             # Full Next.js demo (GitHub, System, Market Live)
+│   ├── next-starter         # Minimal Next.js starter for the interactive `init` flow
+│   ├── react-router-app     # Full React Router demo (GitHub, System, Market Live)
 │   ├── react-router-starter # Minimal React Router starter for the interactive `init` flow
-│   ├── start-app          # Full TanStack Start demo (GitHub, System, Market Live)
-│   └── start-starter      # Minimal TanStack Start starter for the interactive `init` flow
+│   ├── start-app            # Full TanStack Start demo (GitHub, System, Market Live)
+│   └── start-starter        # Minimal TanStack Start starter for the interactive `init` flow
 ├── packages/
-│   ├── cli                # `dashfy` CLI (init / add / registry:build)
-│   ├── server             # Fastify + Socket.IO server
-│   ├── ui                 # React component library
-│   ├── themes             # Theme system
-│   └── types              # Shared TypeScript types
+│   ├── cli                  # `dashfy` CLI (init / add / registry:build)
+│   ├── server               # Fastify + Socket.IO server
+│   ├── ui                   # React component library
+│   ├── themes               # Theme system
+│   └── types                # Shared TypeScript types
 └── tools/
-    └── tsconfig           # Shared TypeScript configurations
+    └── tsconfig              # Shared TypeScript configurations
 ```
 
-> _Each template under `templates/` is a self-contained project with its own `eslint`, `prettier`, `tsconfig`, and `pnpm-workspace.yaml` (`packages: []`). They are intentionally excluded from the monorepo workspace._
+> _Each template under `templates/` is a self-contained project with its own `eslint`, `prettier`, `tsconfig`, and `pnpm-workspace.yaml`. They are intentionally excluded from the monorepo workspace._
 
 #### » Local Environment Setup
 
@@ -151,8 +151,6 @@ Scaffold the full `vite-app` template (server + UI + extensions set up together)
 DASHFY_TEMPLATE_DIR="$PWD/templates" node packages/cli/dist/index.js init demo -t vite-app --no-install
 cd demo && pnpm dev:all
 ```
-
-> _Because the templates depend on the published `@getdashfy/*` packages, a full install requires those packages to be on npm (or a local registry such as Verdaccio/yalc). Use `--no-install` for setup-only checks in the meantime._
 
 #### » Working on the extension registry
 
