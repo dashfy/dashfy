@@ -1,5 +1,11 @@
 # dashfy
 
+## 0.1.3
+
+### Patch Changes
+
+- Update README and CLI documentation for registry build command.
+
 ## 0.1.2
 
 ### Patch Changes
