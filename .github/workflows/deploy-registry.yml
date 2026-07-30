@@ -48,7 +48,7 @@ jobs:
       - name: Validate registry artifacts
         run: pnpm --filter @getdashfy/registry validate
 
-      - name: Setup Pages
+      - name: Setup pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
@@ -56,6 +56,6 @@ jobs:
         with:
           path: apps/registry/public
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub pages
         id: deployment
         uses: actions/deploy-pages@v4
