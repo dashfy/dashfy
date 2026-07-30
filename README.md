@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/dashfy/dashfy-brand/refs/heads/main/dashfy-social-logo.svg" alt="Dashfy Logo" width="150">
+  <a href="https://dashfy.dev">
+    <img src="https://raw.githubusercontent.com/dashfy/dashfy-brand/refs/heads/main/dashfy-social-logo.svg" alt="Dashfy Logo" width="150">
+  </a>
 </p>
 
 <h1 align="center">
@@ -10,6 +12,8 @@
 </p>
 
 <p align="center">
+  <a href="https://dashfy.dev">Website</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://demo.dashfy.dev">Demo</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://docs.dashfy.dev">Docs</a>
