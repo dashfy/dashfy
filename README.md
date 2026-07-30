@@ -73,7 +73,7 @@ Dashfy is a free and open-source project, but it is not free to run and develop.
 - **🎨 Themes support**: Built-in themes, light/dark mode, and custom theme support.
 - **🔒 Wake lock support**: Prevent dashboards from sleeping during continuous monitoring.
 - **⌨️ Keyboard shortcuts**: Productivity-focused shortcuts for common actions.
-- **🛠️ CLI**: Scaffold projects, add and remove extensions, and audit a project's setup with `npx dashfy@latest`. Codemods handle widget registration, data sources, environment variables, and starter dashboards.
+- **🛠️ CLI**: Scaffold projects, add and remove extensions, and audit a project's setup with `npx dashfy@latest`.
 - **🌐 Extension registry**: Extensions are resolved over HTTP from the hosted `@getdashfy` catalog, with support for custom, private, and GitHub-hosted registries.
 - **🚀 Framework templates**: Minimal starters and full pre-configured demos for Vite, Next.js, Astro, React Router, and TanStack Start.
 - **🔌 MCP server**: Model Context Protocol tools so AI assistants can search registries, read extension docs, and get the right install command.
@@ -567,12 +567,12 @@ pnpm dev:all
 Once published, end users can scaffold without cloning the repo:
 
 ```bash
-npx dashfy@latest init              # minimal starter, choose extensions interactively
-npx dashfy@latest init -t vite-app  # full pre-configured Vite demo
-npx dashfy@latest init -t astro-app # full pre-configured Astro demo
-npx dashfy@latest init -t next-app  # full pre-configured Next.js demo
+npx dashfy@latest init                     # minimal starter, choose extensions interactively
+npx dashfy@latest init -t vite-app         # full pre-configured Vite demo
+npx dashfy@latest init -t astro-app        # full pre-configured Astro demo
+npx dashfy@latest init -t next-app         # full pre-configured Next.js demo
 npx dashfy@latest init -t react-router-app # full pre-configured React Router demo
-npx dashfy@latest init -t start-app # full pre-configured TanStack Start demo
+npx dashfy@latest init -t start-app        # full pre-configured TanStack Start demo
 ```
 
 ### Adding extensions from the registry
@@ -590,7 +590,7 @@ extensions can also be installed directly from a URL or GitHub repo. For offline
 local development, point `DASHFY_REGISTRY_URL` at a built registry directory:
 
 ```bash
-pnpm --filter @getdashfy/registry build   # emits apps/registry/public/r/*.json
+pnpm --filter @getdashfy/registry build # emits apps/registry/public/r/*.json
 DASHFY_REGISTRY_URL="$PWD/apps/registry/public/r" \
   node packages/cli/dist/index.js add @getdashfy/github --cwd demo --no-install
 ```
@@ -602,13 +602,13 @@ See the [`dashfy` CLI README](./packages/cli) for the full registry model.
 <table>
   <tr>
     <td width="33.3333%" align="center">
-      <img alt="Default Theme" src="./docs/images/screenshots/screenshot-theme-default-dark.png" />
+      <img alt="Default Theme" src="./preview/screenshot-theme-default-dark.png" />
     </td>
     <td width="33.3333%" align="center">
-      <img alt="Midnight Blue Theme" src="./docs/images/screenshots/screenshot-theme-midnight-blue-dark.png" />
+      <img alt="Midnight Blue Theme" src="./preview/screenshot-theme-midnight-blue-dark.png" />
     </td>
     <td width="33.3333%" align="center">
-      <img alt="Nord Theme" src="./docs/images/screenshots/screenshot-theme-nord-dark.png" />
+      <img alt="Nord Theme" src="./preview/screenshot-theme-nord-dark.png" />
     </td>
   </tr>
   <tr>
@@ -618,13 +618,13 @@ See the [`dashfy` CLI README](./packages/cli) for the full registry model.
   </tr>
   <tr>
     <td width="33.3333%" align="center">
-      <img alt="Settings" src="./docs/images/screenshots/screenshot-settings.png" />
+      <img alt="Settings" src="./preview/screenshot-settings.png" />
     </td>
     <td width="33.3333%" align="center">
-      <img alt="Connection Panel" src="./docs/images/screenshots/screenshot-panel-connection.png" />
+      <img alt="Connection Panel" src="./preview/screenshot-panel-connection.png" />
     </td>
     <td width="33.3333%" align="center">
-      <img alt="Console Panel" src="./docs/images/screenshots/screenshot-panel-console.png" />
+      <img alt="Console Panel" src="./preview/screenshot-panel-console.png" />
     </td>
   </tr>
   <tr>
@@ -634,7 +634,7 @@ See the [`dashfy` CLI README](./packages/cli) for the full registry model.
   </tr>
 </table>
 
-> _More screenshots [here](./docs/images/screenshots)._
+> _More screenshots [here](./preview)._
 
 ## Contributing
 
