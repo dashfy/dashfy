@@ -173,13 +173,16 @@ Verifies each extension is fully set up: package installed, widgets registered v
 npx dashfy@latest registry build [packages] [options]
 ```
 
-Reads the `dashfy` metadata field of each `ext-*` package and emits `<name>.json` per extension plus `index.json`.
+Reads the `dashfy` metadata field of each extension and emits `<name>.json` per extension plus `index.json`. With `--from-npm` the metadata comes from the latest version each listed package published, which is how the hosted registry is built since extensions live in their own repositories; without it, from local `ext-*` package directories.
 
-| Flag              | Short | Description                           | Default                  |
-| ----------------- | ----- | ------------------------------------- | ------------------------ |
-| `[packages]`      |       | Directory containing `ext-*` packages | `./packages`             |
-| `--output <path>` | `-o`  | Destination directory                 | `apps/registry/public/r` |
-| `--cwd <cwd>`     | `-c`  | Working directory                     | current                  |
+| Flag                | Short | Description                           | Default                  |
+| ------------------- | ----- | ------------------------------------- | ------------------------ |
+| `[packages]`        |       | Directory containing `ext-*` packages | `./packages`             |
+| `--from-npm <path>` | `-n`  | JSON file listing published packages  | —                        |
+| `--output <path>`   | `-o`  | Destination directory                 | `apps/registry/public/r` |
+| `--cwd <cwd>`       | `-c`  | Working directory                     | current                  |
+
+The list file is `{ "packages": ["@scope/ext-name", ...] }`. A package that cannot be fetched or has no `dashfy` field fails the build instead of being skipped.
 
 ### `registry validate` — Validate a built registry
 
@@ -315,4 +318,5 @@ Other tunables:
 
 - `DASHFY_REGISTRY_URL` — base URL/dir for `@getdashfy` items (offline/dev).
 - `DASHFY_REGISTRIES_URL` — location of the discovery index (`registries.json`).
+- `DASHFY_NPM_REGISTRY_URL` — npm origin (or a local dir of manifests) that `registry build --from-npm` reads from.
 - `DASHFY_TEMPLATE_DIR` / `DASHFY_GITHUB_URL` — template source for `init`.

@@ -376,18 +376,19 @@ directory/file) for offline work or testing, the discovery analog of
 Builds the hosted registry artifacts (`<name>.json` per extension + `index.json`)
 from the `dashfy` metadata field of each extension.
 
-By default it reads local `ext-*` package directories, which is what you want while
-authoring an extension in a monorepo. With `--from-npm` it instead reads the latest
-manifest each listed package has published, which is how the files served at
-`registry.dashfy.dev` are produced — Dashfy's own extensions live in their own
-repositories, so npm is the only place their manifests all exist together.
+With `--from-npm` it reads the latest manifest each listed package has published,
+which is how the files served at `registry.dashfy.dev` are produced: extensions live
+in their own repositories, so npm — not any single checkout — is the source of truth
+for what the catalog serves. Without the flag it reads local `ext-*` package
+directories instead, which is how you preview an extension's registry item before
+publishing it.
 
 ```bash
-# from local package directories
-npx dashfy@latest registry build ./packages
-
 # from the published manifests of the packages listed in a JSON file
 npx dashfy@latest registry build --from-npm apps/registry/extensions.json
+
+# from local package directories
+npx dashfy@latest registry build ./packages
 ```
 
 The list file is `{ "packages": ["@scope/ext-name", ...] }`. A package that cannot be

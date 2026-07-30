@@ -172,13 +172,14 @@ To list a community registry, open a PR adding it to `apps/registry/public/regis
 ## Build and Verify
 
 ```bash
-# Build from the metadata of local ext-* package directories.
-npx dashfy@latest registry build
-npx dashfy@latest registry build ./packages --output apps/registry/public/r
-
 # Build from the metadata published on npm, listed in a JSON file. This is how the
 # hosted registry is built, since extensions live in their own repositories.
 npx dashfy@latest registry build --from-npm apps/registry/extensions.json
+
+# Build from the metadata of local ext-* package directories, to preview an
+# extension's item before publishing it.
+npx dashfy@latest registry build
+npx dashfy@latest registry build ./packages --output apps/registry/public/r
 
 # Validate the output before publishing.
 npx dashfy@latest registry validate
