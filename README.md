@@ -73,6 +73,11 @@ Dashfy is a free and open-source project, but it is not free to run and develop.
 - **🎨 Themes support**: Built-in themes, light/dark mode, and custom theme support.
 - **🔒 Wake lock support**: Prevent dashboards from sleeping during continuous monitoring.
 - **⌨️ Keyboard shortcuts**: Productivity-focused shortcuts for common actions.
+- **🛠️ CLI**: Scaffold projects, add and remove extensions, and audit a project's setup with `npx dashfy@latest`. Codemods handle widget registration, data sources, environment variables, and starter dashboards.
+- **🌐 Extension registry**: Extensions are resolved over HTTP from the hosted `@getdashfy` catalog, with support for custom, private, and GitHub-hosted registries.
+- **🚀 Framework templates**: Minimal starters and full pre-configured demos for Vite, Next.js, Astro, React Router, and TanStack Start.
+- **🔌 MCP server**: Model Context Protocol tools so AI assistants can search registries, read extension docs, and get the right install command.
+- **🤖 AI agent skill**: A project-aware agent skill for Cursor, Claude Code, and other agents, plus a Cursor plugin that bundles the skill, project rules, and the MCP server.
 - **📘 TypeScript**: Fully typed for safety and developer experience.
 - **⚛️ React-based UI**: Modern React architecture with composable components.
 - **📦 Monorepo architecture**: Clean structure with pnpm and Turborepo.
