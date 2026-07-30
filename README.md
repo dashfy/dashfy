@@ -369,7 +369,7 @@ import {
 } from '@getdashfy/ext-github'
 import { Dashfy, WidgetRegistry } from '@getdashfy/ui'
 
-// Register GitHub extension widgets
+// Register GitHub extension
 WidgetRegistry.addExtension('github', {
   Branches,
   CommitActivityLine,
@@ -382,7 +382,7 @@ WidgetRegistry.addExtension('github', {
   UserBadge,
 })
 
-// Register JSON extension widgets
+// Register JSON extension
 WidgetRegistry.addExtension('json', {
   CustomJson,
   JsonKeys,

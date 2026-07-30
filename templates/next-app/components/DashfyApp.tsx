@@ -50,7 +50,7 @@ WidgetRegistry.addExtension('github', {
   UserBadge,
 })
 
-// Register System extension widgets
+// Register System extension
 WidgetRegistry.addExtension('system', {
   CpuUsage,
   CpuUsageGauge,
