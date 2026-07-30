@@ -40,8 +40,6 @@ Dashfy is designed to make dashboards:
 
 Dashfy is published as a set of npm packages (for example `@getdashfy/server`, `@getdashfy/ui`, `@getdashfy/themes`, and `@getdashfy/ext-*`).
 
-This repository is the monorepo for Dashfy packages and includes runnable, standalone project templates under `templates/` (`vite-app`/`astro-app`/`next-app`/`react-router-app`/`start-app` are full demos, `vite-starter`/`astro-starter`/`next-starter`/`react-router-starter`/`start-starter` are minimal starting points). The [`dashfy` CLI](./packages/cli) scaffolds new apps from these templates and resolves extensions from the registry hosted by `apps/registry` (`registry.dashfy.dev`).
-
 [![Dashfy](./docs/images/dashfy-screenshot-github.png)](https://demo.dashfy.dev)
 
 > _A live demo is available at: [demo.dashfy.dev ⇗](https://demo.dashfy.dev)_
