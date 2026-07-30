@@ -62,6 +62,22 @@ Dashfy is a free and open-source project, but it is not free to run and develop.
   </tr>
 </table>
 
+## Features
+
+- **📊 Compiled dashboards**: Dashboards are generated from declarative configuration instead of being manually constructed.
+- **📝 Declarative configuration**: Define dashboards as structured configuration files.
+- **⚡ Real-time updates**: Server–client architecture built around WebSockets and subscriptions.
+- **🧩 Extendable by extensions**: Add widgets and data sources through extension packages (GitHub, JSON/REST APIs, or custom integrations).
+- **📐 Scalable layout**: Compose responsive dashboards for different screen sizes and environments.
+- **🔄 Multiple dashboards**: Define and manage multiple dashboards with automatic rotation support.
+- **🎨 Themes support**: Built-in themes, light/dark mode, and custom theme support.
+- **🔒 Wake lock support**: Prevent dashboards from sleeping during continuous monitoring.
+- **⌨️ Keyboard shortcuts**: Productivity-focused shortcuts for common actions.
+- **📘 TypeScript**: Fully typed for safety and developer experience.
+- **⚛️ React-based UI**: Modern React architecture with composable components.
+- **📦 Monorepo architecture**: Clean structure with pnpm and Turborepo.
+- **📄 Open source**: Licensed under AGPL-3.0.
+
 ## Why Dashfy
 
 Dashboards are everywhere.
@@ -500,22 +516,6 @@ Dashfy supports fullscreen mode, rotation, and continuous display, making it ide
 #### » Custom dashboards powered by APIs
 
 Dashfy can connect to any API using extensions, allowing you to build dashboards for any system.
-
-## Features
-
-- **📊 Compiled dashboards**: Dashboards are generated from declarative configuration instead of being manually constructed.
-- **📝 Declarative configuration**: Define dashboards as structured configuration files.
-- **⚡ Real-time updates**: Server–client architecture built around WebSockets and subscriptions.
-- **🧩 Extendable by extensions**: Add widgets and data sources through extension packages (GitHub, JSON/REST APIs, or custom integrations).
-- **📐 Scalable layout**: Compose responsive dashboards for different screen sizes and environments.
-- **🔄 Multiple dashboards**: Define and manage multiple dashboards with automatic rotation support.
-- **🎨 Themes support**: Built-in themes, light/dark mode, and custom theme support.
-- **🔒 Wake lock support**: Prevent dashboards from sleeping during continuous monitoring.
-- **⌨️ Keyboard shortcuts**: Productivity-focused shortcuts for common actions.
-- **📘 TypeScript**: Fully typed for safety and developer experience.
-- **⚛️ React-based UI**: Modern React architecture with composable components.
-- **📦 Monorepo architecture**: Clean structure with pnpm and Turborepo.
-- **📄 Open source**: Licensed under AGPL-3.0.
 
 ## Getting Started
 
