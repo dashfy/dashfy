@@ -18,6 +18,7 @@ export enum WebSocketStatus {
 export enum WebSocketEvent {
   CONNECT = 'connect',
   DISCONNECT = 'disconnect',
+  CONNECT_ERROR = 'connect_error',
   ERROR = 'error',
   CONFIGURATION = 'configuration',
   RECONNECT = 'reconnect',

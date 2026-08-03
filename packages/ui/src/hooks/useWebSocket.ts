@@ -5,6 +5,7 @@ import type { Socket } from 'socket.io-client'
 import { io } from 'socket.io-client'
 
 import {
+  WS_DISCONNECT_NOTIFY_DELAY,
   WS_RECONNECT_ATTEMPTS,
   WS_RECONNECT_DELAY,
   WS_RECONNECT_DELAY_MAX,
@@ -35,6 +36,12 @@ export interface UseWebSocketOptions {
  *
  * @returns Socket.IO client instance or null if not connected
  *
+ * @remarks
+ * Reconnection is unbounded. Dashboards are long-lived displays, so a capped retry count
+ * would leave them permanently dead after an outage until someone reloads the page.
+ * Outage notifications are debounced by {@link WS_DISCONNECT_NOTIFY_DELAY} and announced
+ * at most once per episode, so routine server restarts stay silent.
+ *
  * @example
  * ```tsx
  * function App() {
@@ -58,6 +65,10 @@ export function useWebSocket({
   reconnect = true,
 }: UseWebSocketOptions): Socket | null {
   const socketRef = React.useRef<Socket | null>(null)
+  const offlineNotifyTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+  const offlineNotificationIdRef = React.useRef<string | null>(null)
+  const offlineNotifiedRef = React.useRef(false)
+  const hasConnectedRef = React.useRef(false)
 
   const setSocket = useDashfyStore((state) => state.setSocket)
   const setStatus = useDashfyStore((state) => state.setStatus)
@@ -68,7 +79,9 @@ export function useWebSocket({
   const setAllApiUnsubscribed = useDashfyStore((state) => state.setAllApiUnsubscribed)
   const getApiPendingSubscriptions = useDashfyStore((state) => state.getApiPendingSubscriptions)
   const setApiSubscribed = useDashfyStore((state) => state.setApiSubscribed)
-  const { notifySuccess, notifyError } = useNotifications()
+  const setReconnectAttempt = useDashfyStore((state) => state.setReconnectAttempt)
+  const resetReconnectAttempt = useDashfyStore((state) => state.resetReconnectAttempt)
+  const { notifySuccess, notifyError, removeNotification } = useNotifications()
 
   React.useEffect(() => {
     if (!autoConnect) {
@@ -87,11 +100,55 @@ export function useWebSocket({
     setSocket(socket)
     setStatus(WebSocketStatus.CONNECTING)
 
+    const clearOfflineNotify = () => {
+      if (offlineNotifyTimerRef.current) {
+        clearTimeout(offlineNotifyTimerRef.current)
+        offlineNotifyTimerRef.current = null
+      }
+
+      // Outage notifications never auto-dismiss, so drop the resolved one rather than
+      // leaving a stale "disconnected" entry in the notifications panel.
+      if (offlineNotificationIdRef.current) {
+        removeNotification(offlineNotificationIdRef.current)
+        offlineNotificationIdRef.current = null
+      }
+    }
+
+    // Hold the toast back so brief blips and server restarts stay silent, and only
+    // ever announce an outage once per episode.
+    const scheduleOfflineNotify = (message: string) => {
+      if (offlineNotifyTimerRef.current || offlineNotifiedRef.current) {
+        return
+      }
+
+      offlineNotifyTimerRef.current = setTimeout(() => {
+        offlineNotifyTimerRef.current = null
+
+        // A late stray disconnect event must not announce an outage we already recovered from.
+        if (socket.connected) {
+          return
+        }
+
+        offlineNotifiedRef.current = true
+        offlineNotificationIdRef.current = notifyError(message)
+      }, WS_DISCONNECT_NOTIFY_DELAY)
+    }
+
     // Setup handlers
     setupWebSocketHandlers(socket, {
       onConnect: () => {
         setStatus(WebSocketStatus.CONNECTED)
-        notifySuccess('Connected to server')
+        resetReconnectAttempt()
+        clearOfflineNotify()
+
+        if (!hasConnectedRef.current) {
+          hasConnectedRef.current = true
+          notifySuccess('Connected to server')
+        } else if (offlineNotifiedRef.current) {
+          notifySuccess('Reconnected to server')
+        }
+
+        offlineNotifiedRef.current = false
 
         // Send pending subscriptions
         const pending = getApiPendingSubscriptions()
@@ -102,14 +159,29 @@ export function useWebSocket({
       },
 
       onDisconnect: () => {
-        setStatus(WebSocketStatus.DISCONNECTED)
-        notifyError('Disconnected from server')
         setAllApiUnsubscribed()
+
+        // Socket.IO begins retrying immediately, so reconnecting is the truthful state.
+        setStatus(reconnect ? WebSocketStatus.RECONNECTING : WebSocketStatus.DISCONNECTED)
+        scheduleOfflineNotify('Disconnected from server')
       },
 
       onError: (error) => {
+        // Fires once per failed attempt, so this must not notify per attempt nor
+        // claim a terminal error while retries are still in flight.
+        setStatus(reconnect ? WebSocketStatus.RECONNECTING : WebSocketStatus.ERROR)
+        scheduleOfflineNotify(`Unable to connect to server: ${error.message}`)
+      },
+
+      onReconnectAttempt: (attempt) => {
+        setStatus(WebSocketStatus.RECONNECTING)
+        setReconnectAttempt(attempt)
+      },
+
+      onReconnectFailed: () => {
+        clearOfflineNotify()
         setStatus(WebSocketStatus.ERROR)
-        notifyError(`WebSocket error: ${error.message}`)
+        notifyError('Unable to reconnect to server')
       },
 
       onConfiguration: (config: unknown) => {
@@ -129,10 +201,15 @@ export function useWebSocket({
 
     // Cleanup
     return () => {
+      clearOfflineNotify()
+      offlineNotifiedRef.current = false
+      hasConnectedRef.current = false
+
       cleanupWebSocketHandlers(socket)
       socket.close()
       setSocket(null)
       setStatus(WebSocketStatus.DISCONNECTED)
+      resetReconnectAttempt()
     }
   }, [url, autoConnect, reconnect])
 

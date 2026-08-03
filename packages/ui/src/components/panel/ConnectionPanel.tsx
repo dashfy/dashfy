@@ -10,6 +10,8 @@ import { useDashfyStore } from '@/store'
 export const ConnectionPanel = () => {
   const status = useDashfyStore((state) => state.status)
   const config = useDashfyStore((state) => state.config)
+  const socket = useDashfyStore((state) => state.socket)
+  const reconnectAttempt = useDashfyStore((state) => state.reconnectAttempt)
 
   const currentStatus = connectionStatusConfig[status]
 
@@ -45,6 +47,12 @@ export const ConnectionPanel = () => {
                 <span className="text-xs text-muted-foreground">Status</span>
                 <span className="text-xs font-medium text-foreground">{status}</span>
               </div>
+              {reconnectAttempt > 0 && (
+                <div className="flex items-center justify-between rounded-md bg-muted/50 p-2">
+                  <span className="text-xs text-muted-foreground">Reconnect attempts</span>
+                  <span className="text-xs font-medium text-foreground">{reconnectAttempt}</span>
+                </div>
+              )}
               <div className="flex items-center justify-between rounded-md bg-muted/50 p-2">
                 <span className="text-xs text-muted-foreground">Protocol</span>
                 <span className="text-xs font-medium text-foreground">WebSocket</span>
@@ -60,14 +68,16 @@ export const ConnectionPanel = () => {
             </div>
           </div>
 
-          {/* Actions */}
-          {status !== WebSocketStatus.CONNECTED && (
+          {/* Actions. Offered only when nothing is already in flight: during CONNECTING and
+              RECONNECTING socket.io is mid-attempt, so socket.connect() is a no-op and the
+              button would read as actionable while doing nothing. */}
+          {(status === WebSocketStatus.DISCONNECTED || status === WebSocketStatus.ERROR) && (
             <div className="space-y-3">
               <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Actions
               </h4>
               <div className="flex gap-2">
-                <Button size="sm" onClick={() => window.location.reload()}>
+                <Button disabled={!socket} size="sm" onClick={() => socket?.connect()}>
                   <RefreshCwIcon className="h-3 w-3" />
                   Reconnect
                 </Button>
