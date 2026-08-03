@@ -68,8 +68,10 @@ export const ConnectionPanel = () => {
             </div>
           </div>
 
-          {/* Actions */}
-          {status !== WebSocketStatus.CONNECTED && (
+          {/* Actions. Offered only when nothing is already in flight: during CONNECTING and
+              RECONNECTING socket.io is mid-attempt, so socket.connect() is a no-op and the
+              button would read as actionable while doing nothing. */}
+          {(status === WebSocketStatus.DISCONNECTED || status === WebSocketStatus.ERROR) && (
             <div className="space-y-3">
               <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Actions
