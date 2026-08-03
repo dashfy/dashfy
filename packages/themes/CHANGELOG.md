@@ -1,5 +1,12 @@
 # @getdashfy/themes
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [[`147ffcb`](https://github.com/dashfy/dashfy/commit/147ffcbc3a4830c9b91a5d2eea7f87bfb18a19e1)]:
+  - @getdashfy/types@0.2.0
+
 ## 0.1.1
 
 ### Patch Changes
