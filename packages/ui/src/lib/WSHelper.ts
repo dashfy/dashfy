@@ -6,8 +6,12 @@ import {
   WS_API_ERROR,
   WS_CONFIGURATION,
   WS_CONNECT,
+  WS_CONNECT_ERROR,
   WS_DISCONNECT,
-  WS_ERROR,
+  WS_RECONNECT,
+  WS_RECONNECT_ATTEMPT,
+  WS_RECONNECT_ERROR,
+  WS_RECONNECT_FAILED,
 } from '@/constants/wsConstants'
 
 /**
@@ -59,54 +63,25 @@ export function guessWSURL(config?: { useWssConnection?: boolean; wsPort?: numbe
 }
 
 /**
- * Calculates exponential backoff delay for WebSocket reconnection attempts.
- *
- * Implements an exponential backoff algorithm to prevent overwhelming the server
- * with reconnection attempts. The delay increases exponentially with each attempt
- * until it reaches the maximum delay threshold.
- *
- * Formula: min(baseDelay * (multiplier ^ attempt), maxDelay)
- *
- * @param attempt - The current reconnection attempt number (0-indexed)
- * @param baseDelay - Initial delay in milliseconds (default: 1000ms)
- * @param multiplier - Exponential growth factor (default: 1.5)
- * @param maxDelay - Maximum delay cap in milliseconds (default: 30000ms)
- * @returns The calculated delay in milliseconds for the current attempt
- *
- * @example
- * ```ts
- * // Standard usage with defaults
- * calculateBackoff(0) // Returns: 1000ms
- * calculateBackoff(1) // Returns: 1500ms
- * calculateBackoff(2) // Returns: 2250ms
- * calculateBackoff(3) // Returns: 3375ms
- *
- * // Custom configuration for faster reconnection
- * calculateBackoff(2, 500, 2, 10000) // Returns: 2000ms
- * ```
- */
-export function calculateBackoff(
-  attempt: number,
-  baseDelay = 1000,
-  multiplier = 1.5,
-  maxDelay = 30000,
-): number {
-  const delay = Math.min(baseDelay * Math.pow(multiplier, attempt), maxDelay)
-  return delay
-}
-
-/**
  * Registers standard event handlers for the WebSocket connection.
  *
  * This helper function streamlines the setup of common WebSocket event listeners
  * used throughout the Dashfy framework. It handles connection lifecycle events
  * and custom application events for configuration and API data streaming.
  *
+ * Reconnection events are emitted by the Socket.IO Manager (`socket.io`) rather than the
+ * socket itself, so they are registered there. Registering them on the socket compiles but
+ * never fires.
+ *
  * @param socket - The Socket.IO client instance
  * @param handlers - Object containing optional event handler callbacks
  * @param handlers.onConnect - Called when the WebSocket connection is established
  * @param handlers.onDisconnect - Called when the WebSocket connection is closed
- * @param handlers.onError - Called when a WebSocket error occurs
+ * @param handlers.onError - Called when the connection attempt fails
+ * @param handlers.onReconnect - Called when a reconnection succeeds
+ * @param handlers.onReconnectAttempt - Called before each reconnection attempt
+ * @param handlers.onReconnectError - Called when a reconnection attempt fails
+ * @param handlers.onReconnectFailed - Called when all reconnection attempts are exhausted
  * @param handlers.onConfiguration - Called when configuration data is received
  * @param handlers.onApiData - Called when API data is received for a widget
  * @param handlers.onApiError - Called when an API error occurs for a widget
@@ -116,6 +91,7 @@ export function calculateBackoff(
  * setupWebSocketHandlers(socket, {
  *   onConnect: () => console.log('Connected!'),
  *   onDisconnect: () => console.log('Disconnected'),
+ *   onReconnectAttempt: (attempt) => console.log(`Retrying (${attempt})`),
  *   onApiData: ({ id, data }) => updateWidget(id, data),
  *   onApiError: ({ id, error }) => handleWidgetError(id, error)
  * })
@@ -127,6 +103,10 @@ export function setupWebSocketHandlers(
     onConnect?: () => void
     onDisconnect?: () => void
     onError?: (error: Error) => void
+    onReconnect?: (attempt: number) => void
+    onReconnectAttempt?: (attempt: number) => void
+    onReconnectError?: (error: Error) => void
+    onReconnectFailed?: () => void
     onConfiguration?: (config: unknown) => void
     onApiData?: (payload: { id: string; data: unknown }) => void
     onApiError?: (payload: { id: string; error: { message: string } }) => void
@@ -141,7 +121,23 @@ export function setupWebSocketHandlers(
   }
 
   if (handlers.onError) {
-    socket.on(WS_ERROR, handlers.onError)
+    socket.on(WS_CONNECT_ERROR, handlers.onError)
+  }
+
+  if (handlers.onReconnect) {
+    socket.io.on(WS_RECONNECT, handlers.onReconnect)
+  }
+
+  if (handlers.onReconnectAttempt) {
+    socket.io.on(WS_RECONNECT_ATTEMPT, handlers.onReconnectAttempt)
+  }
+
+  if (handlers.onReconnectError) {
+    socket.io.on(WS_RECONNECT_ERROR, handlers.onReconnectError)
+  }
+
+  if (handlers.onReconnectFailed) {
+    socket.io.on(WS_RECONNECT_FAILED, handlers.onReconnectFailed)
   }
 
   if (handlers.onConfiguration) {
@@ -164,10 +160,15 @@ export function setupWebSocketHandlers(
  * memory leaks and duplicate event handlers. Should be called when a component
  * unmounts or before re-registering handlers.
  *
+ * Manager listeners are removed separately from socket listeners because the Manager
+ * outlives individual sockets, so leaving them attached accumulates duplicates across
+ * remounts.
+ *
  * Events removed:
  * - connect
  * - disconnect
- * - error
+ * - connect_error
+ * - reconnect, reconnect_attempt, reconnect_error, reconnect_failed (Manager)
  * - configuration
  * - api.data
  * - api.error
@@ -188,8 +189,13 @@ export function setupWebSocketHandlers(
 export function cleanupWebSocketHandlers(socket: Socket): void {
   socket.off(WS_CONNECT)
   socket.off(WS_DISCONNECT)
-  socket.off(WS_ERROR)
+  socket.off(WS_CONNECT_ERROR)
   socket.off(WS_CONFIGURATION)
   socket.off(WS_API_DATA)
   socket.off(WS_API_ERROR)
+
+  socket.io.off(WS_RECONNECT)
+  socket.io.off(WS_RECONNECT_ATTEMPT)
+  socket.io.off(WS_RECONNECT_ERROR)
+  socket.io.off(WS_RECONNECT_FAILED)
 }
