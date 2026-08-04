@@ -552,51 +552,6 @@ pnpm install
 pnpm build
 ```
 
-5. Scaffold a local app from a template:
-
-The standalone templates live in `templates/` and are not part of the workspace. Use the CLI with `DASHFY_TEMPLATE_DIR` to scaffold from the local checkout (no network/git required). Because the templates depend on the published `@getdashfy/*` packages, use `--no-install` until those packages are published to npm:
-
-```bash
-DASHFY_TEMPLATE_DIR="$PWD/templates" node packages/cli/dist/index.js init demo -t vite-app --no-install
-cd demo
-pnpm dev:all
-```
-
-> _Open http://localhost:3000 to see the demo application._
-
-Once published, end users can scaffold without cloning the repo:
-
-```bash
-npx dashfy@latest init                     # minimal starter, choose extensions interactively
-npx dashfy@latest init -t vite-app         # full pre-configured Vite demo
-npx dashfy@latest init -t astro-app        # full pre-configured Astro demo
-npx dashfy@latest init -t next-app         # full pre-configured Next.js demo
-npx dashfy@latest init -t react-router-app # full pre-configured React Router demo
-npx dashfy@latest init -t start-app        # full pre-configured TanStack Start demo
-```
-
-### Adding extensions from the registry
-
-Extensions are resolved at runtime from a hosted registry (the `@getdashfy` namespace,
-served from `registry.dashfy.dev`), the dashboards analog of shadcn-ui's component
-registry. Add one to an existing project:
-
-```bash
-npx dashfy@latest add @getdashfy/github
-```
-
-Custom and third-party registries are declared in a project's `dashfy.json`, and
-extensions can also be installed directly from a URL or GitHub repo. For offline or
-local development, point `DASHFY_REGISTRY_URL` at a built registry directory:
-
-```bash
-pnpm --filter @getdashfy/registry build # emits apps/registry/public/r/*.json
-DASHFY_REGISTRY_URL="$PWD/apps/registry/public/r" \
-  node packages/cli/dist/index.js add @getdashfy/github --cwd demo --no-install
-```
-
-See the [`dashfy` CLI README](./packages/cli) for the full registry model.
-
 ## Screenshots
 
 <table>
