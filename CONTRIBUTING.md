@@ -67,9 +67,10 @@ dashfy/
 ├── packages/
 │   ├── cli                  # `dashfy` CLI (init / add / registry:build)
 │   ├── server               # Fastify + Socket.IO server
-│   ├── ui                   # React component library
 │   ├── themes               # Theme system
-│   └── types                # Shared TypeScript types
+│   ├── types                # Shared TypeScript types
+│   ├── ui                   # React component library
+│   └── utils                # Utility functions
 └── tools/
     └── tsconfig             # Shared TypeScript configurations
 ```
