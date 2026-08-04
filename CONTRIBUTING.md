@@ -204,22 +204,33 @@ the schemas living in the website repo.
 
 #### » Releasing
 
-Releases go through [Changesets](https://github.com/changesets/changesets). From the repo root:
+Releases go through [Changesets](https://github.com/changesets/changesets). Describe each
+change as it lands, then release from the repo root:
 
 ```bash
 pnpm changeset            # describe the change (once per PR)
 pnpm changeset:version    # apply the version bumps and write the changelogs
-pnpm build
-pnpm changeset:publish    # publish to npm
-pnpm sync:templates       # point the templates at the versions just published
+git commit -am "chore: version packages"
+pnpm release              # build, publish to npm, then sync the templates
 ```
+
+`release` chains `pnpm build`, `pnpm changeset:publish` and `pnpm sync:templates`. The build
+is not optional: no package defines `prepublishOnly`, so nothing else produces the `dist`
+output that gets packed.
+
+Commit the version bumps before running `release`. npm packs from the working directory
+rather than from git, and Changesets publishes with `--no-git-checks`, so releasing from a
+dirty tree ships content that does not match the commit it tags.
 
 `sync:templates` has to run _after_ publishing, because it reads each package's `latest`
 dist-tag from the registry. The templates are standalone projects outside the workspace, so
 their `@getdashfy/*` ranges are committed values rather than `workspace:*` links, and a 0.x
 caret is strict (`^0.2.1` excludes `0.3.0`) — without this step a freshly published minor
-never reaches new scaffolds. Pass `--dry-run` to preview the changes, then commit the
-resulting `templates/` diff.
+never reaches new scaffolds. Run `pnpm sync:templates --dry-run` on its own to preview the
+changes.
+
+`release` finishes with two things left to do: commit the `templates/` diff, and push the tag
+Changesets created for each published package with `git push --follow-tags`.
 
 ## Coding Principles (project-level)
 
