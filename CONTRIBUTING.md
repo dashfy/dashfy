@@ -71,7 +71,7 @@ dashfy/
 │   ├── themes               # Theme system
 │   └── types                # Shared TypeScript types
 └── tools/
-    └── tsconfig              # Shared TypeScript configurations
+    └── tsconfig             # Shared TypeScript configurations
 ```
 
 > _Each template under `templates/` is a self-contained project with its own `eslint`, `prettier`, `tsconfig`, and `pnpm-workspace.yaml`. They are intentionally excluded from the monorepo workspace._
@@ -114,7 +114,7 @@ pnpm test             # Run all tests
 pnpm lint             # Lint all packages
 pnpm lint:fix         # Fix linting issues
 pnpm format           # Format code with Prettier
-pnpm typecheck       # Run TypeScript type checking
+pnpm typecheck        # Run TypeScript type checking
 pnpm check:all        # Run all checks (lint, format, types)
 pnpm clean:all        # Clean build artifacts, remove node_modules, and more
 ```
