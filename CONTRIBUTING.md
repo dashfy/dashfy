@@ -106,18 +106,6 @@ pnpm install
 pnpm build
 ```
 
-5. Scaffold a local app from a template:
-
-The standalone templates are fetched by the CLI. For local development, point `DASHFY_TEMPLATE_DIR` at the repo's `templates/` folder so nothing is downloaded. Use `--no-install` until the `@getdashfy/*` packages are published to npm:
-
-```bash
-DASHFY_TEMPLATE_DIR="$PWD/templates" node packages/cli/dist/index.js init demo -t vite-app --no-install
-cd demo
-pnpm dev:all
-```
-
-> _Open http://localhost:3000 to see the demo application._
-
 #### » Common commands (repo root)
 
 ```bash
@@ -142,95 +130,6 @@ pnpm --filter @getdashfy/server test
 pnpm --filter @getdashfy/server dev
 pnpm --filter @getdashfy/ui typecheck
 ```
-
-#### » Running the demo app
-
-Scaffold the full `vite-app` template (server + UI + extensions set up together) from the local checkout, then run it:
-
-```bash
-DASHFY_TEMPLATE_DIR="$PWD/templates" node packages/cli/dist/index.js init demo -t vite-app --no-install
-cd demo && pnpm dev:all
-```
-
-#### » Working on the extension registry
-
-Extensions are resolved by the CLI from a registry over HTTP. Each extension lives in
-its own repository, so the authoring source of truth is the `dashfy` field in its own
-`package.json`, read from what it publishes to npm. The packages to include are listed
-in [`apps/registry/extensions.json`](./apps/registry/extensions.json) — add an entry
-there when a new extension is published. Build the hosted artifacts (per-extension
-`<name>.json` + `index.json`) into `apps/registry/public/r`:
-
-```bash
-pnpm --filter @getdashfy/registry build      # == dashfy registry:build
-pnpm --filter @getdashfy/registry validate   # == dashfy registry validate
-```
-
-The build fetches each package's latest published manifest, so it needs network access
-and fails outright if a package is missing or has no `dashfy` field, rather than
-publishing a short catalog.
-
-`validate` checks the built artifacts (and the `registries.json` discovery index)
-against the registry schemas before publishing. Release deploys run it
-automatically, so a broken registry never reaches `registry.dashfy.dev`.
-
-To exercise `dashfy add` against the freshly built registry without any network,
-point `DASHFY_REGISTRY_URL` at that directory (the registry analog of
-`DASHFY_TEMPLATE_DIR`):
-
-```bash
-DASHFY_REGISTRY_URL="$PWD/apps/registry/public/r" \
-  node packages/cli/dist/index.js add @getdashfy/github --cwd demo --no-install
-```
-
-The registry is deployed to `registry.dashfy.dev` on release via the
-`deploy-registry` GitHub Actions workflow. Third-party authors can host their own
-registry (a public URL serving `<name>.json` + `index.json`, or items under
-`r/<name>.json` in a GitHub repo) and reference it from a project's `dashfy.json`.
-
-#### » Working on the JSON Schemas
-
-The published JSON Schemas ship with the registry, in `apps/registry/public`:
-[`schema.json`](./apps/registry/public/schema.json) describes a project's
-`dashfy.json`, and `schema/*.json` describe the registry documents. Each one is
-hand-written to mirror its Zod counterpart in
-[`packages/cli/src/schema/index.ts`](./packages/cli/src/schema/index.ts), so update
-both together.
-
-Their `$id` is on `dashfy.dev` rather than `registry.dashfy.dev`, because that is the
-URL the CLI stamps into the files it writes. The website rewrites `/schema.json` and
-`/schema/*` to this deployment, so the canonical URLs resolve without a second copy of
-the schemas living in the website repo.
-
-#### » Releasing
-
-Releases go through [Changesets](https://github.com/changesets/changesets). Describe each
-change as it lands, then release from the repo root:
-
-```bash
-pnpm changeset            # describe the change (once per PR)
-pnpm changeset:version    # apply the version bumps and write the changelogs
-git commit -am "chore: version packages"
-pnpm release              # build, publish to npm, then sync the templates
-```
-
-`release` chains `pnpm build`, `pnpm changeset:publish` and `pnpm sync:templates`. The build
-is not optional: no package defines `prepublishOnly`, so nothing else produces the `dist`
-output that gets packed.
-
-Commit the version bumps before running `release`. npm packs from the working directory
-rather than from git, and Changesets publishes with `--no-git-checks`, so releasing from a
-dirty tree ships content that does not match the commit it tags.
-
-`sync:templates` has to run _after_ publishing, because it reads each package's `latest`
-dist-tag from the registry. The templates are standalone projects outside the workspace, so
-their `@getdashfy/*` ranges are committed values rather than `workspace:*` links, and a 0.x
-caret is strict (`^0.2.1` excludes `0.3.0`) — without this step a freshly published minor
-never reaches new scaffolds. Run `pnpm sync:templates --dry-run` on its own to preview the
-changes.
-
-`release` finishes with two things left to do: commit the `templates/` diff, and push the tag
-Changesets created for each published package with `git push --follow-tags`.
 
 ## Coding Principles (project-level)
 
