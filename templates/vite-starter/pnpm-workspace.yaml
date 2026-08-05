@@ -1,1 +1,5 @@
 packages: []
+
+# Vite and tsx both rely on esbuild, whose install script pnpm blocks by default.
+allowBuilds:
+  esbuild: true

@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev": "vite",
     "dev:server": "dotenv -e .env -- tsx watch dashfy.server.ts",
     "dev:all": "concurrently \"pnpm dev:server\" \"pnpm dev\"",
     "build": "vite build",
+    "start": "tsx dashfy.server.ts",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx,css,md,json,yml}\"",
@@ -17,10 +19,11 @@
     "@getdashfy/ext-github": "^0.1.1",
     "@getdashfy/ext-market-live": "^0.1.1",
     "@getdashfy/ext-system": "^0.1.0",
-    "@getdashfy/server": "^0.1.1",
-    "@getdashfy/ui": "^0.3.0",
+    "@getdashfy/server": "^0.2.0",
+    "@getdashfy/ui": "^0.3.1",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "tsx": "^4.19.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -33,7 +36,6 @@
     "eslint": "^9.17.0",
     "globals": "^15.13.0",
     "prettier": "^3.4.2",
-    "tsx": "^4.19.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1",
     "vite": "^5.4.8"

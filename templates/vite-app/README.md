@@ -26,6 +26,42 @@ pnpm dev:all
 - Client: http://localhost:3000
 - Server: http://localhost:5001
 
+## Production
+
+Build the client and start the server, which serves the build and the WebSocket on
+the same port:
+
+```bash
+pnpm build
+pnpm start
+```
+
+- `pnpm build` outputs the client to `build/`, which the server serves as static files.
+- The server honors `PORT` (default `5001`) and binds `0.0.0.0`.
+- In production the UI connects to the same origin for WebSocket, so no extra
+  configuration is needed.
+
+## Docker
+
+This project includes a `Dockerfile` that builds the client and runs the server in a
+single container:
+
+```bash
+docker build -t my-dashfy-app .
+docker run --rm -p 5001:5001 -e GITHUB_TOKEN=ghp_xxx my-dashfy-app
+```
+
+Pass secrets at runtime with `-e` — the image never contains them. To change dashboards
+without rebuilding, mount your config; the server watches it and reloads automatically:
+
+```bash
+docker run --rm -p 5001:5001 \
+  -v "$(pwd)/dashfy.config.yml:/app/dashfy.config.yml:ro" \
+  my-dashfy-app
+```
+
+Commit `pnpm-lock.yaml` after your first install so image builds are reproducible.
+
 ## Project structure
 
 ```

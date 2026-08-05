@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.33.2",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -11,6 +12,7 @@
     "dev:server": "dotenv -e .env -- tsx watch dashfy.server.ts",
     "dev:all": "concurrently \"pnpm dev:server\" \"pnpm dev\"",
     "build": "astro build",
+    "start": "tsx dashfy.server.ts",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
@@ -22,11 +24,12 @@
     "@getdashfy/ext-github": "^0.1.1",
     "@getdashfy/ext-market-live": "^0.1.1",
     "@getdashfy/ext-system": "^0.1.0",
-    "@getdashfy/server": "^0.1.1",
-    "@getdashfy/ui": "^0.3.0",
+    "@getdashfy/server": "^0.2.0",
+    "@getdashfy/ui": "^0.3.1",
     "astro": "^6.0.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "tsx": "^4.19.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
@@ -40,7 +43,6 @@
     "globals": "^15.13.0",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
-    "tsx": "^4.19.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1"
   }

@@ -1,4 +1,6 @@
 port: 5001
+# React Router emits the SPA into build/client, so point the server at it.
+staticDir: build/client
 apis:
   pollInterval: 300000
 dashboards:

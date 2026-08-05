@@ -1,4 +1,6 @@
 port: 5001
+# TanStack Start emits the SPA into dist/client, so point the server at it.
+staticDir: dist/client
 apis:
   pollInterval: 300000
 dashboards:
