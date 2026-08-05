@@ -1,6 +1,6 @@
 {
   "name": "@getdashfy/server",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Dashfy server with real-time data streaming and multi-dashboard support",
   "keywords": [
     "dashfy",

@@ -357,6 +357,7 @@ interface DashfyConfig {
   port?: number // Server port (default: 5001)
   host?: string // Server host (default: '0.0.0.0')
   baseDir?: string // Base directory for static files
+  staticDir?: string // Static files directory, resolved against baseDir (default: 'build')
   rotationDuration?: number // Dashboard rotation interval (ms)
   theme?: string // Default theme ID
   dashboards: Array<{

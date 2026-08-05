@@ -406,6 +406,44 @@ host: localhost
       await dashfy.stop()
     })
 
+    it('should serve static files from a staticDir relative to baseDir', async () => {
+      const port = await getAvailablePort()
+      const customBaseDir = path.join(testDir, 'nested-base')
+      mkdirSync(path.join(customBaseDir, 'build', 'client'), { recursive: true })
+
+      const config = createTestConfig()
+      config.port = port
+      config.baseDir = customBaseDir
+      config.staticDir = 'build/client'
+
+      dashfy.configure(config)
+      await dashfy.start()
+
+      expect(mockLogger.info).toHaveBeenCalledWith(
+        `Serving static files from ${path.join(customBaseDir, 'build', 'client')}`,
+      )
+
+      await dashfy.stop()
+    })
+
+    it('should serve static files from an absolute staticDir', async () => {
+      const port = await getAvailablePort()
+      const absoluteStaticDir = path.join(testDir, 'absolute-static')
+      mkdirSync(absoluteStaticDir, { recursive: true })
+
+      const config = createTestConfig()
+      config.port = port
+      config.baseDir = path.join(testDir, 'unrelated-base')
+      config.staticDir = absoluteStaticDir
+
+      dashfy.configure(config)
+      await dashfy.start()
+
+      expect(mockLogger.info).toHaveBeenCalledWith(`Serving static files from ${absoluteStaticDir}`)
+
+      await dashfy.stop()
+    })
+
     it('should use process.cwd() when baseDir is not specified', async () => {
       const port = await getAvailablePort()
       const config = createTestConfig()

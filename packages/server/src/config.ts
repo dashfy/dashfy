@@ -32,6 +32,7 @@ const DashfyConfigSchema = z.object({
   port: z.number().positive().default(DEFAULT_PORT),
   host: z.string().default(DEFAULT_HOST),
   baseDir: z.string().optional(),
+  staticDir: z.string().optional(),
   theme: z.string().optional(),
   rotationDuration: z.number().positive().optional(),
   dashboards: z.array(DashboardConfigSchema).min(1),

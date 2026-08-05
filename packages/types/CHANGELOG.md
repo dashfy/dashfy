@@ -1,5 +1,15 @@
 # @getdashfy/types
 
+## 0.3.0
+
+### Minor Changes
+
+- Add an optional `staticDir` config option for the directory the server serves the built
+  client from. It is resolved against `baseDir` and defaults to `build`, so existing
+  configurations are unaffected. Frameworks that emit the client into a nested directory —
+  React Router's `build/client` or TanStack Start's `dist/client`, for example — can now
+  point at it directly instead of moving files after the build.
+
 ## 0.2.0
 
 ### Minor Changes

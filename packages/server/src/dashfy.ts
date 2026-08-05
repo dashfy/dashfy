@@ -367,9 +367,11 @@ export class Dashfy {
       credentials: true,
     })
 
-    // Serve static files (for production builds)
+    // Serve static files (for production builds). Frameworks that emit the client into
+    // a nested directory (React Router's build/client, for example) can point at it with
+    // `staticDir` instead of moving files after the build.
     const baseDir = this.config.baseDir ?? process.cwd()
-    const staticPath = path.join(baseDir, 'build')
+    const staticPath = path.resolve(baseDir, this.config.staticDir ?? 'build')
 
     try {
       await this.app.register(fastifyStatic, {

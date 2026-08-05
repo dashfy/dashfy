@@ -87,6 +87,7 @@ export interface DashfyConfig {
   port?: number
   host?: string
   baseDir?: string
+  staticDir?: string
   theme?: ThemeId
   rotationDuration?: number
   dashboards: DashboardConfig[]
