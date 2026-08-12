@@ -89,6 +89,34 @@ export interface DateFormatOptions extends BaseFormatOptions {
 }
 
 /**
+ * Options for timezone-aware date formatting.
+ */
+export interface TimeZoneFormatOptions extends DateFormatOptions {
+  /** IANA timezone name, e.g. 'America/Los_Angeles'. Defaults to local time. */
+  timeZone?: string
+}
+
+/**
+ * The individual date/time components of a value, as observed in a given timezone.
+ */
+export interface TimeZoneParts {
+  /** Full year, e.g. 2025 */
+  year: number
+  /** Month of the year, 1-12 */
+  month: number
+  /** Day of the month, 1-31 */
+  day: number
+  /** Hours, 0-23 */
+  hours: number
+  /** Minutes, 0-59 */
+  minutes: number
+  /** Seconds, 0-59 */
+  seconds: number
+  /** Day of the week, 0 (Sunday) - 6 (Saturday) */
+  weekday: number
+}
+
+/**
  * Options for list formatting.
  */
 export interface ListFormatOptions extends BaseFormatOptions {

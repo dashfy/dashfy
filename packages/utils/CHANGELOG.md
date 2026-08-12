@@ -1,5 +1,11 @@
 # @getdashfy/utils
 
+## 0.2.0
+
+### Minor Changes
+
+- Add timezone-aware date helpers: `formatDateInTimeZone`, `getTimeZoneParts`, `formatTimeZoneLabel`, `parseTimeOfDay`, and `isDaytime`, backed by `@date-fns/tz`. These support extensions (such as clock widgets) that need to format and reason about time in an arbitrary IANA timezone rather than only the local one.
+
 ## 0.1.1
 
 ### Patch Changes

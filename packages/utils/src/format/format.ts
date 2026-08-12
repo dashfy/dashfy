@@ -1,6 +1,6 @@
 import { formatBytes, formatBytesPerSecond } from './bytes'
 import { formatCurrency } from './currency'
-import { formatDate, formatRelativeTime } from './date'
+import { formatDate, formatRelativeTime, parseDateInput } from './date'
 import { formatExponential } from './exponential'
 import { formatList } from './list'
 import { formatNumber } from './number'
@@ -50,13 +50,10 @@ export function format(
   }
 
   if (str === 'relative') {
-    const date =
-      value instanceof Date
-        ? value
-        : typeof value === 'number'
-          ? new Date(value * 1000)
-          : new Date(value as string)
-    return formatRelativeTime(date, { ...options, addSuffix: true })
+    return formatRelativeTime(parseDateInput(value as Date | string | number), {
+      ...options,
+      addSuffix: true,
+    })
   }
 
   if (str === 'list') {
@@ -115,12 +112,7 @@ export function format(
   }
 
   if (/date|short|long|iso/.test(str)) {
-    const date =
-      value instanceof Date
-        ? value
-        : typeof value === 'number'
-          ? new Date(value * 1000)
-          : new Date(value as string)
+    const date = parseDateInput(value as Date | string | number)
 
     if (str === 'short') {
       return formatDate(date, { ...options, format: 'MMM d' })

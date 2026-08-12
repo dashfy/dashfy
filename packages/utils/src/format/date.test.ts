@@ -1,6 +1,25 @@
 import { describe, expect, it } from 'vitest'
 
-import { formatDate, formatRelativeTime } from './date'
+import { formatDate, formatRelativeTime, parseDateInput } from './date'
+
+describe('parseDateInput', () => {
+  it('returns the same Date instance unchanged', () => {
+    const date = new Date('2025-03-13T18:00:00Z')
+    expect(parseDateInput(date)).toBe(date)
+  })
+
+  it('parses an ISO date string', () => {
+    const result = parseDateInput('2025-03-13T18:00:00Z')
+    expect(result).toBeInstanceOf(Date)
+    expect(result.toISOString()).toBe('2025-03-13T18:00:00.000Z')
+  })
+
+  it('treats numbers as Unix seconds, not milliseconds', () => {
+    const timestamp = Math.floor(new Date('2025-03-13T18:00:00Z').getTime() / 1000)
+    const result = parseDateInput(timestamp)
+    expect(result.toISOString()).toBe('2025-03-13T18:00:00.000Z')
+  })
+})
 
 describe('formatDate', () => {
   it('formats Date object with default pattern', () => {

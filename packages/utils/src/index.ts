@@ -17,7 +17,14 @@ export { formatOrdinal } from './format/ordinal'
 export { formatPercent } from './format/percent'
 export { formatTemperature } from './format/temperature'
 export { formatTime, formatTimeCompact } from './format/time'
-export type { BaseFormatOptions } from './format/types'
+export {
+  formatDateInTimeZone,
+  formatTimeZoneLabel,
+  getTimeZoneParts,
+  isDaytime,
+  parseTimeOfDay,
+} from './format/timezone'
+export type { BaseFormatOptions, TimeZoneFormatOptions, TimeZoneParts } from './format/types'
 
 // Function
 export { debounce } from './function/debounce'

@@ -3,6 +3,30 @@ import { format as dateFnsFormat, formatDistanceToNow } from 'date-fns'
 import type { DateFormatOptions } from './types'
 
 /**
+ * Normalize a `Date`, ISO string, or Unix timestamp (seconds) into a `Date` instance.
+ *
+ * Numbers are treated as Unix seconds, not milliseconds, matching the rest of the
+ * `@getdashfy/utils` date and timezone helpers.
+ *
+ * @param value - Date instance, ISO string, or Unix seconds
+ * @returns The equivalent `Date` instance
+ *
+ * @example
+ * ```ts
+ * parseDateInput(new Date('2025-03-13'))  // same Date instance
+ * parseDateInput('2025-03-13T18:00:00Z')  // Date parsed from the ISO string
+ * parseDateInput(1710352800)              // Date from Unix seconds
+ * ```
+ */
+export function parseDateInput(value: Date | string | number): Date {
+  return value instanceof Date
+    ? value
+    : typeof value === 'number'
+      ? new Date(value * 1000)
+      : new Date(value)
+}
+
+/**
  * Format a date (Date, string, or Unix timestamp in seconds).
  *
  * @param value - Date instance, ISO string, or Unix seconds
@@ -16,14 +40,8 @@ import type { DateFormatOptions } from './types'
  * ```
  */
 export function formatDate(value: Date | string | number, options?: DateFormatOptions): string {
-  const date =
-    value instanceof Date
-      ? value
-      : typeof value === 'number'
-        ? new Date(value * 1000)
-        : new Date(value)
   const pattern = options?.format ?? 'MMM d, yyyy'
-  return dateFnsFormat(date, pattern)
+  return dateFnsFormat(parseDateInput(value), pattern)
 }
 
 /**
@@ -43,11 +61,5 @@ export function formatRelativeTime(
   value: Date | string | number,
   options?: DateFormatOptions,
 ): string {
-  const date =
-    value instanceof Date
-      ? value
-      : typeof value === 'number'
-        ? new Date(value * 1000)
-        : new Date(value)
-  return formatDistanceToNow(date, { addSuffix: options?.addSuffix ?? true })
+  return formatDistanceToNow(parseDateInput(value), { addSuffix: options?.addSuffix ?? true })
 }
