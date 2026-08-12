@@ -16,13 +16,13 @@ import type { TimeZoneFormatOptions, TimeZoneParts } from './types'
  * @example
  * ```ts
  * formatDateInTimeZone(new Date('2025-03-13T18:00:00Z'), { timeZone: 'America/Los_Angeles' })
- * // 'Mar 13, 2025'
+ * // => 'Mar 13, 2025'
  *
  * formatDateInTimeZone(new Date('2025-03-13T18:00:00Z'), {
  *   timeZone: 'America/Los_Angeles',
  *   format: 'hh:mm',
  * })
- * // '11:00'
+ * // => '11:00'
  * ```
  */
 export function formatDateInTimeZone(
@@ -47,7 +47,7 @@ export function formatDateInTimeZone(
  * @example
  * ```ts
  * getTimeZoneParts(new Date('2025-03-13T18:00:00Z'), 'America/Los_Angeles')
- * // { year: 2025, month: 3, day: 13, hours: 11, minutes: 0, seconds: 0, weekday: 4 }
+ * // => { year: 2025, month: 3, day: 13, hours: 11, minutes: 0, seconds: 0, weekday: 4 }
  * ```
  */
 export function getTimeZoneParts(value: Date | string | number, timeZone?: string): TimeZoneParts {
@@ -124,7 +124,7 @@ export function parseTimeOfDay(value: string): { hours: number; minutes: number 
  * @example
  * ```ts
  * isDaytime(new Date('2025-03-13T18:00:00Z'), '06:00', '18:00', 'America/Los_Angeles')
- * // true (11:00 local time)
+ * // => true (11:00 local time)
  * ```
  */
 export function isDaytime(

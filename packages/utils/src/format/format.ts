@@ -8,7 +8,8 @@ import { formatOrdinal } from './ordinal'
 import { formatPercent } from './percent'
 import { formatTemperature } from './temperature'
 import { formatTime, formatTimeCompact } from './time'
-import type { BaseFormatOptions, DateFormatOptions } from './types'
+import { formatDateInTimeZone } from './timezone'
+import type { BaseFormatOptions, DateFormatOptions, TimeZoneFormatOptions } from './types'
 
 /**
  * Main format function - parses format strings and delegates to the appropriate formatter.
@@ -28,12 +29,18 @@ import type { BaseFormatOptions, DateFormatOptions } from './types'
  *
  * format(new Date(), 'relative')
  * // => 'less than a minute ago'
+ *
+ * format(new Date(), 'tz', { timeZone: 'America/Los_Angeles' })
+ * // => 'Mar 13, 2025'
+ *
+ * format(new Date(), 'tz', { timeZone: 'America/Los_Angeles', format: 'HH:mm' })
+ * // => '11:00'
  * ```
  */
 export function format(
   value: number | bigint | Date | string | string[] | null | undefined,
   formatString: string,
-  options?: BaseFormatOptions,
+  options?: BaseFormatOptions & Partial<TimeZoneFormatOptions>,
 ): string {
   if (value === null || value === undefined) {
     if (options?.nullFormat !== undefined) {
@@ -109,6 +116,12 @@ export function format(
   if (/temp|°|celsius|fahrenheit|kelvin/.test(str)) {
     const unit = str.includes('f') ? 'fahrenheit' : str.includes('k') ? 'kelvin' : 'celsius'
     return formatTemperature(Number(value), { ...options, unit })
+  }
+
+  // 'timezone' / 'tz' are an explicit, timezone-aware counterpart to 'date':
+  // format(date, 'tz', { timeZone: '...' }). Unlike 'date', they honor `timeZone`.
+  if (str === 'timezone' || str === 'tz') {
+    return formatDateInTimeZone(parseDateInput(value as Date | string | number), options)
   }
 
   if (/date|short|long|iso/.test(str)) {

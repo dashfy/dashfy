@@ -113,6 +113,15 @@ describe('format', () => {
     expect(format('2024-06-15', 'date')).toMatch(/Jun|2024/)
   })
 
+  it('formats a date in a given timezone via "timezone"/"tz"', () => {
+    // 2025-01-15T18:00:00Z is 13:00 EST (America/New_York, UTC-5 in January)
+    const d = new Date('2025-01-15T18:00:00Z')
+    expect(format(d, 'timezone', { timeZone: 'America/New_York' })).toMatch(/Jan.*15.*2025/)
+    expect(format(d, 'tz', { timeZone: 'America/New_York', format: 'yyyy-MM-dd HH:mm' })).toBe(
+      '2025-01-15 13:00',
+    )
+  })
+
   it('formats plain numbers', () => {
     expect(format(1000, '0,0')).toMatch(/1,?000/)
     expect(format(3.14, '0.00')).toMatch(/3\.14/)

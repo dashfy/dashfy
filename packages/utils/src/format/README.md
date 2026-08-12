@@ -173,17 +173,30 @@ format(['A', 'B', 'C'], 'list')
 
 ### Dates
 
-| Format     | Example                          | Input type                         | Output                |
-| ---------- | -------------------------------- | ---------------------------------- | --------------------- |
-| `date`     | `format(new Date(), 'date')`     | Date / ISO string                  | `Mar 15, 2024`        |
-| `short`    | `format(date, 'short')`          | Date / ISO string                  | `Mar 15`              |
-| `long`     | `format(date, 'long')`           | Date / ISO string                  | `March 15, 2024`      |
-| `iso`      | `format(date, 'iso')`            | Date / ISO string                  | `2024-03-15T12:00:00` |
-| `relative` | `format(new Date(), 'relative')` | Date / ISO string / Unix timestamp | `2 hours ago`         |
+| Format            | Example                                   | Input type                         | Output                |
+| ----------------- | ----------------------------------------- | ---------------------------------- | --------------------- |
+| `date`            | `format(new Date(), 'date')`              | Date / ISO string                  | `Mar 15, 2024`        |
+| `short`           | `format(date, 'short')`                   | Date / ISO string                  | `Mar 15`              |
+| `long`            | `format(date, 'long')`                    | Date / ISO string                  | `March 15, 2024`      |
+| `iso`             | `format(date, 'iso')`                     | Date / ISO string                  | `2024-03-15T12:00:00` |
+| `relative`        | `format(new Date(), 'relative')`          | Date / ISO string / Unix timestamp | `2 hours ago`         |
+| `timezone` / `tz` | `format(date, 'tz', { timeZone: '...' })` | Date / ISO string                  | `Mar 15, 2024`        |
+
+`date` / `short` / `long` / `iso` / `relative` always format in local time; they ignore a `timeZone` option if one is passed. Use `timezone` (or its shorter alias `tz`) to format in a given IANA timezone (e.g. `America/Los_Angeles`) instead:
+
+```ts
+format(new Date(), 'tz', { timeZone: 'America/Los_Angeles' })
+// 'Mar 15, 2024'
+
+format(new Date(), 'tz', { timeZone: 'America/Los_Angeles', format: 'HH:mm' })
+// '09:30'
+
+format(new Date(), 'tz') // no timeZone -> same as format(new Date(), 'date')
+```
 
 ### Timezones
 
-Timezone-aware helpers are not part of the `format()` string dispatcher — import them directly:
+The lower-level timezone helper behind `timezone` / `tz` above can also be imported directly:
 
 ```ts
 import {
