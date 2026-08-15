@@ -4,6 +4,24 @@
   "private": true,
   "type": "module",
   "description": "Dashfy - Dashboards for developers",
+  "keywords": [
+    "dashfy",
+    "dashboards",
+    "dashboards-as-code",
+    "widgets",
+    "extensions",
+    "charts",
+    "api",
+    "real-time",
+    "javascript",
+    "typescript",
+    "react",
+    "nodejs"
+  ],
+  "homepage": "https://github.com/dashfy/dashfy#readme",
+  "bugs": {
+    "url": "https://github.com/dashfy/dashfy/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:dashfy/dashfy.git"
