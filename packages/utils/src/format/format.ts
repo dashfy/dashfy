@@ -118,8 +118,6 @@ export function format(
     return formatTemperature(Number(value), { ...options, unit })
   }
 
-  // 'timezone' / 'tz' are an explicit, timezone-aware counterpart to 'date':
-  // format(date, 'tz', { timeZone: '...' }). Unlike 'date', they honor `timeZone`.
   if (str === 'timezone' || str === 'tz') {
     return formatDateInTimeZone(parseDateInput(value as Date | string | number), options)
   }
