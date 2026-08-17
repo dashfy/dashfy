@@ -24,7 +24,7 @@ export {
   isDaytime,
   parseTimeOfDay,
 } from './format/timezone'
-export type { BaseFormatOptions, TimeZoneFormatOptions, TimeZoneParts } from './format/types'
+export type { BaseFormatOptions } from './format/types'
 
 // Function
 export { debounce } from './function/debounce'
