@@ -13,6 +13,7 @@ The `format` module provides a unified formatting API for Dashfy dashboards. It 
 - **[Time](#time)** - Duration and clock time formatting
 - **[Temperature](#temperature)** - Celsius, Fahrenheit, and Kelvin
 - **[Dates](#dates)** - Absolute and relative date formatting
+- **[Timezones](#timezones)** - Timezone-aware date formatting and day/night helpers
 - **[Ordinal](#ordinal)** - Ordinal number suffixes (1st, 2nd, 3rd)
 - **[Exponential](#exponential)** - Scientific notation
 - **[List](#list)** - Array to human-readable list
@@ -172,13 +173,62 @@ format(['A', 'B', 'C'], 'list')
 
 ### Dates
 
-| Format     | Example                          | Input type                         | Output                |
-| ---------- | -------------------------------- | ---------------------------------- | --------------------- |
-| `date`     | `format(new Date(), 'date')`     | Date / ISO string                  | `Mar 15, 2024`        |
-| `short`    | `format(date, 'short')`          | Date / ISO string                  | `Mar 15`              |
-| `long`     | `format(date, 'long')`           | Date / ISO string                  | `March 15, 2024`      |
-| `iso`      | `format(date, 'iso')`            | Date / ISO string                  | `2024-03-15T12:00:00` |
-| `relative` | `format(new Date(), 'relative')` | Date / ISO string / Unix timestamp | `2 hours ago`         |
+| Format            | Example                                   | Input type                         | Output                |
+| ----------------- | ----------------------------------------- | ---------------------------------- | --------------------- |
+| `date`            | `format(new Date(), 'date')`              | Date / ISO string                  | `Mar 15, 2024`        |
+| `short`           | `format(date, 'short')`                   | Date / ISO string                  | `Mar 15`              |
+| `long`            | `format(date, 'long')`                    | Date / ISO string                  | `March 15, 2024`      |
+| `iso`             | `format(date, 'iso')`                     | Date / ISO string                  | `2024-03-15T12:00:00` |
+| `relative`        | `format(new Date(), 'relative')`          | Date / ISO string / Unix timestamp | `2 hours ago`         |
+| `timezone` / `tz` | `format(date, 'tz', { timeZone: '...' })` | Date / ISO string                  | `Mar 15, 2024`        |
+
+`date` / `short` / `long` / `iso` / `relative` always format in local time; they ignore a `timeZone` option if one is passed. Use `timezone` (or its shorter alias `tz`) to format in a given IANA timezone (e.g. `America/Los_Angeles`) instead:
+
+```ts
+format(new Date(), 'tz', { timeZone: 'America/Los_Angeles' })
+// 'Mar 15, 2024'
+
+format(new Date(), 'tz', { timeZone: 'America/Los_Angeles', format: 'HH:mm' })
+// '09:30'
+
+format(new Date(), 'tz') // no timeZone -> same as format(new Date(), 'date')
+```
+
+### Timezones
+
+The lower-level timezone helper behind `timezone` / `tz` above can also be imported directly:
+
+```ts
+import {
+  formatDateInTimeZone,
+  getTimeZoneParts,
+  formatTimeZoneLabel,
+  parseTimeOfDay,
+  isDaytime,
+} from '@getdashfy/utils'
+
+// Format a date in a given IANA timezone
+formatDateInTimeZone(new Date(), { timeZone: 'America/Los_Angeles' })
+// 'Mar 15, 2024'
+
+formatDateInTimeZone(new Date(), { timeZone: 'America/Los_Angeles', format: 'HH:mm' })
+// '09:30'
+
+// Read individual date/time components as observed in a timezone
+getTimeZoneParts(new Date(), 'America/Los_Angeles')
+// { year: 2024, month: 3, day: 15, hours: 9, minutes: 30, seconds: 0, weekday: 5 }
+
+// Turn an IANA name into a short label
+formatTimeZoneLabel('America/Los_Angeles') // 'Los Angeles'
+
+// Parse a "HH:mm" time-of-day string
+parseTimeOfDay('06:00') // { hours: 6, minutes: 0 }
+
+// Check whether a value falls between a sunrise and sunset time
+isDaytime(new Date(), '06:00', '18:00', 'America/Los_Angeles') // true or false
+```
+
+`formatDateInTimeZone` falls back to local time (`formatDate`) when `timeZone` is omitted.
 
 ### Ordinal
 
@@ -312,6 +362,7 @@ format(1000, '0,0', options)
 ## Dependencies
 
 - [date-fns](https://date-fns.org) - Date manipulation and formatting
+- [@date-fns/tz](https://github.com/date-fns/tz) - Timezone-aware dates
 - [pretty-bytes](https://github.com/sindresorhus/pretty-bytes) - Byte formatting
 
 ## Community

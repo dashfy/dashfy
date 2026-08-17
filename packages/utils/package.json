@@ -1,6 +1,6 @@
 {
   "name": "@getdashfy/utils",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Formatting and utility functions for Dashfy - numbers, currencies, bytes, dates, times, strings, platform detection, and more",
   "keywords": [
     "dashfy",
@@ -16,6 +16,7 @@
     "percent",
     "temperature",
     "time",
+    "timezone",
     "error",
     "function",
     "object",
@@ -71,6 +72,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@date-fns/tz": "^1.5.0",
     "date-fns": "^4.1.0",
     "pretty-bytes": "^7.1.0"
   },

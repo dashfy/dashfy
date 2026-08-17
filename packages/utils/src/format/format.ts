@@ -1,6 +1,6 @@
 import { formatBytes, formatBytesPerSecond } from './bytes'
 import { formatCurrency } from './currency'
-import { formatDate, formatRelativeTime } from './date'
+import { formatDate, formatRelativeTime, parseDateInput } from './date'
 import { formatExponential } from './exponential'
 import { formatList } from './list'
 import { formatNumber } from './number'
@@ -8,7 +8,8 @@ import { formatOrdinal } from './ordinal'
 import { formatPercent } from './percent'
 import { formatTemperature } from './temperature'
 import { formatTime, formatTimeCompact } from './time'
-import type { BaseFormatOptions, DateFormatOptions } from './types'
+import { formatDateInTimeZone } from './timezone'
+import type { BaseFormatOptions, DateFormatOptions, TimeZoneFormatOptions } from './types'
 
 /**
  * Main format function - parses format strings and delegates to the appropriate formatter.
@@ -28,12 +29,18 @@ import type { BaseFormatOptions, DateFormatOptions } from './types'
  *
  * format(new Date(), 'relative')
  * // => 'less than a minute ago'
+ *
+ * format(new Date(), 'tz', { timeZone: 'America/Los_Angeles' })
+ * // => 'Mar 13, 2025'
+ *
+ * format(new Date(), 'tz', { timeZone: 'America/Los_Angeles', format: 'HH:mm' })
+ * // => '11:00'
  * ```
  */
 export function format(
   value: number | bigint | Date | string | string[] | null | undefined,
   formatString: string,
-  options?: BaseFormatOptions,
+  options?: BaseFormatOptions & Partial<TimeZoneFormatOptions>,
 ): string {
   if (value === null || value === undefined) {
     if (options?.nullFormat !== undefined) {
@@ -50,13 +57,10 @@ export function format(
   }
 
   if (str === 'relative') {
-    const date =
-      value instanceof Date
-        ? value
-        : typeof value === 'number'
-          ? new Date(value * 1000)
-          : new Date(value as string)
-    return formatRelativeTime(date, { ...options, addSuffix: true })
+    return formatRelativeTime(parseDateInput(value as Date | string | number), {
+      ...options,
+      addSuffix: true,
+    })
   }
 
   if (str === 'list') {
@@ -114,13 +118,12 @@ export function format(
     return formatTemperature(Number(value), { ...options, unit })
   }
 
+  if (str === 'timezone' || str === 'tz') {
+    return formatDateInTimeZone(parseDateInput(value as Date | string | number), options)
+  }
+
   if (/date|short|long|iso/.test(str)) {
-    const date =
-      value instanceof Date
-        ? value
-        : typeof value === 'number'
-          ? new Date(value * 1000)
-          : new Date(value as string)
+    const date = parseDateInput(value as Date | string | number)
 
     if (str === 'short') {
       return formatDate(date, { ...options, format: 'MMM d' })
