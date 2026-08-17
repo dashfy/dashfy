@@ -174,7 +174,7 @@ Dashfy dashboards are defined using declarative configuration. You can use `Type
 ```ts
 import type { DashfyConfig } from '@getdashfy/types'
 
-const dashfyConfig: DashfyConfig = {
+export const dashfyConfig: DashfyConfig = {
   dashboards: [
     {
       title: 'GitHub Dashboard',
