@@ -38,7 +38,7 @@ Dashfy is designed to make dashboards:
 - extensible
 - and maintainable
 
-Dashfy is published as a set of npm packages (for example `@getdashfy/server`, `@getdashfy/ui`, `@getdashfy/themes`, and `@getdashfy/ext-*`).
+Dashfy is published as a set of npm packages (for example `@getdashfy/server`, `@getdashfy/ui`, `@getdashfy/themes`, `@getdashfy/utils`, and `@getdashfy/ext-*`).
 
 [![Dashfy](https://raw.githubusercontent.com/dashfy/dashfy-brand/refs/heads/main/dashfy-promo_03.png)](https://demo.dashfy.dev)
 
