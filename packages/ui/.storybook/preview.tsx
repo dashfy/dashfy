@@ -50,7 +50,6 @@ const preview: Preview = {
           { value: 'light', icon: 'circlehollow', title: 'Light' },
           { value: 'dark', icon: 'circle', title: 'Dark' },
         ],
-        showName: true,
         dynamicTitle: true,
       },
     },

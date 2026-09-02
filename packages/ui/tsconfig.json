@@ -8,6 +8,6 @@
     },
     "incremental": false
   },
-  "include": ["src/**/*", "*.config.ts", "vitest.setup.ts"],
+  "include": ["src/**/*", ".storybook/**/*", "*.config.ts", "vitest.setup.ts"],
   "exclude": ["node_modules", "dist"]
 }
