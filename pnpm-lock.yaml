@@ -345,7 +345,7 @@ importers:
         version: 1.1.1(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       date-fns:
         specifier: ^4.1.0
-        version: 4.1.0
+        version: 4.4.0
       embla-carousel-react:
         specifier: ^8.6.0
         version: 8.6.0(react@19.2.7)
@@ -487,7 +487,7 @@ importers:
         version: 1.5.0
       date-fns:
         specifier: ^4.1.0
-        version: 4.1.0
+        version: 4.4.0
       pretty-bytes:
         specifier: ^7.1.0
         version: 7.1.0
@@ -3529,8 +3529,8 @@ packages:
   date-fns-jalali@4.1.0-0:
     resolution: {integrity: sha512-hTIP/z+t+qKwBDcmmsnmjWTduxCg+5KfdqWQvb2X/8C9+knYY6epN/pfxdDuyVlSVeFz0sM5eEfwIUQ70U4ckg==}
 
-  date-fns@4.1.0:
-    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
+  date-fns@4.4.0:
+    resolution: {integrity: sha512-+1UMbeh68lH1SegH83CGWwpb6OHHbpSgr3+s5Eww5M4CAgswBpoWS0AjTOfEJ33HiYKz1hdj/KTFprzXHmq/6w==}
 
   dateformat@4.6.3:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==}
@@ -3920,6 +3920,7 @@ packages:
   eslint@9.39.0:
     resolution: {integrity: sha512-iy2GE3MHrYTL5lrCtMZ0X1KLEKKUjmK0kzwcnefhR66txcEmXZD2YWgR5GNdcEwkNx3a0siYkSvl0vIC+Svjmg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -10028,7 +10029,7 @@ snapshots:
 
   date-fns-jalali@4.1.0-0: {}
 
-  date-fns@4.1.0: {}
+  date-fns@4.4.0: {}
 
   dateformat@4.6.3: {}
 
@@ -12409,7 +12410,7 @@ snapshots:
   react-day-picker@9.11.3(react@19.2.7):
     dependencies:
       '@date-fns/tz': 1.5.0
-      date-fns: 4.1.0
+      date-fns: 4.4.0
       date-fns-jalali: 4.1.0-0
       react: 19.2.7
 
